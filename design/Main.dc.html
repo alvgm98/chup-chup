@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Recetario · Inicio</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&amp;family=Source+Sans+3:ital,wght@0,400..700;1,400..700&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<div style="width: 390px; height: 1760px; box-sizing: border-box; display: flex; flex-direction: column; background: {{t.bg}}; color: {{t.ink}}; font-family: 'Source Sans 3', system-ui, sans-serif; font-size: 17px; line-height: 1.5; overflow: hidden">
+
+  <sc-if value="{{isHome}}" hint-placeholder-val="{{true}}">
+    <header style="padding: 20px 20px 0; display: flex; flex-direction: column; gap: 16px">
+      <div style="display: flex; align-items: baseline; justify-content: space-between">
+        <div style="font-family: Fraunces, Georgia, serif; font-size: 30px; line-height: 1; font-weight: 600; letter-spacing: -0.01em">Recetario<span style="color: {{t.acc}}">.</span></div>
+        <div style="font-family: Fraunces, Georgia, serif; font-style: italic; font-size: 15px; color: {{t.ink2}}">cocina de casa</div>
+      </div>
+      <label style="display: flex; align-items: center; gap: 10px; height: 52px; padding: 0 16px; background: {{t.raised}}; border: 1px solid {{t.lineStrong}}; border-radius: 12px; color: {{t.ink2}}">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+        <input type="search" aria-label="Buscar recetas" placeholder="Busca una receta o un ingrediente" style="flex: 1; min-width: 0; border: 0; background: transparent; font-family: inherit; font-size: 17px; color: {{t.ink}}">
+      </label>
+    </header>
+
+    <section aria-labelledby="ultimas" style="padding: 32px 20px 0">
+      <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-bottom: 8px; border-bottom: 1.5px solid {{t.ink}}">
+        <h2 id="ultimas" style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 500; font-size: 26px; line-height: 1.15">Últimas recetas</h2>
+        <button type="button" onClick="{{openAll}}" style="min-height: 44px; padding: 0; border: 0; background: transparent; color: {{t.accText}}; font-family: inherit; font-size: 15px; font-weight: 700; cursor: pointer; font-variant-numeric: tabular-nums">Ver las {{total}}</button>
+      </div>
+      <sc-for list="{{latest}}" as="r" hint-placeholder-count="5">
+        <a href="Receta.dc.html" style="display: flex; gap: 14px; align-items: center; padding: 12px 0; border-bottom: 1px solid {{t.line}}; text-decoration: none; color: inherit">
+          <sc-if value="{{r.foto}}" hint-placeholder-val="{{false}}">
+            <div style="flex: none; width: 72px; height: 72px; border-radius: 8px; background: {{t.photo}}; color: {{t.photoInk}}; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg>
+              Foto
+            </div>
+          </sc-if>
+          <sc-if value="{{r.sinFoto}}" hint-placeholder-val="{{true}}">
+            <div style="flex: none; width: 72px; height: 72px; border-radius: 8px; background: {{r.tint}}; color: {{r.ink}}; display: flex; align-items: center; justify-content: center">
+              <svg width="42" height="42" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{r.motif}}"></path></svg>
+            </div>
+          </sc-if>
+          <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px">
+            <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px">
+              <span style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; color: {{t.accText}}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{r.catsLabel}}</span>
+              <span style="flex: none; font-size: 13px; color: {{t.ink2}}">{{r.added}}</span>
+            </div>
+            <div style="font-family: Fraunces, Georgia, serif; font-size: 20px; line-height: 1.2; font-weight: 500">{{r.n}}</div>
+            <div style="font-size: 14px; color: {{t.ink2}}; font-variant-numeric: tabular-nums">{{r.tiempo}} · {{r.rac}} rac. · {{r.dif}}</div>
+          </div>
+        </a>
+      </sc-for>
+    </section>
+
+    <section aria-labelledby="indice" style="padding: 40px 20px 32px">
+      <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-bottom: 8px; border-bottom: 1.5px solid {{t.ink}}">
+        <h2 id="indice" style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 500; font-size: 26px; line-height: 1.15">Categorías</h2>
+        <span style="font-family: Fraunces, Georgia, serif; font-style: italic; font-size: 15px; color: {{t.ink2}}">índice</span>
+      </div>
+      <ul style="margin: 0; padding: 0; list-style: none">
+        <sc-for list="{{index}}" as="c" hint-placeholder-count="13">
+          <li style="border-bottom: 1px solid {{t.line}}">
+            <button type="button" onClick="{{c.open}}" style="display: flex; align-items: center; gap: 12px; width: 100%; min-height: 60px; padding: 8px 0; border: 0; background: transparent; color: {{c.fg}}; font-family: inherit; text-align: left; cursor: pointer">
+              <span style="flex: none; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 8px; box-sizing: border-box; background: {{c.tint}}; border: 1px solid {{c.tileBd}}; color: {{c.ink}}">
+                <svg width="28" height="28" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{c.motif}}"></path></svg>
+              </span>
+              <span style="flex: none; font-family: Fraunces, Georgia, serif; font-size: 19px; font-weight: 500; line-height: 1.2">{{c.name}}</span>
+              <span aria-hidden="true" style="flex: 1; min-width: 12px; align-self: center; margin-top: 8px; border-bottom: 1.5px dotted {{t.lineStrong}}"></span>
+              <span style="flex: none; font-size: 15px; font-weight: 600; color: {{c.countFg}}; font-variant-numeric: tabular-nums">{{c.count}}</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{t.ink2}}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg>
+            </button>
+          </li>
+        </sc-for>
+      </ul>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{isCat}}" hint-placeholder-val="{{false}}">
+    <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 12px 0">
+      <button type="button" onClick="{{goHome}}" style="display: inline-flex; align-items: center; gap: 4px; height: 44px; padding: 0 12px 0 6px; border: 0; border-radius: 10px; background: transparent; color: {{t.ink}}; font-family: inherit; font-size: 16px; font-weight: 600; cursor: pointer">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>
+        Inicio
+      </button>
+      <a href="Estados.dc.html" aria-label="Buscar" style="display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 10px; color: {{t.ink}}">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+      </a>
+    </div>
+
+    <header style="margin: 8px 20px 0; position: relative; min-height: 148px; box-sizing: border-box; padding: 24px 24px 22px; border-radius: 12px; background: {{view.tint}}; color: {{view.ink}}; overflow: hidden; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px">
+      <div style="position: absolute; top: 8px; right: 8px; bottom: 8px; left: 8px; border: 1px solid {{view.ink}}; border-radius: 6px; opacity: 0.45"></div>
+      <div style="position: relative; display: flex; flex-direction: column; gap: 4px">
+        <span style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700">{{view.kicker}}</span>
+        <h1 style="margin: 0; font-family: Fraunces, Georgia, serif; font-style: italic; font-weight: 500; font-size: 38px; line-height: 1.02; color: {{t.ink}}">{{view.name}}</h1>
+        <span style="font-size: 15px; color: {{t.ink}}; font-variant-numeric: tabular-nums">{{view.count}}</span>
+      </div>
+      <sc-if value="{{view.hasMotif}}" hint-placeholder-val="{{true}}">
+        <svg width="72" height="72" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="position: relative; flex: none"><path d="{{view.motif}}"></path></svg>
+      </sc-if>
+    </header>
+
+    <div style="display: flex; align-items: center; gap: 8px; padding: 16px 20px 0">
+      <button type="button" style="display: inline-flex; align-items: center; gap: 6px; height: 44px; padding: 0 12px 0 14px; border-radius: 10px; border: 1px solid {{t.line}}; background: transparent; color: {{t.ink}}; font-family: inherit; font-size: 15px; cursor: pointer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.5V12l3 2"></path></svg>
+        Tiempo
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+      </button>
+      <button type="button" style="display: inline-flex; align-items: center; gap: 6px; height: 44px; padding: 0 12px 0 14px; border-radius: 10px; border: 1px solid {{t.line}}; background: transparent; color: {{t.ink}}; font-family: inherit; font-size: 15px; cursor: pointer">
+        Dificultad
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+      </button>
+      <span style="margin-left: auto; font-size: 14px; color: {{t.ink2}}">Más recientes</span>
+    </div>
+
+    <sc-if value="{{view.empty}}" hint-placeholder-val="{{false}}">
+      <section style="margin: 24px 20px 0; padding: 28px 24px; border: 1px dashed {{t.lineStrong}}; border-radius: 12px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 10px">
+        <p style="margin: 0; font-family: Fraunces, Georgia, serif; font-style: italic; font-size: 22px; line-height: 1.25">Esta página del cuaderno aún está en blanco.</p>
+        <p style="margin: 0; font-size: 16px; color: {{t.ink2}}">Todavía no hay recetas de {{view.lower}}.</p>
+      </section>
+    </sc-if>
+
+    <section aria-label="Recetas" style="padding: 12px 20px 0">
+      <sc-for list="{{view.items}}" as="r" hint-placeholder-count="3">
+        <a href="Receta.dc.html" style="display: flex; gap: 14px; align-items: center; padding: 12px 0; border-bottom: 1px solid {{t.line}}; text-decoration: none; color: inherit">
+          <sc-if value="{{r.foto}}" hint-placeholder-val="{{false}}">
+            <div style="flex: none; width: 72px; height: 72px; border-radius: 8px; background: {{t.photo}}; color: {{t.photoInk}}; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg>
+              Foto
+            </div>
+          </sc-if>
+          <sc-if value="{{r.sinFoto}}" hint-placeholder-val="{{true}}">
+            <div style="flex: none; width: 72px; height: 72px; border-radius: 8px; background: {{r.tint}}; color: {{r.ink}}; display: flex; align-items: center; justify-content: center">
+              <svg width="42" height="42" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{r.motif}}"></path></svg>
+            </div>
+          </sc-if>
+          <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px">
+            <div style="font-family: Fraunces, Georgia, serif; font-size: 20px; line-height: 1.2; font-weight: 500">{{r.n}}</div>
+            <div style="font-size: 14px; color: {{t.ink2}}; font-variant-numeric: tabular-nums">{{r.tiempo}} · {{r.rac}} rac. · {{r.dif}}</div>
+            <sc-if value="{{r.hasOthers}}" hint-placeholder-val="{{false}}">
+              <div style="font-size: 13px; color: {{t.ink2}}">También en <span style="font-weight: 700; color: {{t.accText}}">{{r.others}}</span></div>
+            </sc-if>
+          </div>
+        </a>
+      </sc-for>
+    </section>
+
+    <section aria-labelledby="otras" style="padding: 32px 0 32px">
+      <h2 id="otras" style="margin: 0 20px 10px; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: {{t.ink2}}">Otras categorías</h2>
+      <div style="display: flex; gap: 8px; overflow-x: auto; padding: 0 20px; scrollbar-width: none">
+        <sc-for list="{{others}}" as="o" hint-placeholder-count="5">
+          <button type="button" onClick="{{o.open}}" style="flex: none; display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 14px 0 10px; border-radius: 10px; border: 1px solid {{t.line}}; background: {{t.raised}}; color: {{t.ink}}; font-family: inherit; font-size: 15px; font-weight: 600; white-space: nowrap; cursor: pointer">
+            <svg width="22" height="22" viewBox="0 0 64 64" fill="none" stroke="{{o.ink}}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{o.motif}}"></path></svg>
+            {{o.name}}
+            <span style="font-weight: 400; color: {{t.ink2}}; font-variant-numeric: tabular-nums">{{o.n}}</span>
+          </button>
+        </sc-for>
+      </div>
+    </section>
+  </sc-if>
+
+  <nav aria-label="Principal" style="margin-top: auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid {{t.line}}; background: {{t.nav}}; padding: 6px 8px 24px">
+    <a href="Main.dc.html" aria-current="page" style="position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 0 6px; text-decoration: none; color: {{t.ink}}; font-size: 13px; font-weight: 700">
+      <span style="position: absolute; top: 0; width: 28px; height: 3px; border-radius: 2px; background: {{t.acc}}"></span>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M12 6c-2-1.3-4.5-2-8-2v14c3.5 0 6 .7 8 2 2-1.3 4.5-2 8-2V4c-3.5 0-6 .7-8 2z"></path><path d="M12 6v14"></path></svg>
+      Recetas
+    </a>
+    <a href="Nevera.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 0 6px; text-decoration: none; color: {{t.ink2}}; font-size: 13px; font-weight: 600">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="2"></rect><path d="M6 10h12M9 6v2M9 13v3"></path></svg>
+      Nevera
+    </a>
+    <a href="Estados.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 0 6px; text-decoration: none; color: {{t.ink2}}; font-size: 13px; font-weight: 600">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+      Buscar
+    </a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"$preview":{"width":390,"height":1760}}'>
+const THEMES = {
+  light: { bg: '#F5EFE4', raised: '#FBF8F2', sunk: '#ECE4D5', ink: '#231E19', ink2: '#5C5249', line: '#DDD2C0', lineStrong: '#C4B59D', acc: '#B4482A', accInk: '#FFF8F0', accSoft: '#F1DDD1', accText: '#9E3B20', saf: '#C98A1B', safSoft: '#F3E5C4', safInk: '#865608', oli: '#5A5C24', oliSoft: '#E4E3CA', photo: '#D8C9B1', photoInk: '#5E5142', nav: '#FBF8F2' },
+  dark: { bg: '#1C1916', raised: '#26221E', sunk: '#2A2520', ink: '#F2EADD', ink2: '#BDB1A0', line: '#38322B', lineStrong: '#574E44', acc: '#E07A57', accInk: '#1C1916', accSoft: '#43281E', accText: '#EE9A7B', saf: '#E2A945', safSoft: '#3A2F1B', safInk: '#E8B866', oli: '#B8B96E', oliSoft: '#30301D', photo: '#3A332C', photoInk: '#C2B5A3', nav: '#211E1A' }
+};
+const MOTIF = {
+  arroz: 'M10 34a22 13 0 1 0 44 0a22 13 0 1 0 -44 0M10 34H4M54 34h6M22 31l3 1M31 37l3-1M40 30l3 1M27 40h3M38 41l3-1M33 28l2 2M45 35l2-1M18 37l2 1',
+  legumbres: 'M16 20a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M30 15a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M42 24a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M22 32a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M36 36a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M14 44a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M28 48a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M44 46a4 4 0 1 0 8 0a4 4 0 1 0 -8 0',
+  carne: 'M39 25c6-7 17-3 15 6s-11 11-17 6L25 49M25 49a3.5 3.5 0 1 1-5 4.5M25 49a3.5 3.5 0 1 0-4.5-5',
+  pescado: 'M8 32c9-11 27-13 40 0c-13 13-31 11-40 0zM48 32l9-8v16zM27 26c2 4 2 8 0 12M18 30.5v.5',
+  pasta: 'M8 22c6-5 10 5 16 0s10 5 16 0s10 5 16 0M8 32c6-5 10 5 16 0s10 5 16 0s10 5 16 0M8 42c6-5 10 5 16 0s10 5 16 0s10 5 16 0',
+  sopa: 'M10 32h44c0 12-10 20-22 20S10 44 10 32zM24 26c-2-3 2-5 0-8M32 26c-2-3 2-5 0-8M40 26c-2-3 2-5 0-8',
+  guiso: 'M12 26h40v16a8 8 0 0 1-8 8H20a8 8 0 0 1-8-8zM6 28h6M52 28h6M22 26v-4h20v4M32 22v-5',
+  ensalada: 'M10 34h44c0 10-10 18-22 18S10 44 10 34zM22 34c-2-8 4-14 10-14c-1 6-4 11-10 14zM34 34c2-7 9-11 15-9c-3 5-8 8-15 9z',
+  pan: 'M10 44c0-14 10-22 22-22s22 8 22 22v4H10zM22 32l4 6M32 30v8M42 32l-4 6',
+  salsa: 'M12 30h32c0 10-7 16-16 16S12 40 12 30zM44 30l10-6M22 46l-3 6h18l-3-6M27 24c0-3 3-3 3-6',
+  postre: 'M18 46l5-22h18l5 22zM23 28c3 3 5-1 7 2s5-1 7 1s3 0 4-3M10 50h44',
+  verdura: 'M14 50C14 26 30 14 50 14c0 22-14 36-36 36zM14 50L40 24M27 37l-7-2M33 31l-1-7',
+  aperitivo: 'M14 38a18 8 0 1 0 36 0a18 8 0 1 0 -36 0M14 38v4a18 8 0 0 0 36 0v-4M32 34V14M32 14l4 3'
+};
+const CATS = ['Carne', 'Pescado', 'Arroz', 'Pasta', 'Guisos', 'Legumbres', 'Verduras', 'Sopas y cremas', 'Ensaladas', 'Masas y panes', 'Salsas', 'Aperitivos', 'Postres'];
+const CAT_INFO = {
+  Carne: ['acc', 'carne'], Pescado: ['oli', 'pescado'], Arroz: ['saf', 'arroz'], Pasta: ['saf', 'pasta'], Guisos: ['acc', 'guiso'],
+  Legumbres: ['acc', 'legumbres'], Verduras: ['oli', 'verdura'], 'Sopas y cremas': ['saf', 'sopa'], Ensaladas: ['oli', 'ensalada'],
+  'Masas y panes': ['saf', 'pan'], Salsas: ['acc', 'salsa'], Aperitivos: ['oli', 'aperitivo'], Postres: ['acc', 'postre']
+};
+// Ordenadas de la más reciente a la más antigua
+const RECETAS = [
+  { n: 'Lentejas estofadas', cats: ['Legumbres', 'Guisos'], tiempo: '55 min', rac: 4, dif: 'Fácil', foto: false, added: 'Hoy' },
+  { n: 'Merluza en salsa verde', cats: ['Pescado', 'Salsas'], tiempo: '30 min', rac: 4, dif: 'Media', foto: false, added: 'Ayer' },
+  { n: 'Pisto manchego', cats: ['Verduras', 'Guisos'], tiempo: '1 h 15 min', rac: 4, dif: 'Fácil', foto: true, added: 'Hace 3 días' },
+  { n: 'Tortilla de patatas', cats: ['Aperitivos'], tiempo: '45 min', rac: 4, dif: 'Media', foto: true, added: '12 oct' },
+  { n: 'Arroz con costillas', cats: ['Arroz', 'Carne'], tiempo: '1 h 10 min', rac: 4, dif: 'Media', foto: true, added: '9 oct' },
+  { n: 'Crema de calabaza', cats: ['Sopas y cremas', 'Verduras'], tiempo: '40 min', rac: 4, dif: 'Fácil', foto: false, added: '5 oct' },
+  { n: 'Pollo al ajillo', cats: ['Carne'], tiempo: '45 min', rac: 4, dif: 'Fácil', foto: true, added: '28 sept' },
+  { n: 'Gazpacho', cats: ['Sopas y cremas', 'Verduras'], tiempo: '20 min', rac: 6, dif: 'Fácil', foto: false, added: '20 sept' },
+  { n: 'Macarrones con chorizo', cats: ['Pasta', 'Carne'], tiempo: '35 min', rac: 4, dif: 'Fácil', foto: true, added: '14 sept' },
+  { n: 'Flan de huevo', cats: ['Postres'], tiempo: '1 h 20 min', rac: 6, dif: 'Media', foto: false, added: '2 sept' }
+];
+function inkOf(t, k) { return k === 'acc' ? t.accText : k === 'saf' ? t.safInk : t.oli; }
+function plural(n) { return n === 1 ? '1 receta' : n + ' recetas'; }
+function deco(t, r, current) {
+  const info = CAT_INFO[r.cats[0]];
+  const others = r.cats.filter((c) => c !== current);
+  return Object.assign({}, r, {
+    sinFoto: !r.foto,
+    tint: t[info[0] + 'Soft'],
+    ink: inkOf(t, info[0]),
+    motif: MOTIF[info[1]],
+    catsLabel: r.cats.join(' · '),
+    hasOthers: !!current && current !== 'Todas' && others.length > 0,
+    others: others.join(', ')
+  });
+}
+class Component extends DCLogic {
+  state = { cat: null };
+  renderVals() {
+    const t = THEMES[this.props.theme === 'dark' ? 'dark' : 'light'];
+    const cat = this.state.cat;
+    const countOf = (c) => RECETAS.filter((r) => r.cats.indexOf(c) !== -1).length;
+    const open = (c) => () => this.setState({ cat: c });
+    const index = CATS.map((c) => {
+      const info = CAT_INFO[c];
+      const n = countOf(c);
+      return {
+        name: c, open: open(c), motif: MOTIF[info[1]],
+        tint: n ? t[info[0] + 'Soft'] : 'transparent',
+        tileBd: n ? 'transparent' : t.lineStrong,
+        ink: n ? inkOf(t, info[0]) : t.ink2,
+        fg: n ? t.ink : t.ink2,
+        count: n ? String(n) : '—',
+        countFg: n ? t.ink : t.ink2
+      };
+    });
+    let view = { items: [] };
+    if (cat) {
+      const all = cat === 'Todas';
+      const items = (all ? RECETAS : RECETAS.filter((r) => r.cats.indexOf(cat) !== -1)).map((r) => deco(t, r, cat));
+      const info = all ? null : CAT_INFO[cat];
+      view = {
+        name: all ? 'Todas las recetas' : cat,
+        lower: all ? '' : cat.toLowerCase(),
+        kicker: all ? 'Recetario' : 'Categoría',
+        count: items.length ? plural(items.length) : 'Sin recetas aún',
+        tint: info ? t[info[0] + 'Soft'] : t.sunk,
+        ink: info ? inkOf(t, info[0]) : t.ink2,
+        motif: info ? MOTIF[info[1]] : '',
+        hasMotif: !!info,
+        items: items,
+        empty: items.length === 0
+      };
+    }
+    const others = CATS.filter((c) => c !== cat && countOf(c) > 0).map((c) => {
+      const info = CAT_INFO[c];
+      return { name: c, n: countOf(c), open: open(c), motif: MOTIF[info[1]], ink: inkOf(t, info[0]) };
+    });
+    return {
+      t: t,
+      isHome: !cat,
+      isCat: !!cat,
+      total: RECETAS.length,
+      latest: RECETAS.slice(0, 5).map((r) => deco(t, r, null)),
+      index: index,
+      view: view,
+      others: others,
+      openAll: open('Todas'),
+      goHome: () => this.setState({ cat: null })
+    };
+  }
+}
+</script>
+</body>
+</html>

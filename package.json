@@ -1,0 +1,12 @@
+{
+  "name": "chup-chup",
+  "private": true,
+  "description": "Recetario personal: web estática generada desde Markdown, sin dependencias.",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "serve": "node scripts/serve.mjs",
+    "dev": "node scripts/build.mjs && node scripts/serve.mjs"
+  }
+}

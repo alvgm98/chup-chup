@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Recetario · Modo cocina</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&amp;family=Source+Sans+3:ital,wght@0,400..700;1,400..700&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 844px; box-sizing: border-box; display: flex; flex-direction: column; background: {{t.bg}}; color: {{t.ink}}; font-family: 'Source Sans 3', system-ui, sans-serif; font-size: 17px; line-height: 1.5; overflow: hidden">
+
+  <div style="display: flex; align-items: center; gap: 8px; padding: 12px 12px 0">
+    <a href="Receta.dc.html" aria-label="Salir del modo cocina" style="flex: none; display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 12px; border: 1px solid {{t.line}}; color: {{t.ink}}">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+    </a>
+    <div style="flex: 1; min-width: 0; font-family: Fraunces, Georgia, serif; font-style: italic; font-size: 18px; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Lentejas estofadas</div>
+    <div role="status" style="flex: none; display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 10px; border-radius: 8px; background: {{t.oliSoft}}; color: {{t.ink}}; font-size: 13px; font-weight: 700">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+      Pantalla encendida
+    </div>
+  </div>
+
+  <div style="padding: 18px 20px 0; display: flex; flex-direction: column; gap: 10px">
+    <div style="display: flex; align-items: baseline; justify-content: space-between">
+      <span style="font-size: 15px; font-weight: 700; letter-spacing: 0.04em; font-variant-numeric: tabular-nums">Paso {{num}} de {{total}}</span>
+      <span style="font-size: 14px; color: {{t.ink2}}">{{servLabel}}</span>
+    </div>
+    <div aria-hidden="true" style="display: flex; gap: 4px">
+      <sc-for list="{{prog}}" as="p" hint-placeholder-count="7">
+        <span style="flex: 1; height: 5px; border-radius: 3px; background: {{p.bg}}"></span>
+      </sc-for>
+    </div>
+  </div>
+
+  <main style="flex: 1; min-height: 0; padding: 26px 20px 0; display: flex; flex-direction: column; gap: 22px; overflow: auto">
+    <div aria-live="polite" style="font-size: 29px; line-height: 1.38; font-weight: 500; letter-spacing: -0.005em">
+      <sc-for list="{{step.parts}}" as="part" hint-placeholder-count="3">
+        <sc-if value="{{part.hl}}" hint-placeholder-val="{{false}}"><strong style="font-weight: 700; text-decoration: underline; text-decoration-color: {{t.acc}}; text-decoration-thickness: 3px; text-underline-offset: 5px">{{part.t}}</strong></sc-if>
+        <sc-if value="{{part.plain}}" hint-placeholder-val="{{true}}"><span>{{part.t}}</span></sc-if>
+      </sc-for>
+    </div>
+
+    <sc-if value="{{step.hasUses}}" hint-placeholder-val="{{true}}">
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: {{t.ink2}}">En este paso</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px">
+          <sc-for list="{{step.uses}}" as="u" hint-placeholder-count="2">
+            <span style="display: inline-flex; align-items: center; height: 34px; padding: 0 12px; border-radius: 8px; border: 1px solid {{t.lineStrong}}; font-size: 16px; font-variant-numeric: tabular-nums"><strong style="font-weight: 700; margin-right: 6px">{{u.q}}</strong>{{u.n}}</span>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{step.hasTimer}}" hint-placeholder-val="{{true}}">
+      <div style="display: flex; align-items: center; gap: 14px; padding: 14px 14px 14px 18px; border-radius: 14px; background: {{timerBg}}; border: 1.5px solid {{timerBd}}">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2.5 1.5M9.5 2.5h5"></path></svg>
+        <div style="flex: 1; display: flex; flex-direction: column">
+          <span role="timer" aria-label="Tiempo restante" style="font-size: 40px; line-height: 1; font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: -0.01em">{{clock}}</span>
+          <span style="font-size: 14px; color: {{t.ink2}}">{{timerHint}}</span>
+        </div>
+        <button type="button" onClick="{{toggleTimer}}" style="display: inline-flex; align-items: center; gap: 8px; height: 56px; padding: 0 18px; border-radius: 12px; border: 0; background: {{t.ink}}; color: {{t.bg}}; font-family: inherit; font-size: 17px; font-weight: 700; cursor: pointer">{{timerBtn}}</button>
+      </div>
+    </sc-if>
+  </main>
+
+  <div style="padding: 12px 16px 24px; display: flex; flex-direction: column; gap: 10px; border-top: 1px solid {{t.line}}; background: {{t.bg}}">
+    <button type="button" onClick="{{openSheet}}" aria-expanded="{{sheet}}" style="display: flex; align-items: center; justify-content: center; gap: 8px; height: 48px; border-radius: 12px; border: 0; background: transparent; color: {{t.ink}}; font-family: inherit; font-size: 16px; font-weight: 600; cursor: pointer">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"></path></svg>
+      Ver ingredientes
+    </button>
+    <div style="display: flex; gap: 10px">
+      <button type="button" onClick="{{prev}}" aria-disabled="{{isFirst}}" style="flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; height: 76px; border-radius: 16px; border: 1.5px solid {{t.ink}}; background: transparent; color: {{t.ink}}; font-family: inherit; font-size: 19px; font-weight: 700; cursor: pointer; opacity: {{prevOpacity}}">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>
+        Anterior
+      </button>
+      <button type="button" onClick="{{next}}" style="flex: 1.6; display: flex; align-items: center; justify-content: center; gap: 6px; height: 76px; border-radius: 16px; border: 0; background: {{t.acc}}; color: {{t.accInk}}; font-family: inherit; font-size: 21px; font-weight: 700; cursor: pointer">
+        {{nextLabel}}
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg>
+      </button>
+    </div>
+  </div>
+
+  <sc-if value="{{sheet}}" hint-placeholder-val="{{false}}">
+    <div style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: rgba(20, 17, 14, 0.45); display: flex; flex-direction: column; justify-content: flex-end">
+      <button type="button" aria-label="Cerrar ingredientes" onClick="{{closeSheet}}" style="flex: 1; border: 0; background: transparent; cursor: pointer"></button>
+      <section role="dialog" aria-label="Ingredientes" style="max-height: 72%; display: flex; flex-direction: column; background: {{t.raised}}; border-radius: 18px 18px 0 0; padding: 10px 20px 28px">
+        <span aria-hidden="true" style="align-self: center; width: 40px; height: 4px; border-radius: 2px; background: {{t.lineStrong}}"></span>
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0 8px">
+          <h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 500; font-size: 26px">Ingredientes</h2>
+          <button type="button" aria-label="Cerrar" onClick="{{closeSheet}}" style="display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 12px; border: 1px solid {{t.line}}; background: transparent; color: {{t.ink}}; cursor: pointer">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+          </button>
+        </div>
+        <ul style="margin: 0; padding: 0; list-style: none; overflow: auto">
+          <sc-for list="{{all}}" as="i" hint-placeholder-count="8">
+            <li style="display: flex; align-items: center; gap: 12px; min-height: 50px; border-bottom: 1px solid {{t.line}}; font-size: 19px; background: {{i.bg}}">
+              <span style="flex: none; width: 84px; font-weight: 700; font-variant-numeric: tabular-nums; padding-left: {{i.pad}}">{{i.q}}</span>
+              <span style="flex: 1">{{i.n}}</span>
+              <sc-if value="{{i.now}}" hint-placeholder-val="{{false}}">
+                <span style="flex: none; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; color: {{t.accText}}; padding-right: 8px">Ahora</span>
+              </sc-if>
+            </li>
+          </sc-for>
+        </ul>
+      </section>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"$preview":{"width":390,"height":844}}'>
+const THEMES = {
+  light: { bg: '#F5EFE4', raised: '#FBF8F2', sunk: '#ECE4D5', ink: '#231E19', ink2: '#5C5249', line: '#DDD2C0', lineStrong: '#C4B59D', acc: '#B4482A', accInk: '#FFF8F0', accSoft: '#F1DDD1', accText: '#9E3B20', saf: '#C98A1B', safSoft: '#F3E5C4', safInk: '#865608', oli: '#5A5C24', oliSoft: '#E4E3CA', photo: '#D8C9B1', photoInk: '#5E5142', nav: '#FBF8F2' },
+  dark: { bg: '#1C1916', raised: '#26221E', sunk: '#141210', ink: '#F2EADD', ink2: '#BDB1A0', line: '#38322B', lineStrong: '#574E44', acc: '#E07A57', accInk: '#1C1916', accSoft: '#43281E', accText: '#EE9A7B', saf: '#E2A945', safSoft: '#3A2F1B', safInk: '#E8B866', oli: '#B8B96E', oliSoft: '#30301D', photo: '#3A332C', photoInk: '#C2B5A3', nav: '#211E1A' }
+};
+const ALL = [
+  { q: '400 g', n: 'lentejas pardinas' }, { q: '1', n: 'chorizo asturiano' }, { q: '100 g', n: 'panceta' }, { q: '1', n: 'cebolla' },
+  { q: '1', n: 'pimiento verde' }, { q: '2', n: 'zanahorias' }, { q: '1', n: 'patata grande' }, { q: '3', n: 'dientes de ajo' },
+  { q: '1', n: 'hoja de laurel' }, { q: '1 cdta', n: 'pimentón de la Vera' }, { q: '2 cdas', n: 'aceite de oliva' }, { q: '', n: 'Sal, al gusto' }
+];
+const STEPS = [
+  { text: 'Lava las [lentejas] y escúrrelas. Las pardinas no necesitan remojo.', uses: [0] },
+  { text: 'Pica fina la [cebolla], el [pimiento verde] y el [ajo]. Pela las [zanahorias] y córtalas en rodajas.', uses: [3, 4, 7, 5] },
+  { text: 'Sofríe todo en la olla con el [aceite] a fuego medio-bajo hasta que la cebolla esté transparente.', uses: [10], timer: 600 },
+  { text: 'Añade la [panceta] y el [chorizo] en rodajas y rehoga. Aparta del fuego, echa el [pimentón] y remueve rápido.', uses: [2, 1, 9], timer: 120 },
+  { text: 'Incorpora las lentejas, el [laurel] y agua fría hasta cubrir dos dedos. Lleva a ebullición y baja el fuego.', uses: [8] },
+  { text: 'Cuece a fuego suave. A mitad de cocción, añade la [patata] chascada en trozos.', uses: [6], timer: 1800 },
+  { text: 'Prueba, rectifica de [sal] y deja reposar antes de servir.', uses: [11], timer: 300 }
+];
+function parts(text) {
+  return text.split(/(\[[^\]]+\])/).filter((s) => s).map((s) => {
+    const hl = s.charAt(0) === '[';
+    return { t: hl ? s.slice(1, -1) : s, hl: hl, plain: !hl };
+  });
+}
+function mmss(s) {
+  const m = Math.floor(s / 60);
+  const r = s % 60;
+  return (m < 10 ? '0' : '') + m + ':' + (r < 10 ? '0' : '') + r;
+}
+class Component extends DCLogic {
+  state = { i: 2, left: 600, running: false, sheet: false };
+  componentDidMount() {
+    this.tick = setInterval(() => {
+      if (this.state.running && this.state.left > 0) this.setState({ left: this.state.left - 1, running: this.state.left - 1 > 0 });
+    }, 1000);
+  }
+  componentWillUnmount() { clearInterval(this.tick); }
+  go(i) {
+    const n = Math.max(0, Math.min(STEPS.length - 1, i));
+    this.setState({ i: n, left: STEPS[n].timer || 0, running: false });
+  }
+  renderVals() {
+    const t = THEMES[this.props.theme === 'dark' ? 'dark' : 'light'];
+    const i = this.state.i;
+    const st = STEPS[i];
+    const last = i === STEPS.length - 1;
+    const left = this.state.left;
+    const running = this.state.running;
+    const finished = st.timer && left === 0;
+    return {
+      t: t,
+      num: i + 1,
+      total: STEPS.length,
+      servLabel: 'Para 4 raciones',
+      prog: STEPS.map((s, k) => ({ bg: k <= i ? t.acc : t.line })),
+      step: {
+        parts: parts(st.text),
+        uses: st.uses.map((u) => ALL[u]),
+        hasUses: st.uses.length > 0,
+        hasTimer: !!st.timer
+      },
+      clock: mmss(left),
+      timerHint: finished ? 'Listo. Pasa al siguiente paso.' : running ? 'En marcha · suena al terminar' : 'Temporizador de este paso',
+      timerBtn: finished ? 'Repetir' : running ? 'Pausar' : 'Iniciar',
+      timerBg: running ? t.accSoft : t.sunk,
+      timerBd: running ? t.acc : t.line,
+      toggleTimer: () => finished ? this.setState({ left: st.timer, running: true }) : this.setState({ running: !running }),
+      isFirst: i === 0,
+      prevOpacity: i === 0 ? 0.4 : 1,
+      prev: () => this.go(i - 1),
+      next: () => last ? this.go(0) : this.go(i + 1),
+      nextLabel: last ? 'Terminar' : 'Siguiente',
+      sheet: this.state.sheet,
+      openSheet: () => this.setState({ sheet: true }),
+      closeSheet: () => this.setState({ sheet: false }),
+      all: ALL.map((a, k) => {
+        const now = st.uses.indexOf(k) !== -1;
+        return { q: a.q, n: a.n, now: now, bg: now ? t.accSoft : 'transparent', pad: now ? '8px' : '0' };
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>

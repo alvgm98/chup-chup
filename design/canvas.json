@@ -1,0 +1,52 @@
+{
+  "v": 3,
+  "createdOnFiles": { "v": 1, "at": "2026-10-18T10:00:00Z" },
+  "title": "Recetario",
+  "launch": { "view": "canvas", "page": "movil" },
+  "pages": [
+    { "id": "movil", "name": "Móvil" },
+    { "id": "escritorio", "name": "Escritorio" },
+    { "id": "estilo", "name": "Hoja de estilo" }
+  ],
+  "boards": {
+    "Main.dc.html": { "x": 0, "y": 0, "w": 390, "h": 1760, "title": "Inicio · claro", "page": "movil", "is_interactive": true },
+    "Nevera.dc.html": { "x": 470, "y": 0, "w": 390, "h": 1800, "title": "Nevera · claro", "page": "movil", "is_interactive": true },
+    "Receta.dc.html": { "x": 940, "y": 0, "w": 390, "h": 2960, "title": "Receta · claro", "page": "movil", "is_interactive": true },
+    "Cocina.dc.html": { "x": 1410, "y": 0, "w": 390, "h": 844, "title": "Modo cocina · claro", "page": "movil", "is_interactive": true },
+    "Estados.dc.html": { "x": 1880, "y": 0, "w": 1330, "h": 844, "title": "Estados · claro", "page": "movil" },
+    "MainOscuro.dc.html": { "x": 0, "y": 3380, "w": 390, "h": 1760, "title": "Inicio · oscuro", "page": "movil", "is_interactive": true },
+    "NeveraOscuro.dc.html": { "x": 470, "y": 3380, "w": 390, "h": 1800, "title": "Nevera · oscuro", "page": "movil", "is_interactive": true },
+    "RecetaOscuro.dc.html": { "x": 940, "y": 3380, "w": 390, "h": 2960, "title": "Receta · oscuro", "page": "movil", "is_interactive": true },
+    "CocinaOscuro.dc.html": { "x": 1410, "y": 3380, "w": 390, "h": 844, "title": "Modo cocina · oscuro", "page": "movil", "is_interactive": true },
+    "EstadosOscuro.dc.html": { "x": 1880, "y": 3380, "w": 1330, "h": 844, "title": "Estados · oscuro", "page": "movil" },
+    "InicioEscritorio.dc.html": { "x": 0, "y": 0, "w": 1440, "h": 1600, "title": "Inicio · escritorio · claro", "page": "escritorio", "expand": "fill", "is_interactive": true },
+    "RecetaEscritorio.dc.html": { "x": 1520, "y": 0, "w": 1440, "h": 2160, "title": "Receta · escritorio · claro", "page": "escritorio", "expand": "fill", "is_interactive": true },
+    "InicioEscritorioOscuro.dc.html": { "x": 0, "y": 2580, "w": 1440, "h": 1600, "title": "Inicio · escritorio · oscuro", "page": "escritorio", "expand": "fill", "is_interactive": true },
+    "RecetaEscritorioOscuro.dc.html": { "x": 1520, "y": 2580, "w": 1440, "h": 2160, "title": "Receta · escritorio · oscuro", "page": "escritorio", "expand": "fill", "is_interactive": true },
+    "Estilo.dc.html": { "x": 0, "y": 0, "w": 1440, "h": 3000, "title": "Hoja de estilo", "page": "estilo" }
+  },
+  "order": [
+    "Main.dc.html",
+    "Nevera.dc.html",
+    "Receta.dc.html",
+    "Cocina.dc.html",
+    "Estados.dc.html",
+    "MainOscuro.dc.html",
+    "NeveraOscuro.dc.html",
+    "RecetaOscuro.dc.html",
+    "CocinaOscuro.dc.html",
+    "EstadosOscuro.dc.html",
+    "InicioEscritorio.dc.html",
+    "RecetaEscritorio.dc.html",
+    "InicioEscritorioOscuro.dc.html",
+    "RecetaEscritorioOscuro.dc.html",
+    "Estilo.dc.html"
+  ],
+  "notes": {
+    "movilClaro": { "x": 0, "y": -300, "text": "Móvil · modo claro", "kind": "title1", "maxW": 3210, "page": "movil" },
+    "movilOscuro": { "x": 0, "y": 3080, "text": "Móvil · modo oscuro", "kind": "title1", "maxW": 3210, "page": "movil" },
+    "escClaro": { "x": 0, "y": -300, "text": "Escritorio · modo claro", "kind": "title1", "maxW": 2960, "page": "escritorio" },
+    "escOscuro": { "x": 0, "y": 2280, "text": "Escritorio · modo oscuro", "kind": "title1", "maxW": 2960, "page": "escritorio" }
+  },
+  "designSystems": []
+}

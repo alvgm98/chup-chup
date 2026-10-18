@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Recetario · Hoja de estilo</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&amp;family=Source+Sans+3:ital,wght@0,400..700;1,400..700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#9E3B20}a:hover{color:#7E2E18}
+</style>
+</helmet>
+<div style="width: 1440px; height: 3000px; box-sizing: border-box; padding: 80px; display: flex; flex-direction: column; gap: 72px; background: {{t.bg}}; color: {{t.ink}}; font-family: 'Source Sans 3', system-ui, sans-serif; font-size: 17px; line-height: 1.5; overflow: hidden">
+
+  <header style="display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; padding-bottom: 24px; border-bottom: 1.5px solid {{t.ink}}">
+    <div>
+      <div style="font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; color: {{t.accText}}">Hoja de estilo · v1</div>
+      <h1 style="margin: 8px 0 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: 72px; line-height: 1; letter-spacing: -0.02em">Recetario<span style="color: {{t.acc}}">.</span></h1>
+    </div>
+    <p style="margin: 0; max-width: 520px; font-family: Fraunces, Georgia, serif; font-style: italic; font-size: 22px; line-height: 1.4; color: {{t.ink2}}">Un cuaderno de cocina impreso con la comodidad de una app: papel, tinta, pimentón, y mucho aire.</p>
+  </header>
+
+  <section style="display: flex; flex-direction: column; gap: 24px">
+    <h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 500; font-size: 36px">Color</h2>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px">
+      <div style="display: flex; flex-direction: column; gap: 12px">
+        <div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: {{t.ink2}}">Modo claro</div>
+        <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; padding: 16px; border-radius: 12px; background: #F5EFE4; border: 1px solid #DDD2C0">
+          <sc-for list="{{light}}" as="c" hint-placeholder-count="12">
+            <div style="display: flex; flex-direction: column; gap: 6px; color: #231E19">
+              <span style="height: 56px; border-radius: 8px; background: {{c.hex}}; border: 1px solid rgba(35, 30, 25, 0.12)"></span>
+              <span style="font-size: 14px; font-weight: 700; line-height: 1.2">{{c.name}}</span>
+              <span style="font-size: 12px; color: #5C5249; font-variant-numeric: tabular-nums">--{{c.token}} · {{c.hex}}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 12px">
+        <div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: {{t.ink2}}">Modo oscuro</div>
+        <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; padding: 16px; border-radius: 12px; background: #1C1916; border: 1px solid #38322B">
+          <sc-for list="{{dark}}" as="c" hint-placeholder-count="12">
+            <div style="display: flex; flex-direction: column; gap: 6px; color: #F2EADD">
+              <span style="height: 56px; border-radius: 8px; background: {{c.hex}}; border: 1px solid rgba(242, 234, 221, 0.14)"></span>
+              <span style="font-size: 14px; font-weight: 700; line-height: 1.2">{{c.name}}</span>
+              <span style="font-size: 12px; color: #BDB1A0; font-variant-numeric: tabular-nums">--{{c.token}} · {{c.hex}}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+    <p style="margin: 0; max-width: 980px; font-size: 16px; color: {{t.ink2}}">Pimentón es el único acento de acción (botón principal, selección, progreso). Azafrán y oliva solo tiñen fondos de categoría y avisos. Todo texto sobre papel supera 4,5:1; «Tinta suave» es el gris más claro permitido para texto.</p>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 8px">
+    <h2 style="margin: 0 0 16px; font-family: Fraunces, Georgia, serif; font-weight: 500; font-size: 36px">Tipografía</h2>
+    <div style="display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 24px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid {{t.line}}">
+      <div style="font-size: 13px; color: {{t.ink2}}"><strong style="color: {{t.ink}}">Portada</strong><br>Fraunces 400 · 64/1.02 · −2 %</div>
+      <div style="font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: 64px; line-height: 1.02; letter-spacing: -0.02em">Recetas de casa, <em>apuntadas con calma.</em></div>
+    </div>
+    <div style="display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 24px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid {{t.line}}">
+      <div style="font-size: 13px; color: {{t.ink2}}"><strong style="color: {{t.ink}}">Título de receta</strong><br>Fraunces 500 cursiva · 40/1.02 (móvil), 68 (escritorio)</div>
+      <div style="font-family: Fraunces, Georgia, serif; font-style: italic; font-weight: 500; font-size: 40px; line-height: 1.02">Merluza en salsa verde</div>
+    </div>
+    <div style="display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 24px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid {{t.line}}">
+      <div style="font-size: 13px; color: {{t.ink2}}"><strong style="color: {{t.ink}}">Sección</strong><br>Fraunces 500 · 28/1.1</div>
+      <div style="font-family: Fraunces, Georgia, serif; font-weight: 500; font-size: 28px; line-height: 1.1">Ingredientes</div>
+    </div>
+    <div style="display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 24px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid {{t.line}}">
+      <div style="font-size: 13px; color: {{t.ink2}}"><strong style="color: {{t.ink}}">Índice y listas</strong><br>Fraunces 500 · 20/1.2 · grupos en cursiva 22</div>
+      <div style="display: flex; gap: 32px; align-items: baseline"><span style="font-family: Fraunces, Georgia, serif; font-style: italic; font-weight: 500; font-size: 22px">Sopas y cremas</span><span style="font-family: Fraunces, Georgia, serif; font-weight: 500; font-size: 20px">Crema de calabaza</span></div>
+    </div>
+    <div style="display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 24px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid {{t.line}}">
+      <div style="font-size: 13px; color: {{t.ink2}}"><strong style="color: {{t.ink}}">Cuerpo</strong><br>Source Sans 3 400 · 17/1.5 (pasos 1.6)</div>
+      <div style="font-size: 17px; line-height: 1.6; max-width: 640px">Sofríe todo en la olla con el aceite a fuego medio-bajo hasta que la cebolla esté transparente.</div>
+    </div>
+    <div style="display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 24px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid {{t.line}}">
+      <div style="font-size: 13px; color: {{t.ink2}}"><strong style="color: {{t.ink}}">Interfaz y etiqueta</strong><br>Source Sans 3 600 · 15 · etiqueta 700 · 12 · +14 % mayúsculas</div>
+      <div style="display: flex; gap: 32px; align-items: baseline"><span style="font-size: 15px; font-weight: 600">Dificultad</span><span style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: {{t.accText}}">Consejo</span></div>
+    </div>
+    <div style="display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 24px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid {{t.line}}">
+      <div style="font-size: 13px; color: {{t.ink2}}"><strong style="color: {{t.ink}}">Modo cocina</strong><br>Source Sans 3 500 · 29/1.38 · temporizador 700 · 40</div>
+      <div style="display: flex; gap: 40px; align-items: baseline"><span style="font-size: 29px; font-weight: 500; line-height: 1.38">Añade el <strong style="font-weight: 700; text-decoration: underline; text-decoration-color: {{t.acc}}; text-decoration-thickness: 3px; text-underline-offset: 5px">laurel</strong></span><span style="font-size: 40px; font-weight: 700; font-variant-numeric: tabular-nums">09:45</span></div>
+    </div>
+    <div style="display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 24px; align-items: baseline; padding: 14px 0">
+      <div style="font-size: 13px; color: {{t.ink2}}"><strong style="color: {{t.ink}}">Cantidades</strong><br>700 · <code style="font-size: 12px">font-variant-numeric: tabular-nums</code> · fracciones ¼ ½ ¾</div>
+      <div style="display: flex; gap: 28px; font-size: 22px; font-weight: 700; font-variant-numeric: tabular-nums"><span>400 g</span><span>1½</span><span>2¼ cdas</span><span>¾ cdta</span><span>1 h 10 min</span></div>
+    </div>
+  </section>
+
+  <section style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px">
+    <div style="display: flex; flex-direction: column; gap: 12px">
+      <h2 style="margin: 0 0 8px; font-family: Fraunces, Georgia, serif; font-weight: 500; font-size: 36px">Espaciado</h2>
+      <sc-for list="{{space}}" as="s" hint-placeholder-count="9">
+        <div style="display: flex; align-items: center; gap: 16px; font-size: 14px; font-variant-numeric: tabular-nums">
+          <span style="width: 64px; color: {{t.ink2}}">{{s.label}}</span>
+          <span style="height: 12px; width: {{s.w}}; border-radius: 2px; background: {{t.acc}}"></span>
+          <span style="color: {{t.ink2}}">{{s.use}}</span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 12px">
+      <h2 style="margin: 0 0 8px; font-family: Fraunces, Georgia, serif; font-weight: 500; font-size: 36px">Bordes</h2>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px">
+        <div style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: {{t.ink2}}"><span style="height: 64px; border: 1.5px solid {{t.ink}}; border-radius: 6px"></span>6 · motivo, casilla</div>
+        <div style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: {{t.ink2}}"><span style="height: 64px; border: 1.5px solid {{t.ink}}; border-radius: 10px"></span>10 · chip, botón</div>
+        <div style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: {{t.ink2}}"><span style="height: 64px; border: 1.5px solid {{t.ink}}; border-radius: 14px"></span>12–14 · tarjeta, panel</div>
+      </div>
+      <p style="margin: 8px 0 0; font-size: 15px; color: {{t.ink2}}">Filete de 1 px en «Filete» para separar filas; filete de 1,5 px en tinta para abrir secciones e índices, como en un libro. Sombras solo en el desplegable de autocompletado.</p>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 12px">
+      <h2 style="margin: 0 0 8px; font-family: Fraunces, Georgia, serif; font-weight: 500; font-size: 36px">Tacto y foco</h2>
+      <div style="display: flex; align-items: center; gap: 16px">
+        <span style="position: relative; display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: 1px dashed {{t.acc}}; border-radius: 4px; font-size: 12px; font-weight: 700; color: {{t.accText}}">44</span>
+        <span style="font-size: 15px; color: {{t.ink2}}">Mínimo táctil 44 × 44. En modo cocina, 76 px de alto en anterior/siguiente.</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 16px">
+        <span style="display: inline-flex; align-items: center; height: 44px; padding: 0 16px; border-radius: 10px; border: 1px solid {{t.line}}; background: {{t.raised}}; font-size: 15px; font-weight: 600; outline: 2.5px solid {{t.acc}}; outline-offset: 3px">Legumbres</span>
+        <span style="font-size: 15px; color: {{t.ink2}}">Foco visible: contorno 2,5 px pimentón, separación 3 px, en todo elemento interactivo.</span>
+      </div>
+      <p style="margin: 0; font-size: 15px; color: {{t.ink2}}">Los estados nunca dependen solo del color: selección con icono ✓ dibujado, tachado al marcar, segmentos llenos frente a huecos y texto «Tienes 5 de 7».</p>
+    </div>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 28px">
+    <h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 500; font-size: 36px">Componentes</h2>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px">
+
+      <div style="display: flex; flex-direction: column; gap: 14px">
+        <div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: {{t.ink2}}">Chip de filtro</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px">
+          <button type="button" aria-pressed="false" style="display: inline-flex; align-items: center; height: 44px; padding: 0 16px; border-radius: 10px; border: 1px solid {{t.line}}; background: {{t.raised}}; color: {{t.ink}}; font-family: inherit; font-size: 15px; font-weight: 600">Pescado</button>
+          <button type="button" aria-pressed="true" style="display: inline-flex; align-items: center; gap: 6px; height: 44px; padding: 0 16px; border-radius: 10px; border: 1px solid {{t.ink}}; background: {{t.ink}}; color: {{t.bg}}; font-family: inherit; font-size: 15px; font-weight: 600"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Legumbres</button>
+          <button type="button" style="display: inline-flex; align-items: center; gap: 6px; height: 44px; padding: 0 12px 0 14px; border-radius: 10px; border: 1px solid {{t.line}}; background: transparent; color: {{t.ink}}; font-family: inherit; font-size: 15px">Tiempo<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
+        </div>
+        <div style="font-size: 14px; color: {{t.ink2}}">Reposo · seleccionado (tinta + ✓) · desplegable. Altura 44, radio 10, 600/15.</div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 14px">
+        <div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: {{t.ink2}}">Botones</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center">
+          <button type="button" style="display: inline-flex; align-items: center; gap: 8px; height: 52px; padding: 0 22px; border-radius: 12px; border: 0; background: {{t.acc}}; color: {{t.accInk}}; font-family: inherit; font-size: 17px; font-weight: 700">Empezar a cocinar</button>
+          <button type="button" style="height: 52px; padding: 0 20px; border-radius: 12px; border: 1.5px solid {{t.ink}}; background: transparent; color: {{t.ink}}; font-family: inherit; font-size: 16px; font-weight: 700">Secundario</button>
+          <button type="button" style="height: 44px; padding: 0 4px; border: 0; background: transparent; color: {{t.accText}}; font-family: inherit; font-size: 15px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px">Desmarcar todo</button>
+        </div>
+        <div style="display: flex; gap: 10px">
+          <button type="button" style="flex: 1; height: 76px; border-radius: 16px; border: 1.5px solid {{t.ink}}; background: transparent; color: {{t.ink}}; font-family: inherit; font-size: 19px; font-weight: 700">Anterior</button>
+          <button type="button" style="flex: 1.6; height: 76px; border-radius: 16px; border: 0; background: {{t.acc}}; color: {{t.accInk}}; font-family: inherit; font-size: 21px; font-weight: 700">Siguiente</button>
+        </div>
+        <div style="font-size: 14px; color: {{t.ink2}}">Principal (uno por pantalla) · secundario · enlace · par de modo cocina.</div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 14px">
+        <div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: {{t.ink2}}">Selector de raciones</div>
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 6px; border-radius: 12px; background: {{t.sunk}}; max-width: 360px">
+          <button type="button" aria-label="Quitar una ración" style="display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 10px; border: 1px solid {{t.lineStrong}}; background: {{t.raised}}; color: {{t.ink}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"></path></svg></button>
+          <div style="display: flex; align-items: baseline; gap: 8px"><span style="font-family: Fraunces, Georgia, serif; font-size: 30px; font-weight: 500; line-height: 1; font-variant-numeric: tabular-nums">6</span><span style="font-size: 16px; color: {{t.ink2}}">raciones</span></div>
+          <button type="button" aria-label="Añadir una ración" style="display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 10px; border: 1px solid {{t.lineStrong}}; background: {{t.raised}}; color: {{t.ink}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button>
+        </div>
+        <div style="font-size: 14px; color: {{t.ink2}}">Rango 1–12. Redondeo a ¼ para unidades y a 5 g/ml por encima de 20. Al cambiar, aviso «Volver a 4».</div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 14px">
+        <div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: {{t.ink2}}">Ingrediente marcable</div>
+        <div style="border-top: 1px solid {{t.line}}">
+          <div style="display: flex; align-items: center; gap: 14px; min-height: 54px; border-bottom: 1px solid {{t.line}}">
+            <span style="flex: none; width: 24px; height: 24px; border-radius: 6px; box-sizing: border-box; border: 1.5px solid {{t.ink2}}"></span>
+            <span style="flex: none; width: 76px; font-weight: 700; font-variant-numeric: tabular-nums">1½</span>
+            <span>pimientos verdes</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 14px; min-height: 54px; border-bottom: 1px solid {{t.line}}; color: {{t.ink2}}">
+            <span style="flex: none; display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 6px; background: {{t.acc}}; color: {{t.accInk}}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>
+            <span style="flex: none; width: 76px; font-weight: 700; font-variant-numeric: tabular-nums; text-decoration: line-through">600 g</span>
+            <span style="text-decoration: line-through">lentejas pardinas</span>
+          </div>
+        </div>
+        <div style="font-size: 14px; color: {{t.ink2}}">Toda la fila es el botón (aria-pressed). Marcado: casilla llena + ✓, texto atenuado y tachado.</div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 14px">
+        <div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: {{t.ink2}}">Fila de receta</div>
+        <div style="border-top: 1.5px solid {{t.ink}}">
+          <div style="display: flex; gap: 14px; align-items: center; padding: 12px 0; border-bottom: 1px solid {{t.line}}">
+            <div style="flex: none; width: 72px; height: 72px; border-radius: 8px; background: {{t.photo}}; color: {{t.photoInk}}; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg>Foto</div>
+            <div><div style="font-family: Fraunces, Georgia, serif; font-size: 20px; font-weight: 500; line-height: 1.2">Tortilla de patatas</div><div style="margin-top: 6px; font-size: 14px; color: {{t.ink2}}; font-variant-numeric: tabular-nums">45 min · 4 rac. · Media</div></div>
+          </div>
+          <div style="display: flex; gap: 14px; align-items: center; padding: 12px 0; border-bottom: 1px solid {{t.line}}">
+            <div style="flex: none; width: 72px; height: 72px; border-radius: 8px; background: {{t.accSoft}}; color: {{t.accText}}; display: flex; align-items: center; justify-content: center"><svg width="42" height="42" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 46l5-22h18l5 22zM23 28c3 3 5-1 7 2s5-1 7 1s3 0 4-3M10 50h44"></path></svg></div>
+            <div><div style="font-family: Fraunces, Georgia, serif; font-size: 20px; font-weight: 500; line-height: 1.2">Flan de huevo</div><div style="margin-top: 6px; font-size: 14px; color: {{t.ink2}}; font-variant-numeric: tabular-nums">1 h 20 min · 6 rac. · Media</div></div>
+          </div>
+        </div>
+        <div style="font-size: 14px; color: {{t.ink2}}">Con foto (recorte cuadrado) o sin foto (tinte de categoría + motivo). Las filas se agrupan por tipo, como un índice.</div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 14px">
+        <div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: {{t.ink2}}">Nevera: etiqueta y coincidencia</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px">
+          <span style="display: inline-flex; align-items: center; height: 44px; padding-left: 14px; border-radius: 10px; background: {{t.oliSoft}}; font-size: 16px; font-weight: 600">huevos<span style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 44px; color: {{t.ink2}}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></span></span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; max-width: 360px">
+          <span style="font-size: 16px; font-weight: 700; font-variant-numeric: tabular-nums">Tienes 5 de 7</span>
+          <div style="display: flex; gap: 3px">
+            <span style="flex: 1; height: 8px; border-radius: 2px; background: {{t.acc}}"></span><span style="flex: 1; height: 8px; border-radius: 2px; background: {{t.acc}}"></span><span style="flex: 1; height: 8px; border-radius: 2px; background: {{t.acc}}"></span><span style="flex: 1; height: 8px; border-radius: 2px; background: {{t.acc}}"></span><span style="flex: 1; height: 8px; border-radius: 2px; background: {{t.acc}}"></span>
+            <span style="flex: 1; height: 8px; border-radius: 2px; box-sizing: border-box; border: 1.5px solid {{t.lineStrong}}"></span><span style="flex: 1; height: 8px; border-radius: 2px; box-sizing: border-box; border: 1.5px solid {{t.lineStrong}}"></span>
+          </div>
+          <span style="font-size: 15px; color: {{t.ink2}}"><strong style="color: {{t.ink}}">Te falta:</strong> laurel, guindilla</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 20px">
+    <h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 500; font-size: 36px">Motivos por tipo de plato</h2>
+    <div style="display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 16px">
+      <sc-for list="{{motifs}}" as="m" hint-placeholder-count="9">
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <div style="aspect-ratio: 1; border-radius: 10px; background: {{m.tint}}; color: {{m.ink}}; display: flex; align-items: center; justify-content: center">
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{m.d}}"></path></svg>
+          </div>
+          <span style="font-size: 14px; font-weight: 600">{{m.name}}</span>
+        </div>
+      </sc-for>
+    </div>
+    <p style="margin: 0; max-width: 980px; font-size: 16px; color: {{t.ink2}}">Trazo único de 1,5 px en una retícula de 64. Sobre el tinte de su familia (pimentón, azafrán u oliva), dentro de un doble filete de lámina cuando hace de cabecera. Sin foto, la receta nunca muestra un hueco.</p>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"$preview":{"width":1440,"height":3000}}'>
+const THEMES = {
+  light: { bg: '#F5EFE4', raised: '#FBF8F2', sunk: '#ECE4D5', ink: '#231E19', ink2: '#5C5249', line: '#DDD2C0', lineStrong: '#C4B59D', acc: '#B4482A', accInk: '#FFF8F0', accSoft: '#F1DDD1', accText: '#9E3B20', saf: '#C98A1B', safSoft: '#F3E5C4', safInk: '#865608', oli: '#5A5C24', oliSoft: '#E4E3CA', photo: '#D8C9B1', photoInk: '#5E5142', nav: '#FBF8F2' },
+  dark: { bg: '#1C1916', raised: '#26221E', sunk: '#141210', ink: '#F2EADD', ink2: '#BDB1A0', line: '#38322B', lineStrong: '#574E44', acc: '#E07A57', accInk: '#1C1916', accSoft: '#43281E', accText: '#EE9A7B', saf: '#E2A945', safSoft: '#3A2F1B', safInk: '#E8B866', oli: '#B8B96E', oliSoft: '#30301D', photo: '#3A332C', photoInk: '#C2B5A3', nav: '#211E1A' }
+};
+const NAMES = [
+  ['bg', 'Papel'], ['raised', 'Papel alto'], ['sunk', 'Papel hundido'], ['line', 'Filete'],
+  ['ink', 'Tinta'], ['ink2', 'Tinta suave'], ['acc', 'Pimentón'], ['accText', 'Pimentón texto'],
+  ['accSoft', 'Pimentón suave'], ['saf', 'Azafrán'], ['safSoft', 'Azafrán suave'], ['oliSoft', 'Oliva suave']
+];
+const MOTIF = [
+  ['Carne', 'acc', 'M39 25c6-7 17-3 15 6s-11 11-17 6L25 49M25 49a3.5 3.5 0 1 1-5 4.5M25 49a3.5 3.5 0 1 0-4.5-5'],
+  ['Pescado', 'oli', 'M8 32c9-11 27-13 40 0c-13 13-31 11-40 0zM48 32l9-8v16zM27 26c2 4 2 8 0 12M18 30.5v.5'],
+  ['Arroz', 'saf', 'M10 34a22 13 0 1 0 44 0a22 13 0 1 0 -44 0M10 34H4M54 34h6M22 31l3 1M31 37l3-1M40 30l3 1M27 40h3M38 41l3-1M33 28l2 2M45 35l2-1M18 37l2 1'],
+  ['Pasta', 'saf', 'M8 22c6-5 10 5 16 0s10 5 16 0s10 5 16 0M8 32c6-5 10 5 16 0s10 5 16 0s10 5 16 0M8 42c6-5 10 5 16 0s10 5 16 0s10 5 16 0'],
+  ['Legumbres', 'acc', 'M16 20a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M30 15a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M42 24a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M22 32a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M36 36a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M14 44a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M28 48a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M44 46a4 4 0 1 0 8 0a4 4 0 1 0 -8 0'],
+  ['Verduras', 'oli', 'M14 50C14 26 30 14 50 14c0 22-14 36-36 36zM14 50L40 24M27 37l-7-2M33 31l-1-7'],
+  ['Sopas y guisos', 'saf', 'M10 32h44c0 12-10 20-22 20S10 44 10 32zM24 26c-2-3 2-5 0-8M32 26c-2-3 2-5 0-8M40 26c-2-3 2-5 0-8'],
+  ['Aperitivos', 'oli', 'M14 38a18 8 0 1 0 36 0a18 8 0 1 0 -36 0M14 38v4a18 8 0 0 0 36 0v-4M32 34V14M32 14l4 3'],
+  ['Postres', 'acc', 'M18 46l5-22h18l5 22zM23 28c3 3 5-1 7 2s5-1 7 1s3 0 4-3M10 50h44']
+];
+class Component extends DCLogic {
+  renderVals() {
+    const t = THEMES[this.props.theme === 'dark' ? 'dark' : 'light'];
+    const sw = (th) => NAMES.map((n) => ({ token: n[0], name: n[1], hex: th[n[0]] }));
+    return {
+      t: t,
+      light: sw(THEMES.light),
+      dark: sw(THEMES.dark),
+      space: [
+        { label: '4', w: '4px', use: 'icono ↔ texto' },
+        { label: '8', w: '8px', use: 'entre chips' },
+        { label: '12', w: '12px', use: 'meta, fila de lista' },
+        { label: '16', w: '16px', use: 'dentro de tarjeta' },
+        { label: '20', w: '20px', use: 'margen lateral móvil' },
+        { label: '24', w: '24px', use: 'bloque' },
+        { label: '32', w: '32px', use: 'margen escritorio' },
+        { label: '48', w: '48px', use: 'entre secciones' },
+        { label: '64', w: '64px', use: 'sección escritorio' }
+      ],
+      motifs: MOTIF.map((m) => ({ name: m[0], d: m[2], tint: t[m[1] + 'Soft'], ink: m[1] === 'acc' ? t.accText : m[1] === 'saf' ? t.safInk : t.oli }))
+    };
+  }
+}
+</script>
+</body>
+</html>

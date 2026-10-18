@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Recetario · Lentejas estofadas</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&amp;family=Source+Sans+3:ital,wght@0,400..700;1,400..700&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<div style="width: 390px; height: 2960px; box-sizing: border-box; display: flex; flex-direction: column; background: {{t.bg}}; color: {{t.ink}}; font-family: 'Source Sans 3', system-ui, sans-serif; font-size: 17px; line-height: 1.5; overflow: hidden">
+
+  <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 12px 4px">
+    <a href="Main.dc.html" style="display: inline-flex; align-items: center; gap: 4px; height: 44px; padding: 0 12px 0 6px; border-radius: 10px; text-decoration: none; color: {{t.ink}}; font-size: 16px; font-weight: 600">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>
+      Recetas
+    </a>
+    <span style="font-size: 13px; color: {{t.ink2}}; padding-right: 8px">Legumbres</span>
+  </div>
+
+  <header style="padding: 8px 20px 0; display: flex; flex-direction: column; gap: 18px">
+    <div style="position: relative; height: 280px; border-radius: 12px; background: {{t.accSoft}}; color: {{t.accText}}; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; text-align: center">
+      <div style="position: absolute; top: 10px; right: 10px; bottom: 10px; left: 10px; border: 1px solid {{t.accText}}; border-radius: 6px; opacity: 0.5"></div>
+      <div style="position: absolute; top: 15px; right: 15px; bottom: 15px; left: 15px; border: 1px solid {{t.accText}}; border-radius: 3px; opacity: 0.25"></div>
+      <div style="font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700">Legumbres</div>
+      <svg width="76" height="76" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 20a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M30 15a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M42 24a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M22 32a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M36 36a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M14 44a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M28 48a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M44 46a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path></svg>
+      <h1 style="margin: 0; padding: 0 36px; font-family: Fraunces, Georgia, serif; font-style: italic; font-weight: 500; font-size: 40px; line-height: 1.02; letter-spacing: -0.01em; color: {{t.ink}}">Lentejas estofadas</h1>
+    </div>
+    <p style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: 19px; line-height: 1.45; color: {{t.ink2}}">Las de toda la vida, con chorizo y un sofrito sin prisa. Mejor aún al día siguiente.</p>
+
+    <dl style="margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid {{t.line}}; border-bottom: 1px solid {{t.line}}">
+      <div style="padding: 14px 0; display: flex; flex-direction: column; gap: 2px">
+        <dt style="font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; color: {{t.ink2}}">Tiempo</dt>
+        <dd style="margin: 0; font-size: 22px; font-weight: 600; font-variant-numeric: tabular-nums">55 min</dd>
+        <dd style="margin: 0; font-size: 13px; color: {{t.ink2}}; font-variant-numeric: tabular-nums">15 prep. · 40 fuego</dd>
+      </div>
+      <div style="padding: 14px 0 14px 16px; border-left: 1px solid {{t.line}}; display: flex; flex-direction: column; gap: 2px">
+        <dt style="font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; color: {{t.ink2}}">Raciones</dt>
+        <dd style="margin: 0; font-size: 22px; font-weight: 600; font-variant-numeric: tabular-nums">{{servings}}</dd>
+        <dd style="margin: 0; font-size: 13px; color: {{t.ink2}}">personas</dd>
+      </div>
+      <div style="padding: 14px 0 14px 16px; border-left: 1px solid {{t.line}}; display: flex; flex-direction: column; gap: 2px">
+        <dt style="font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; color: {{t.ink2}}">Dificultad</dt>
+        <dd style="margin: 0; font-size: 22px; font-weight: 600">Fácil</dd>
+        <dd style="margin: 0; display: flex; align-items: flex-end; gap: 3px; height: 18px" aria-hidden="true">
+          <span style="width: 7px; height: 8px; border-radius: 1px; background: {{t.acc}}"></span>
+          <span style="width: 7px; height: 12px; border-radius: 1px; box-sizing: border-box; border: 1.5px solid {{t.lineStrong}}"></span>
+          <span style="width: 7px; height: 16px; border-radius: 1px; box-sizing: border-box; border: 1.5px solid {{t.lineStrong}}"></span>
+        </dd>
+      </div>
+    </dl>
+
+    <a href="Cocina.dc.html" style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 56px; border-radius: 12px; background: {{t.acc}}; color: {{t.accInk}}; text-decoration: none; font-size: 18px; font-weight: 700">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h16v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"></path><path d="M2 10h2M20 10h2M9 6.5c0-1 1-1.5 1-2.5M14 6.5c0-1 1-1.5 1-2.5"></path></svg>
+      Empezar a cocinar
+    </a>
+  </header>
+
+  <section aria-labelledby="ing" style="padding: 36px 20px 0">
+    <h2 id="ing" style="margin: 0 0 14px; font-family: Fraunces, Georgia, serif; font-weight: 500; font-size: 28px; line-height: 1.1">Ingredientes</h2>
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 6px; border-radius: 12px; background: {{t.sunk}}">
+      <button type="button" aria-label="Quitar una ración" onClick="{{dec}}" style="display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 10px; border: 1px solid {{t.lineStrong}}; background: {{t.raised}}; color: {{t.ink}}; cursor: pointer">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"></path></svg>
+      </button>
+      <div aria-live="polite" style="display: flex; align-items: baseline; gap: 8px">
+        <span style="font-family: Fraunces, Georgia, serif; font-size: 30px; font-weight: 500; font-variant-numeric: tabular-nums; line-height: 1">{{servings}}</span>
+        <span style="font-size: 16px; color: {{t.ink2}}">{{servLabel}}</span>
+      </div>
+      <button type="button" aria-label="Añadir una ración" onClick="{{inc}}" style="display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 10px; border: 1px solid {{t.lineStrong}}; background: {{t.raised}}; color: {{t.ink}}; cursor: pointer">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+      </button>
+    </div>
+    <sc-if value="{{scaled}}" hint-placeholder-val="{{false}}">
+      <p style="margin: 10px 0 0; font-size: 14px; color: {{t.ink2}}">Cantidades recalculadas para {{servings}}. <button type="button" onClick="{{reset}}" style="min-height: 32px; padding: 0; border: 0; background: transparent; color: {{t.accText}}; font-family: inherit; font-size: 14px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; cursor: pointer">Volver a 4</button></p>
+    </sc-if>
+
+    <ul style="margin: 12px 0 0; padding: 0; list-style: none">
+      <sc-for list="{{ings}}" as="i" hint-placeholder-count="8">
+        <li style="border-bottom: 1px solid {{t.line}}">
+          <button type="button" aria-pressed="{{i.on}}" onClick="{{i.toggle}}" style="display: flex; align-items: center; gap: 14px; width: 100%; min-height: 54px; padding: 8px 0; border: 0; background: transparent; color: {{i.fg}}; font-family: inherit; font-size: 17px; text-align: left; cursor: pointer">
+            <span style="flex: none; display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 6px; box-sizing: border-box; border: 1.5px solid {{i.boxBd}}; background: {{i.boxBg}}; color: {{t.accInk}}">
+              <sc-if value="{{i.on}}" hint-placeholder-val="{{false}}">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
+              </sc-if>
+            </span>
+            <span style="flex: none; width: 76px; font-weight: 700; font-variant-numeric: tabular-nums; text-decoration: {{i.deco}}">{{i.qty}}</span>
+            <span style="flex: 1; min-width: 0; text-decoration: {{i.deco}}; text-decoration-color: {{t.ink2}}">{{i.name}}<span style="color: {{t.ink2}}">{{i.note}}</span></span>
+          </button>
+        </li>
+      </sc-for>
+    </ul>
+    <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 10px; font-size: 14px; color: {{t.ink2}}; font-variant-numeric: tabular-nums">
+      <span>{{doneLabel}}</span>
+      <button type="button" onClick="{{uncheck}}" style="min-height: 44px; padding: 0; border: 0; background: transparent; color: {{t.accText}}; font-family: inherit; font-size: 14px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; cursor: pointer">Desmarcar todo</button>
+    </div>
+  </section>
+
+  <section aria-labelledby="pasos" style="padding: 36px 20px 0">
+    <h2 id="pasos" style="margin: 0 0 8px; font-family: Fraunces, Georgia, serif; font-weight: 500; font-size: 28px; line-height: 1.1">Preparación</h2>
+    <ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column">
+      <li style="display: flex; gap: 16px; padding: 18px 0; border-bottom: 1px solid {{t.line}}">
+        <span aria-hidden="true" style="flex: none; width: 30px; font-family: Fraunces, Georgia, serif; font-size: 32px; line-height: 1; color: {{t.acc}}; font-variant-numeric: tabular-nums">1</span>
+        <p style="margin: 0; font-size: 17px; line-height: 1.6">Lava las <span style="font-weight: 700; text-decoration: underline; text-decoration-color: {{t.acc}}; text-decoration-thickness: 2px; text-underline-offset: 4px">lentejas</span> y escúrrelas. Las pardinas no necesitan remojo.</p>
+      </li>
+      <li style="display: flex; gap: 16px; padding: 18px 0; border-bottom: 1px solid {{t.line}}">
+        <span aria-hidden="true" style="flex: none; width: 30px; font-family: Fraunces, Georgia, serif; font-size: 32px; line-height: 1; color: {{t.acc}}">2</span>
+        <p style="margin: 0; font-size: 17px; line-height: 1.6">Pica fina la <span style="font-weight: 700; text-decoration: underline; text-decoration-color: {{t.acc}}; text-decoration-thickness: 2px; text-underline-offset: 4px">cebolla</span>, el <span style="font-weight: 700; text-decoration: underline; text-decoration-color: {{t.acc}}; text-decoration-thickness: 2px; text-underline-offset: 4px">pimiento verde</span> y el <span style="font-weight: 700; text-decoration: underline; text-decoration-color: {{t.acc}}; text-decoration-thickness: 2px; text-underline-offset: 4px">ajo</span>. Pela las <span style="font-weight: 700; text-decoration: underline; text-decoration-color: {{t.acc}}; text-decoration-thickness: 2px; text-underline-offset: 4px">zanahorias</span> y córtalas en rodajas.</p>
+      </li>
+      <li style="display: flex; gap: 16px; padding: 18px 0; border-bottom: 1px solid {{t.line}}">
+        <span aria-hidden="true" style="flex: none; width: 30px; font-family: Fraunces, Georgia, serif; font-size: 32px; line-height: 1; color: {{t.acc}}">3</span>
+        <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start">
+          <p style="margin: 0; font-size: 17px; line-height: 1.6">Sofríe todo en la olla con el <span style="font-weight: 700; text-decoration: underline; text-decoration-color: {{t.acc}}; text-decoration-thickness: 2px; text-underline-offset: 4px">aceite</span> a fuego medio-bajo hasta que la cebolla esté transparente.</p>
+          <button type="button" style="display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 14px; border-radius: 10px; border: 1px solid {{t.lineStrong}}; background: {{t.raised}}; color: {{t.ink}}; font-family: inherit; font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; cursor: pointer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2.5 1.5M9.5 2.5h5"></path></svg>
+            Temporizador · 10 min
+          </button>
+        </div>
+      </li>
+      <li style="display: flex; gap: 16px; padding: 18px 0; border-bottom: 1px solid {{t.line}}">
+        <span aria-hidden="true" style="flex: none; width: 30px; font-family: Fraunces, Georgia, serif; font-size: 32px; line-height: 1; color: {{t.acc}}">4</span>
+        <p style="margin: 0; font-size: 17px; line-height: 1.6">Añade la <span style="font-weight: 700; text-decoration: underline; text-decoration-color: {{t.acc}}; text-decoration-thickness: 2px; text-underline-offset: 4px">panceta</span> y el <span style="font-weight: 700; text-decoration: underline; text-decoration-color: {{t.acc}}; text-decoration-thickness: 2px; text-underline-offset: 4px">chorizo</span> en rodajas y rehoga 2 minutos. Aparta del fuego, echa el <span style="font-weight: 700; text-decoration: underline; text-decoration-color: {{t.acc}}; text-decoration-thickness: 2px; text-underline-offset: 4px">pimentón</span> y remueve rápido para que no se queme.</p>
+      </li>
+      <li style="display: flex; gap: 16px; padding: 18px 0; border-bottom: 1px solid {{t.line}}">
+        <span aria-hidden="true" style="flex: none; width: 30px; font-family: Fraunces, Georgia, serif; font-size: 32px; line-height: 1; color: {{t.acc}}">5</span>
+        <p style="margin: 0; font-size: 17px; line-height: 1.6">Incorpora las lentejas, el <span style="font-weight: 700; text-decoration: underline; text-decoration-color: {{t.acc}}; text-decoration-thickness: 2px; text-underline-offset: 4px">laurel</span> y agua fría hasta cubrir dos dedos. Lleva a ebullición y baja el fuego.</p>
+      </li>
+      <li style="display: flex; gap: 16px; padding: 18px 0; border-bottom: 1px solid {{t.line}}">
+        <span aria-hidden="true" style="flex: none; width: 30px; font-family: Fraunces, Georgia, serif; font-size: 32px; line-height: 1; color: {{t.acc}}">6</span>
+        <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start">
+          <p style="margin: 0; font-size: 17px; line-height: 1.6">Cuece a fuego suave. A mitad de cocción, añade la <span style="font-weight: 700; text-decoration: underline; text-decoration-color: {{t.acc}}; text-decoration-thickness: 2px; text-underline-offset: 4px">patata</span> chascada en trozos.</p>
+          <button type="button" style="display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 14px; border-radius: 10px; border: 1px solid {{t.lineStrong}}; background: {{t.raised}}; color: {{t.ink}}; font-family: inherit; font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; cursor: pointer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2.5 1.5M9.5 2.5h5"></path></svg>
+            Temporizador · 30 min
+          </button>
+        </div>
+      </li>
+      <li style="display: flex; gap: 16px; padding: 18px 0">
+        <span aria-hidden="true" style="flex: none; width: 30px; font-family: Fraunces, Georgia, serif; font-size: 32px; line-height: 1; color: {{t.acc}}">7</span>
+        <p style="margin: 0; font-size: 17px; line-height: 1.6">Prueba, rectifica de <span style="font-weight: 700; text-decoration: underline; text-decoration-color: {{t.acc}}; text-decoration-thickness: 2px; text-underline-offset: 4px">sal</span> y deja reposar 5 minutos antes de servir.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="notas" style="padding: 28px 20px 40px">
+    <h2 id="notas" style="margin: 0 0 14px; font-family: Fraunces, Georgia, serif; font-weight: 500; font-size: 28px; line-height: 1.1">Notas</h2>
+    <div style="border-radius: 12px; background: {{t.sunk}}; padding: 4px 20px">
+      <div style="padding: 16px 0; border-bottom: 1px solid {{t.line}}">
+        <div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: {{t.accText}}">Consejo</div>
+        <p style="margin: 6px 0 0; font-family: Fraunces, Georgia, serif; font-style: italic; font-size: 18px; line-height: 1.5">Chascar la patata, en vez de cortarla, suelta almidón y espesa el caldo sin harina.</p>
+      </div>
+      <div style="padding: 16px 0; border-bottom: 1px solid {{t.line}}">
+        <div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: {{t.oli}}">Variante</div>
+        <p style="margin: 6px 0 0; font-family: Fraunces, Georgia, serif; font-style: italic; font-size: 18px; line-height: 1.5">Sin chorizo ni panceta, con una pizca de comino y un chorrito de vinagre al final.</p>
+      </div>
+      <div style="padding: 16px 0">
+        <div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: {{t.safInk}}">Se conserva</div>
+        <p style="margin: 6px 0 0; font-family: Fraunces, Georgia, serif; font-style: italic; font-size: 18px; line-height: 1.5">Tres días en la nevera. También congelan bien, sin la patata.</p>
+      </div>
+    </div>
+  </section>
+
+  <nav aria-label="Principal" style="margin-top: auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid {{t.line}}; background: {{t.nav}}; padding: 6px 8px 24px">
+    <a href="Main.dc.html" aria-current="page" style="position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 0 6px; text-decoration: none; color: {{t.ink}}; font-size: 13px; font-weight: 700">
+      <span style="position: absolute; top: 0; width: 28px; height: 3px; border-radius: 2px; background: {{t.acc}}"></span>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M12 6c-2-1.3-4.5-2-8-2v14c3.5 0 6 .7 8 2 2-1.3 4.5-2 8-2V4c-3.5 0-6 .7-8 2z"></path><path d="M12 6v14"></path></svg>
+      Recetas
+    </a>
+    <a href="Nevera.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 0 6px; text-decoration: none; color: {{t.ink2}}; font-size: 13px; font-weight: 600">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="2"></rect><path d="M6 10h12M9 6v2M9 13v3"></path></svg>
+      Nevera
+    </a>
+    <a href="Estados.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 0 6px; text-decoration: none; color: {{t.ink2}}; font-size: 13px; font-weight: 600">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+      Buscar
+    </a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"$preview":{"width":390,"height":2960}}'>
+const THEMES = {
+  light: { bg: '#F5EFE4', raised: '#FBF8F2', sunk: '#ECE4D5', ink: '#231E19', ink2: '#5C5249', line: '#DDD2C0', lineStrong: '#C4B59D', acc: '#B4482A', accInk: '#FFF8F0', accSoft: '#F1DDD1', accText: '#9E3B20', saf: '#C98A1B', safSoft: '#F3E5C4', safInk: '#865608', oli: '#5A5C24', oliSoft: '#E4E3CA', photo: '#D8C9B1', photoInk: '#5E5142', nav: '#FBF8F2' },
+  dark: { bg: '#1C1916', raised: '#26221E', sunk: '#141210', ink: '#F2EADD', ink2: '#BDB1A0', line: '#38322B', lineStrong: '#574E44', acc: '#E07A57', accInk: '#1C1916', accSoft: '#43281E', accText: '#EE9A7B', saf: '#E2A945', safSoft: '#3A2F1B', safInk: '#E8B866', oli: '#B8B96E', oliSoft: '#30301D', photo: '#3A332C', photoInk: '#C2B5A3', nav: '#211E1A' }
+};
+const BASE = 4;
+const INGS = [
+  { q: 400, u: 'g', n: 'lentejas pardinas' },
+  { q: 1, n: 'chorizo asturiano', np: 'chorizos asturianos' },
+  { q: 100, u: 'g', n: 'panceta' },
+  { q: 1, n: 'cebolla', np: 'cebollas' },
+  { q: 1, n: 'pimiento verde', np: 'pimientos verdes' },
+  { q: 2, n: 'zanahoria', np: 'zanahorias' },
+  { q: 1, n: 'patata grande', np: 'patatas grandes' },
+  { q: 3, n: 'diente de ajo', np: 'dientes de ajo' },
+  { q: 1, n: 'hoja de laurel', np: 'hojas de laurel' },
+  { q: 1, u: 'cdta', up: 'cdtas', n: 'pimentón de la Vera' },
+  { q: 2, u: 'cda', up: 'cdas', n: 'aceite de oliva virgen extra' },
+  { q: null, n: 'Sal', note: ', al gusto' }
+];
+function fmt(q) {
+  if (q >= 20) return String(Math.round(q / 5) * 5);
+  const r = Math.round(q * 4) / 4;
+  const w = Math.floor(r);
+  const f = r - w;
+  const g = f === 0.25 ? '¼' : f === 0.5 ? '½' : f === 0.75 ? '¾' : '';
+  if (!w && !g) return '¼';
+  return (w ? String(w) : '') + g;
+}
+class Component extends DCLogic {
+  state = { servings: 4, done: [0, 3] };
+  toggle(i) {
+    const d = this.state.done;
+    this.setState({ done: d.indexOf(i) === -1 ? d.concat([i]) : d.filter((x) => x !== i) });
+  }
+  renderVals() {
+    const t = THEMES[this.props.theme === 'dark' ? 'dark' : 'light'];
+    const s = this.state.servings;
+    const k = s / BASE;
+    const done = this.state.done;
+    const ings = INGS.map((it, idx) => {
+      const on = done.indexOf(idx) !== -1;
+      let qty = '';
+      let name = it.n;
+      if (it.q != null) {
+        const v = it.q * k;
+        const many = v > 1;
+        qty = fmt(v) + (it.u ? ' ' + (many && it.up ? it.up : it.u) : '');
+        if (many && it.np) name = it.np;
+      }
+      return {
+        qty: qty, name: name, note: it.note || '', on: on,
+        fg: on ? t.ink2 : t.ink,
+        deco: on ? 'line-through' : 'none',
+        boxBg: on ? t.acc : 'transparent',
+        boxBd: on ? t.acc : t.ink2,
+        toggle: () => this.toggle(idx)
+      };
+    });
+    return {
+      t: t,
+      servings: s,
+      servLabel: s === 1 ? 'ración' : 'raciones',
+      scaled: s !== BASE,
+      dec: () => this.setState({ servings: Math.max(1, s - 1) }),
+      inc: () => this.setState({ servings: Math.min(12, s + 1) }),
+      reset: () => this.setState({ servings: BASE }),
+      ings: ings,
+      doneLabel: done.length + ' de ' + INGS.length + ' preparados',
+      uncheck: () => this.setState({ done: [] })
+    };
+  }
+}
+</script>
+</body>
+</html>

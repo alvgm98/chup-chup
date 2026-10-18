@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Recetario · ¿Qué tengo en la nevera?</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&amp;family=Source+Sans+3:ital,wght@0,400..700;1,400..700&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<div style="width: 390px; height: 1800px; box-sizing: border-box; display: flex; flex-direction: column; background: {{t.bg}}; color: {{t.ink}}; font-family: 'Source Sans 3', system-ui, sans-serif; font-size: 17px; line-height: 1.5; overflow: hidden">
+
+  <header style="padding: 28px 20px 0; display: flex; flex-direction: column; gap: 10px">
+    <div style="display: flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: {{t.accText}}">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="2"></rect><path d="M6 10h12M9 6v2M9 13v3"></path></svg>
+      Nevera
+    </div>
+    <h1 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 500; font-size: 36px; line-height: 1.05; letter-spacing: -0.01em">¿Qué tengo en la <em style="color: {{t.acc}}; font-weight: 500">nevera</em>?</h1>
+    <p style="margin: 0; font-size: 17px; color: {{t.ink2}}">Dime lo que tienes a mano y te digo qué puedes cocinar.</p>
+  </header>
+
+  <section style="padding: 20px 20px 0; position: relative">
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; padding: 10px; background: {{t.raised}}; border: 1.5px solid {{t.ink}}; border-radius: 14px">
+      <sc-for list="{{tags}}" as="tag" hint-placeholder-count="5">
+        <span style="display: inline-flex; align-items: center; height: 44px; padding-left: 14px; border-radius: 10px; background: {{t.oliSoft}}; color: {{t.ink}}; font-size: 16px; font-weight: 600">
+          {{tag.label}}
+          <button type="button" aria-label="{{tag.aria}}" onClick="{{tag.remove}}" style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 44px; border: 0; background: transparent; color: {{t.ink2}}; cursor: pointer; padding: 0">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+          </button>
+        </span>
+      </sc-for>
+      <input type="text" aria-label="Añadir ingrediente" placeholder="Añade un ingrediente…" value="{{q}}" onChange="{{onQ}}" onKeyDown="{{onKey}}" style="flex: 1 1 140px; min-width: 120px; height: 44px; border: 0; background: transparent; padding: 0 6px; font-family: inherit; font-size: 17px; color: {{t.ink}}">
+    </div>
+
+    <sc-if value="{{hasSug}}" hint-placeholder-val="{{true}}">
+      <ul role="listbox" aria-label="Sugerencias" style="position: absolute; z-index: 2; left: 20px; right: 20px; top: calc(100% + 6px); margin: 0; padding: 6px; list-style: none; background: {{t.raised}}; border: 1px solid {{t.lineStrong}}; border-radius: 12px; box-shadow: 0 10px 24px rgba(35, 30, 25, 0.10)">
+        <sc-for list="{{sug}}" as="s" hint-placeholder-count="3">
+          <li>
+            <button type="button" onClick="{{s.add}}" style="display: flex; align-items: center; gap: 12px; width: 100%; min-height: 48px; padding: 0 12px; border: 0; border-radius: 8px; background: {{s.bg}}; color: {{t.ink}}; font-family: inherit; font-size: 17px; text-align: left; cursor: pointer">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{t.acc}}" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+              <span>{{s.pre}}<strong style="font-weight: 700">{{s.mid}}</strong>{{s.post}}</span>
+            </button>
+          </li>
+        </sc-for>
+      </ul>
+    </sc-if>
+
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 12px">
+      <button type="button" aria-pressed="{{basicos}}" onClick="{{toggleBasicos}}" style="display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0; border: 0; background: transparent; color: {{t.ink}}; font-family: inherit; font-size: 15px; text-align: left; cursor: pointer">
+        <span style="flex: none; position: relative; width: 40px; height: 24px; border-radius: 12px; background: {{sw.track}}; border: 1.5px solid {{sw.border}}; box-sizing: border-box">
+          <span style="position: absolute; top: 2px; left: {{sw.left}}; width: 17px; height: 17px; border-radius: 50%; background: {{sw.knob}}"></span>
+        </span>
+        Doy por hecho sal, aceite y agua
+      </button>
+      <button type="button" onClick="{{clear}}" style="min-height: 44px; padding: 0 4px; border: 0; background: transparent; color: {{t.accText}}; font-family: inherit; font-size: 15px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; cursor: pointer">Vaciar</button>
+    </div>
+  </section>
+
+  <section aria-live="polite" style="padding: 28px 20px 32px; display: flex; flex-direction: column; gap: 14px">
+    <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-bottom: 8px; border-bottom: 1.5px solid {{t.ink}}">
+      <h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-style: italic; font-weight: 500; font-size: 24px">Con lo que tienes</h2>
+      <span style="font-size: 14px; color: {{t.ink2}}; font-variant-numeric: tabular-nums">{{resLabel}}</span>
+    </div>
+
+    <sc-if value="{{noRes}}" hint-placeholder-val="{{false}}">
+      <p style="margin: 8px 0 0; font-family: Fraunces, Georgia, serif; font-style: italic; font-size: 20px; color: {{t.ink2}}">Añade un par de ingredientes y empezamos a buscar.</p>
+    </sc-if>
+
+    <sc-for list="{{res}}" as="r" hint-placeholder-count="4">
+      <a href="Receta.dc.html" style="display: flex; flex-direction: column; gap: 12px; padding: 16px; border-radius: 12px; border: {{r.border}}; background: {{r.bg}}; text-decoration: none; color: inherit">
+        <div style="display: flex; gap: 14px; align-items: center">
+          <div style="flex: none; width: 52px; height: 52px; border-radius: 8px; background: {{r.tint}}; color: {{r.ink}}; display: flex; align-items: center; justify-content: center">
+            <svg width="34" height="34" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{r.motif}}"></path></svg>
+          </div>
+          <div style="flex: 1; min-width: 0">
+            <div style="font-family: Fraunces, Georgia, serif; font-size: 21px; line-height: 1.15; font-weight: 500">{{r.n}}</div>
+            <div style="font-size: 14px; color: {{t.ink2}}; font-variant-numeric: tabular-nums">{{r.c}} · {{r.tiempo}}</div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px">
+            <span style="font-size: 16px; font-weight: 700; font-variant-numeric: tabular-nums">Tienes {{r.have}} de {{r.total}}</span>
+            <sc-if value="{{r.complete}}" hint-placeholder-val="{{false}}">
+              <span style="display: inline-flex; align-items: center; gap: 4px; font-size: 14px; font-weight: 700; color: {{t.accText}}">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
+                Puedes hacerla ya
+              </span>
+            </sc-if>
+          </div>
+          <div aria-hidden="true" style="display: flex; gap: 3px">
+            <sc-for list="{{r.segs}}" as="s" hint-placeholder-count="6">
+              <span style="flex: 1; height: 8px; border-radius: 2px; box-sizing: border-box; background: {{s.bg}}; border: 1.5px solid {{s.bd}}"></span>
+            </sc-for>
+          </div>
+          <sc-if value="{{r.hasMissing}}" hint-placeholder-val="{{true}}">
+            <p style="margin: 0; font-size: 15px; color: {{t.ink2}}"><span style="font-weight: 700; color: {{t.ink}}">Te falta:</span> {{r.missing}}</p>
+          </sc-if>
+        </div>
+      </a>
+    </sc-for>
+  </section>
+
+  <nav aria-label="Principal" style="margin-top: auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid {{t.line}}; background: {{t.nav}}; padding: 6px 8px 24px">
+    <a href="Main.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 0 6px; text-decoration: none; color: {{t.ink2}}; font-size: 13px; font-weight: 600">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M12 6c-2-1.3-4.5-2-8-2v14c3.5 0 6 .7 8 2 2-1.3 4.5-2 8-2V4c-3.5 0-6 .7-8 2z"></path><path d="M12 6v14"></path></svg>
+      Recetas
+    </a>
+    <a href="Nevera.dc.html" aria-current="page" style="position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 0 6px; text-decoration: none; color: {{t.ink}}; font-size: 13px; font-weight: 700">
+      <span style="position: absolute; top: 0; width: 28px; height: 3px; border-radius: 2px; background: {{t.acc}}"></span>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="2"></rect><path d="M6 10h12M9 6v2M9 13v3"></path></svg>
+      Nevera
+    </a>
+    <a href="Estados.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 0 6px; text-decoration: none; color: {{t.ink2}}; font-size: 13px; font-weight: 600">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+      Buscar
+    </a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"$preview":{"width":390,"height":1800}}'>
+const THEMES = {
+  light: { bg: '#F5EFE4', raised: '#FBF8F2', sunk: '#ECE4D5', ink: '#231E19', ink2: '#5C5249', line: '#DDD2C0', lineStrong: '#C4B59D', acc: '#B4482A', accInk: '#FFF8F0', accSoft: '#F1DDD1', accText: '#9E3B20', saf: '#C98A1B', safSoft: '#F3E5C4', safInk: '#865608', oli: '#5A5C24', oliSoft: '#E4E3CA', photo: '#D8C9B1', photoInk: '#5E5142', nav: '#FBF8F2' },
+  dark: { bg: '#1C1916', raised: '#26221E', sunk: '#141210', ink: '#F2EADD', ink2: '#BDB1A0', line: '#38322B', lineStrong: '#574E44', acc: '#E07A57', accInk: '#1C1916', accSoft: '#43281E', accText: '#EE9A7B', saf: '#E2A945', safSoft: '#3A2F1B', safInk: '#E8B866', oli: '#B8B96E', oliSoft: '#30301D', photo: '#3A332C', photoInk: '#C2B5A3', nav: '#211E1A' }
+};
+const MOTIF = {
+  arroz: 'M10 34a22 13 0 1 0 44 0a22 13 0 1 0 -44 0M10 34H4M54 34h6M22 31l3 1M31 37l3-1M40 30l3 1M27 40h3M38 41l3-1M33 28l2 2M45 35l2-1M18 37l2 1',
+  legumbres: 'M16 20a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M30 15a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M42 24a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M22 32a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M36 36a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M14 44a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M28 48a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M44 46a4 4 0 1 0 8 0a4 4 0 1 0 -8 0',
+  carne: 'M39 25c6-7 17-3 15 6s-11 11-17 6L25 49M25 49a3.5 3.5 0 1 1-5 4.5M25 49a3.5 3.5 0 1 0-4.5-5',
+  pescado: 'M8 32c9-11 27-13 40 0c-13 13-31 11-40 0zM48 32l9-8v16zM27 26c2 4 2 8 0 12M18 30.5v.5',
+  pasta: 'M8 22c6-5 10 5 16 0s10 5 16 0s10 5 16 0M8 32c6-5 10 5 16 0s10 5 16 0s10 5 16 0M8 42c6-5 10 5 16 0s10 5 16 0s10 5 16 0',
+  sopa: 'M10 32h44c0 12-10 20-22 20S10 44 10 32zM24 26c-2-3 2-5 0-8M32 26c-2-3 2-5 0-8M40 26c-2-3 2-5 0-8',
+  postre: 'M18 46l5-22h18l5 22zM23 28c3 3 5-1 7 2s5-1 7 1s3 0 4-3M10 50h44',
+  verdura: 'M14 50C14 26 30 14 50 14c0 22-14 36-36 36zM14 50L40 24M27 37l-7-2M33 31l-1-7',
+  aperitivo: 'M14 38a18 8 0 1 0 36 0a18 8 0 1 0 -36 0M14 38v4a18 8 0 0 0 36 0v-4M32 34V14M32 14l4 3'
+};
+const CAT_INFO = {
+  Carne: ['acc', 'carne'], Pescado: ['oli', 'pescado'], Arroz: ['saf', 'arroz'], Pasta: ['saf', 'pasta'], Legumbres: ['acc', 'legumbres'],
+  Verduras: ['oli', 'verdura'], 'Sopas y cremas': ['saf', 'sopa'], Aperitivos: ['oli', 'aperitivo'], Postres: ['acc', 'postre']
+};
+const BASICOS = ['sal', 'aceite de oliva', 'agua'];
+const RECETAS = [
+  { n: 'Tortilla de patatas', c: 'Aperitivos', tiempo: '45 min', ings: ['huevos', 'patatas', 'cebolla', 'aceite de oliva', 'sal'] },
+  { n: 'Gazpacho', c: 'Sopas y cremas', tiempo: '20 min', ings: ['tomate', 'pimiento verde', 'pepino', 'ajo', 'pan', 'vinagre', 'aceite de oliva', 'sal', 'agua'] },
+  { n: 'Pisto manchego', c: 'Verduras', tiempo: '1 h 15 min', ings: ['tomate', 'pimiento verde', 'pimiento rojo', 'cebolla', 'calabacín', 'ajo', 'aceite de oliva', 'sal'] },
+  { n: 'Pollo al ajillo', c: 'Carne', tiempo: '45 min', ings: ['pollo', 'ajo', 'vino blanco', 'laurel', 'guindilla', 'aceite de oliva', 'sal'] },
+  { n: 'Lentejas estofadas', c: 'Legumbres', tiempo: '55 min', ings: ['lentejas', 'chorizo', 'panceta', 'cebolla', 'pimiento verde', 'zanahoria', 'patatas', 'ajo', 'laurel', 'pimentón', 'aceite de oliva', 'sal', 'agua'] },
+  { n: 'Flan de huevo', c: 'Postres', tiempo: '1 h 20 min', ings: ['huevos', 'leche', 'azúcar', 'limón'] },
+  { n: 'Crema de calabaza', c: 'Sopas y cremas', tiempo: '40 min', ings: ['calabaza', 'cebolla', 'puerro', 'patatas', 'nata', 'aceite de oliva', 'sal', 'agua'] },
+  { n: 'Merluza en salsa verde', c: 'Pescado', tiempo: '30 min', ings: ['merluza', 'ajo', 'perejil', 'vino blanco', 'harina', 'almejas', 'aceite de oliva', 'sal'] },
+  { n: 'Macarrones con chorizo', c: 'Pasta', tiempo: '35 min', ings: ['macarrones', 'chorizo', 'tomate', 'cebolla', 'queso rallado', 'aceite de oliva', 'sal'] },
+  { n: 'Arroz con costillas', c: 'Arroz', tiempo: '1 h 10 min', ings: ['arroz', 'costillas de cerdo', 'pimiento rojo', 'tomate', 'ajo', 'pimentón', 'azafrán', 'aceite de oliva', 'sal', 'agua'] }
+];
+const POOL = Array.from(new Set(RECETAS.reduce((a, r) => a.concat(r.ings), []).concat(['pimentón picante', 'pimienta negra']))).sort((a, b) => a.localeCompare(b, 'es'));
+function norm(s) { return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
+class Component extends DCLogic {
+  state = { have: ['huevos', 'patatas', 'cebolla', 'ajo', 'tomate', 'pimiento verde'], q: 'pim', basicos: true };
+  add(name) {
+    if (this.state.have.indexOf(name) === -1) this.setState({ have: this.state.have.concat([name]), q: '' });
+    else this.setState({ q: '' });
+  }
+  renderVals() {
+    const t = THEMES[this.props.theme === 'dark' ? 'dark' : 'light'];
+    const have = this.state.have;
+    const q = this.state.q;
+    const nq = norm(q.trim());
+    const sugList = nq ? POOL.filter((p) => have.indexOf(p) === -1 && BASICOS.indexOf(p) === -1 && norm(p).indexOf(nq) !== -1).slice(0, 5) : [];
+    const sug = sugList.map((p, i) => {
+      const at = norm(p).indexOf(nq);
+      return { pre: p.slice(0, at), mid: p.slice(at, at + nq.length), post: p.slice(at + nq.length), bg: i === 0 ? t.sunk : 'transparent', add: () => this.add(p) };
+    });
+    const res = RECETAS.map((r) => {
+      const need = this.state.basicos ? r.ings.filter((i) => BASICOS.indexOf(i) === -1) : r.ings;
+      const got = need.filter((i) => have.indexOf(i) !== -1);
+      const miss = need.filter((i) => have.indexOf(i) === -1);
+      return { r: r, need: need, got: got, miss: miss };
+    }).filter((x) => x.got.length > 0)
+      .sort((a, b) => (b.got.length / b.need.length) - (a.got.length / a.need.length) || b.got.length - a.got.length)
+      .map((x) => {
+        const info = CAT_INFO[x.r.c];
+        const complete = x.miss.length === 0;
+        const ordered = x.got.concat(x.miss);
+        const missing = x.miss.length > 3 ? x.miss.slice(0, 3).join(', ') + ' y ' + (x.miss.length - 3) + ' más' : x.miss.join(', ');
+        return {
+          n: x.r.n, c: x.r.c, tiempo: x.r.tiempo,
+          have: x.got.length, total: x.need.length, complete: complete, hasMissing: !complete, missing: missing,
+          border: complete ? '1.5px solid ' + t.acc : '1px solid ' + t.line,
+          bg: complete ? t.raised : 'transparent',
+          tint: t[info[0] + 'Soft'], ink: info[0] === 'acc' ? t.accText : info[0] === 'saf' ? t.safInk : t.oli, motif: MOTIF[info[1]],
+          segs: ordered.map((i) => {
+            const on = have.indexOf(i) !== -1;
+            return { bg: on ? t.acc : 'transparent', bd: on ? t.acc : t.lineStrong };
+          })
+        };
+      });
+    const on = this.state.basicos;
+    return {
+      t: t,
+      q: q,
+      onQ: (e) => this.setState({ q: e.target.value }),
+      onKey: (e) => { if (e.key === 'Enter' && sugList.length) { e.preventDefault(); this.add(sugList[0]); } },
+      tags: have.map((h) => ({ label: h, aria: 'Quitar ' + h, remove: () => this.setState({ have: this.state.have.filter((x) => x !== h) }) })),
+      hasSug: sug.length > 0,
+      sug: sug,
+      basicos: on,
+      toggleBasicos: () => this.setState({ basicos: !this.state.basicos }),
+      sw: { track: on ? t.acc : 'transparent', border: on ? t.acc : t.lineStrong, knob: on ? t.accInk : t.ink2, left: on ? '18px' : '2px' },
+      clear: () => this.setState({ have: [], q: '' }),
+      res: res,
+      noRes: res.length === 0,
+      resLabel: res.length === 1 ? '1 receta' : res.length + ' recetas'
+    };
+  }
+}
+</script>
+</body>
+</html>

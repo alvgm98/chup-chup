@@ -2,7 +2,7 @@ import { html, raw, icono } from '../html.mjs';
 import { marca, buscador } from './comun.mjs';
 
 const FUENTES =
-  'https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Source+Sans+3:ital,wght@0,400..700;1,400..700&display=swap';
+  'https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Source+Sans+3:ital,wght@0,400..900;1,400..900&display=swap';
 
 function tabbar(ctx, seccion) {
   const item = (id, href, label, ico) =>

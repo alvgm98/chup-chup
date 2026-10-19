@@ -317,7 +317,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .paso-c { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; min-width: 0; }
 .paso p { font-size: 17px; line-height: 1.6; }
 .paso-tip { max-width: 620px; font-family: var(--serif); font-style: italic; font-size: 16px; line-height: 1.5; color: var(--ink2); }
-.tip-e { font-family: var(--sans); font-style: normal; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; margin-right: 2px; }
+.tip-e { font-family: var(--sans); font-style: normal; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; font-weight: 900; margin-right: 2px; }
 .cocina-tips:empty { display: none; }
 .cocina-tips { display: flex; flex-direction: column; gap: 8px; }
 .cocina-tips .paso-tip { font-size: 19px; }

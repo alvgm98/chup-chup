@@ -12,10 +12,9 @@ variantes:
   - { id: horno, nombre: Trompo al horno, defecto: true }
   - { id: airfryer, nombre: En airfryer, preparacion: 15, coccion: 25, dificultad: facil }
 ingredientes:
-  - { id: pollo, nombre: contramuslos de pollo deshuesados, cantidad: 800, unidad: g, nota: laminados, variante: horno }
+  - { id: pollo, nombre: contramuslos de pollo deshuesados, cantidad: 800, unidad: g, nota: en láminas muy finas, variante: horno }
   - { id: pollo, nombre: contramuslos de pollo deshuesados, cantidad: 800, unidad: g, nota: enteros, variante: airfryer }
   - { id: panceta, nombre: panceta ahumada o bacon en lonchas, cantidad: 200, unidad: g, variante: horno }
-  - { id: patatas, nombre: patata, cantidad: 1, nota: para la base del pincho, variante: horno }
   - { id: yogur griego (marinado), nombre: yogur griego, cantidad: 3, unidad: cda, grupo: Para el marinado }
   - { id: limón, nombre: zumo de limón, cantidad: 2, unidad: cda, grupo: Para el marinado }
   - { id: aceite de oliva, nombre: aceite de oliva, cantidad: 3, unidad: cda, grupo: Para el marinado }
@@ -44,12 +43,12 @@ ingredientes:
 ## Preparación
 
 1. Mezcla el [yogur|yogur griego (marinado)], el [zumo de limón|limón], el [aceite|aceite de oliva], el [ajo] picado, el [orégano], el [tomillo], el [pimentón], el [comino], la [canela], [sal] y pimienta.
-2. {horno} Embadurna el [pollo] laminado y deja marinar en la nevera, mejor toda la noche. ⏲ 2 h
+2. {horno} Lamina el [pollo] lo más fino posible, embadúrnalo con el marinado y déjalo en la nevera, mejor toda la noche. ⏲ 2 h
 3. {airfryer} Embadurna los [contramuslos|pollo] enteros y deja marinar en la nevera. ⏲ 30 min
 4. Ralla el [pepino|pepino (tzatziki)] con piel, sálalo y escúrrelo apretando con las manos. ⏲ 10 min
 5. Mézclalo con el [yogur griego], el [ajo|ajo (tzatziki)] machacado, el [zumo de limón|limón (tzatziki)], el [eneldo], el [aceite|aceite de oliva (tzatziki)] y [sal|sal (tzatziki)]. Guárdalo en la nevera.
 6. Corta el [tomate] en dados, la [cebolla roja] en juliana fina, la [lechuga] en tiras y el [pepino] en bastones. Desmenuza el [feta|queso feta].
-7. {horno} Clava dos brochetas largas en media [patata] apoyada en la bandeja y ensarta el pollo alternando con la [panceta], bien apretado.
+7. {horno} Monta el trompo en los pinchos intercalando capas de pollo y [panceta], bien apretadas.
 8. {horno} Hornea a 180 °C con calor arriba y abajo. ⏲ 35 min
 9. {horno} Pasa a grill a 220 °C hasta que se dore por fuera. ⏲ 10 min
 10. {horno} Deja reposar antes de cortar del pincho. ⏲ 5 min

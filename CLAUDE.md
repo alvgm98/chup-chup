@@ -59,7 +59,7 @@ ingredientes:
   si un ingrediente se repite (azúcar para el caramelo y para la masa), usa un calificativo entre paréntesis:
   `azúcar (caramelo)`, que en la Nevera cuenta como `azúcar`.
 - `nombre`: cómo se lee en la lista (`patata grande`). `plural` si es contable (`patatas grandes`).
-- `cantidad`: número, `1.5`, `1/2` o `½`. Sin cantidad para «al gusto» (usa `nota`).
+- `cantidad`: número, `1.5`, `1/2` o `½`. Sin cantidad para «al gusto» (usa `nota: al gusto`; «al gusto», «la necesaria», «un puñado»… se muestran en la columna de cantidad).
 - `unidad`: `g`, `kg`, `ml`, `l`, `cda`, `cdta`, `pizca`, `vaso`, `taza`, `lata`… (el plural de las comunes es automático).
 - `nota` (texto tras una coma: «al gusto», «para servir»), `grupo` («Para la salsa»), `opcional: true`.
 - Sal, aceite de oliva y agua usan siempre los ids `sal`, `aceite de oliva` y `agua` (la Nevera puede darlos por hechos).

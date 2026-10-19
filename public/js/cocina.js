@@ -95,11 +95,11 @@ function pintarPaso(animar) {
       s.className = 'uso';
       const g = ings[u];
       if (g.qty) {
-        const b = document.createElement('strong');
+        const b = document.createElement(g.suave ? 'em' : 'strong');
         b.textContent = g.qty;
         s.append(b);
       }
-      s.append(g.nombre + (datos.ings[u].nota ? ', ' + datos.ings[u].nota : ''));
+      s.append(g.nombre + (g.nota ? ', ' + g.nota : ''));
       return s;
     })
   );
@@ -121,7 +121,8 @@ function pintarHoja() {
       li.className = ahora ? 'ahora' : '';
       li.innerHTML = '<span class="q"></span><span class="n"></span>';
       li.querySelector('.q').textContent = g.qty;
-      li.querySelector('.n').textContent = g.nombre + (datos.ings[n].nota ? ', ' + datos.ings[n].nota : '');
+      li.querySelector('.n').textContent = g.nombre + (g.nota ? ', ' + g.nota : '');
+      if (g.suave) li.querySelector('.q').classList.add('q-suave');
       if (ahora) {
         const a = document.createElement('span');
         a.className = 'ahora-t';

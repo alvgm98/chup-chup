@@ -32,17 +32,29 @@ export function fmtCantidad(q) {
   return (w ? String(w) : '') + g;
 }
 
-/** Texto de cantidad + unidad y nombre, ya escalados. */
+// Notas que en realidad son una cantidad («al gusto»): van en la columna de cantidad
+const NOTA_CANTIDAD = /^(al gusto|la necesaria|lo necesario|el necesario|los necesarios|las necesarias|un puñado|unas gotas|un chorrito)$/i;
+
+/**
+ * Texto de cantidad + unidad y nombre, ya escalados.
+ * `nota` es lo que queda para mostrar tras el nombre; `suave` indica una cantidad no numérica.
+ */
 export function ingredienteEscalado(ing, factor) {
   let qty = '';
   let nombre = ing.n;
+  let nota = ing.nota || '';
+  let suave = false;
   if (ing.q != null) {
     const v = ing.q * factor;
     const muchos = v > 1;
     qty = fmtCantidad(v) + (ing.u ? ' ' + (muchos && ing.up ? ing.up : ing.u) : '');
     if (muchos && ing.np) nombre = ing.np;
+  } else if (NOTA_CANTIDAD.test(nota.trim())) {
+    qty = nota.trim();
+    nota = '';
+    suave = true;
   }
-  return { qty, nombre };
+  return { qty, nombre, nota, suave };
 }
 
 /** 75 → "1 h 15 min" */

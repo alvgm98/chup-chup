@@ -301,6 +301,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .ing-q { flex: none; width: 76px; font-weight: 700; font-variant-numeric: tabular-nums; }
 .ing-n { flex: 1; min-width: 0; }
 .ing-nota { color: var(--ink2); }
+.ing-q-suave, .hoja-lista .q.q-suave { font-weight: 500; font-style: italic; color: var(--ink2); font-size: .94em; }
+.uso em { font-style: italic; color: var(--ink2); margin-right: 6px; }
 .ing[aria-pressed="true"] { color: var(--ink2); }
 .ing[aria-pressed="true"] .caja { background: var(--acc); border-color: var(--acc); }
 .ing[aria-pressed="true"] .caja .ico { opacity: 1; transform: none; }

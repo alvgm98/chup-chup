@@ -19,11 +19,11 @@ function listaIngredientes(v) {
       grupo = g.grupo;
       out.push(html`<li class="ing-grupo" role="presentation">${grupo}</li>`);
     }
-    const { qty, nombre } = ingredienteEscalado(cli[i], 1);
-    const nota = [g.nota, g.opcional ? 'opcional' : null].filter(Boolean).join(', ');
+    const { qty, nombre, nota: notaRestante, suave } = ingredienteEscalado(cli[i], 1);
+    const nota = [notaRestante, g.opcional ? 'opcional' : null].filter(Boolean).join(', ');
     out.push(html`<li><button type="button" class="ing" aria-pressed="false" data-i="${i}">
       <span class="caja" aria-hidden="true">${icono('check', { size: 16, sw: 2.6 })}</span>
-      <span class="ing-q">${qty}</span>
+      <span class="ing-q${suave ? ' ing-q-suave' : ''}">${qty}</span>
       <span class="ing-n"><span class="ing-nombre">${nombre}</span>${nota ? html`<span class="ing-nota">, ${nota}</span>` : ''}</span>
     </button></li>`);
   });

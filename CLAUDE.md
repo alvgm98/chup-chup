@@ -77,6 +77,29 @@ ingredientes:
 ### Notas
 Lista bajo `## Notas` con etiqueta en negrita: **Consejo**, **Variante**, **Se conserva**, **Para servir**, **Truco** (otras etiquetas también valen).
 
+### Variantes
+Un mismo plato con versiones (otro ingrediente, otro método, versión rápida) va en **un solo archivo**: en la web
+sale una vez en los listados y la receta muestra un selector. La web recuerda la última variante abierta.
+
+```yaml
+variantes:
+  - { id: patatas, nombre: Con patatas, defecto: true }   # la que se abre por defecto
+  - { id: noquis, nombre: Con ñoquis, coccion: 40 }        # puede cambiar preparacion, coccion, raciones, dificultad
+ingredientes:
+  - { id: patatas, nombre: patatas, cantidad: 700, unidad: g, variante: patatas }   # solo en esa variante
+  - { id: caldo de pollo, nombre: caldo de pollo, cantidad: 500, unidad: ml, variante: patatas }
+  - { id: caldo de pollo, nombre: caldo de pollo, cantidad: 300, unidad: ml, variante: noquis }
+  - { id: cebolla, nombre: cebolla, cantidad: 2 }                                    # sin `variante`: en todas
+```
+
+- Los campos de nivel superior (`preparacion`, `coccion`, `raciones`, `dificultad`) valen para las variantes que no los cambian.
+- `variante:` admite una lista: `variante: [horno, airfryer]`.
+- **Pasos y notas compartidos con alguna diferencia:** marca al principio los que son de una sola variante con `{id}`:
+  `5. {noquis} Añade los [ñoquis]…` o `- {patatas} **Consejo:** …`. Lo que no lleva marca vale para todas.
+- **Métodos muy distintos:** cada variante con su propia sección, `## Preparación · En airfryer` (por id o nombre).
+  Una variante con sección propia no usa la `## Preparación` común. `## Notas · En airfryer` añade notas solo a esa variante.
+- Las menciones `[ingrediente]` de cada paso se comprueban contra los ingredientes de **su** variante.
+
 ### Fotos
 Opcionales. Guárdalas en `recetas/fotos/` en WebP, máximo 1600 px de ancho y ~200 KB
 (con sharp: `sharp(in).rotate().resize({ width: 1600, withoutEnlargement: true }).webp({ quality: 78 })`).

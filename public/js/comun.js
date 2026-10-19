@@ -95,3 +95,16 @@ export function fmtFecha(iso, hoy) {
 export function plural(n, uno, varios) {
   return n === 1 ? '1 ' + uno : n + ' ' + varios;
 }
+
+/** 30, 45 → "30–45 min"; 50, 90 → "50 min – 1 h 30 min"; iguales → "50 min" */
+export function fmtRango(a, b) {
+  if (a === b) return fmtMinutos(a);
+  if (b < 60) return a + '–' + b + ' min';
+  return fmtMinutos(a) + ' – ' + fmtMinutos(b);
+}
+
+/** ["Con patatas", "Con ñoquis"] → "Con patatas o con ñoquis" */
+export function listaO(nombres) {
+  const l = nombres.map((n, i) => (i === 0 ? n : n.charAt(0).toLowerCase() + n.slice(1)));
+  return l.length < 2 ? l.join('') : l.slice(0, -1).join(', ') + ' o ' + l[l.length - 1];
+}

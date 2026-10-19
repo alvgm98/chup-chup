@@ -13,7 +13,8 @@ const encaja = {
 function aplicar() {
   let visibles = 0;
   for (const f of filas) {
-    const ok = encaja[estado.tiempo](Number(f.dataset.tiempo)) && (!estado.dificultad || f.dataset.dificultad === estado.dificultad);
+    const ok = f.dataset.tiempo.split(',').some((m) => encaja[estado.tiempo](Number(m))) &&
+      (!estado.dificultad || f.dataset.dificultad.split(',').includes(estado.dificultad));
     f.classList.toggle('oculta', !ok);
     if (ok) visibles++;
   }

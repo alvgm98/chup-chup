@@ -2,7 +2,7 @@ import { html, icono, jsonScript } from '../html.mjs';
 import { CAT } from '../categorias.mjs';
 import { layout } from './layout.mjs';
 import { avisoRed } from './comun.mjs';
-import { fmtMinutos, claveIngrediente } from '../../../public/js/comun.js';
+import { fmtMinutos, fmtRango, claveIngrediente } from '../../../public/js/comun.js';
 
 // "azúcar (caramelo)" cuenta como "azúcar" en la Nevera
 const nombreNevera = (id) => id.replace(/\s*\(.*\)\s*$/, '');
@@ -17,13 +17,21 @@ export function indiceCliente(ctx, recetas) {
       u: ctx.u('receta/' + r.slug + '/'),
       t: r.titulo,
       c: r.tipo,
-      tl: fmtMinutos(r.total),
+      tl: fmtRango(r.totalMin, r.totalMax),
       r: r.raciones,
       d: r.dificultadLabel,
       foto: r.foto ? ctx.u('fotos/' + r.foto) : null,
-      i: unicos(r.ingredientes.filter((g) => !g.opcional).map((g) => nombreNevera(g.id))),
-      io: unicos(r.ingredientes.filter((g) => g.opcional).map((g) => nombreNevera(g.id))),
-      n: r.ingredientes.map((g) => g.nombre),
+      def: r.defecto,
+      // Ingredientes de cada variante (la Nevera elige la que mejor encaja)
+      v: r.variantes.map((v) => ({
+        id: v.id,
+        n: v.nombre,
+        tl: fmtMinutos(v.total),
+        i: unicos(v.ingredientes.filter((g) => !g.opcional).map((g) => nombreNevera(g.id))),
+        io: unicos(v.ingredientes.filter((g) => g.opcional).map((g) => nombreNevera(g.id)))
+      })),
+      n: [...new Set(r.variantes.flatMap((v) => v.ingredientes.map((g) => g.nombre)))],
+      vn: r.multi ? r.variantes.map((v) => v.nombre) : [],
       e: r.etiquetas,
       x: r.descripcion
     }))

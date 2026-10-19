@@ -141,7 +141,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .fila-fecha-m { flex: none; font-size: 13px; color: var(--ink2); }
 .fila-titulo { font-family: var(--serif); font-size: 20px; line-height: 1.2; font-weight: 500; }
 .fila-meta { font-size: 14px; color: var(--ink2); font-variant-numeric: tabular-nums; }
-.fila-otras { font-size: 13px; color: var(--ink2); }
+.fila-otras, .fila-var { font-size: 13px; color: var(--ink2); }
+.fila-var { font-family: var(--serif); font-style: italic; font-size: 14px; }
 .fila-otras b { font-weight: 700; color: var(--acc-ink); }
 .fila-fecha, .fila-meta-d { display: none; }
 
@@ -239,6 +240,14 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .barras span:nth-child(3) { height: 16px; }
 .barras span.llena { background: var(--acc); border-color: var(--acc); }
 .hero-cta { grid-area: cta; }
+.hero-multi { grid-template-areas: "stack" "var" "desc" "datos" "cta"; }
+.hero-multi.hero-foto { grid-template-areas: "arte" "txt" "var" "desc" "datos" "cta"; }
+.variantes { grid-area: var; display: flex; flex-wrap: wrap; gap: 8px; }
+.variante { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 16px; border-radius: 10px; border: 1px solid var(--line-strong); background: var(--raised); color: var(--ink); font-size: 15px; font-weight: 600; transition: background .15s, color .15s; }
+.variante:hover { border-color: var(--ink); }
+.variante-check { display: none; }
+.variante[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); padding-left: 12px; }
+.variante[aria-pressed="true"] .variante-check { display: block; }
 .hero-cta .btn { width: 100%; }
 /* con foto */
 .hero-foto { grid-template-areas: "arte" "txt" "desc" "datos" "cta"; }
@@ -357,6 +366,7 @@ body.modo-cocina { padding-bottom: 0; overflow: hidden; }
 .cocina { position: fixed; inset: 0; display: flex; flex-direction: column; background: var(--bg); padding-top: env(safe-area-inset-top, 0px); max-width: 760px; margin: 0 auto; }
 .cocina-top { display: flex; align-items: center; gap: 8px; padding: 12px 12px 0; }
 .cocina-top .btn-ico-borde { color: var(--ink); }
+.cocina-variante { color: var(--ink2); }
 .cocina-titulo { flex: 1; min-width: 0; font-family: var(--serif); font-style: italic; font-size: 18px; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .pantalla-on { flex: none; display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 10px; border-radius: 8px; background: var(--oli-soft); font-size: 13px; font-weight: 700; }
 .cocina-prog { padding: 18px 20px 0; display: flex; flex-direction: column; gap: 10px; }
@@ -485,6 +495,10 @@ body.modo-cocina { padding-bottom: 0; overflow: hidden; }
     grid-template-areas: ". arte" "txt arte" "desc arte" "datos arte" "cta arte" ". arte";
     column-gap: 48px; row-gap: 20px; padding-top: 24px;
   }
+  .hero-multi, .hero-multi.hero-foto {
+    grid-template-rows: 1fr auto auto auto auto auto 1fr;
+    grid-template-areas: ". arte" "txt arte" "var arte" "desc arte" "datos arte" "cta arte" ". arte";
+  }
   .hero-arte { grid-area: arte; min-height: 420px; border-radius: 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; }
   .hero-arte .lamina { inset: 14px; }
   .hero-arte .lamina-2 { inset: 20px; }
@@ -503,7 +517,8 @@ body.modo-cocina { padding-bottom: 0; overflow: hidden; }
   .hero-cta .btn { width: auto; height: 52px; font-size: 17px; padding: 0 24px; }
   .hero-foto .hero-arte img { min-height: 420px; max-height: 560px; }
 
-  .receta-cuerpo { display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start; padding-top: 64px; }
+  .receta-cuerpo { padding-top: 64px; }
+  .receta-variante { display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start; }
   .ingredientes { flex: 1 1 340px; max-width: 420px; position: sticky; top: 24px; padding: 28px; border-radius: 14px; background: var(--raised); border: 1px solid var(--line); max-height: calc(100vh - 48px); overflow: auto; }
   .ingredientes h2, .pasos h2, .notas h2 { font-size: 30px; }
   .raciones-btn { width: 48px; height: 48px; }

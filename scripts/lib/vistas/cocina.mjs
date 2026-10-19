@@ -6,19 +6,28 @@ export function vistaCocina(ctx, r) {
   const datos = {
     slug: r.slug,
     titulo: r.titulo,
-    raciones: r.raciones,
-    ings: ingsCliente(r),
-    pasos: r.pasos.map((p) => ({ parts: p.parts, uses: p.uses, timer: p.timer }))
+    defecto: r.defecto,
+    variantes: Object.fromEntries(
+      r.variantes.map((v) => [
+        v.id,
+        {
+          nombre: v.nombre,
+          raciones: v.raciones,
+          ings: ingsCliente(v),
+          pasos: v.pasos.map((p) => ({ parts: p.parts, uses: p.uses, timer: p.timer }))
+        }
+      ])
+    )
   };
   const cuerpo = html`<div class="cocina" data-cocina>
     <div class="cocina-top">
       <a class="btn-ico btn-ico-borde" href="../" aria-label="Salir del modo cocina" data-salir>${icono('cerrar', { size: 22, sw: 2 })}</a>
-      <div class="cocina-titulo">${r.titulo}</div>
+      <div class="cocina-titulo">${r.titulo}<span class="cocina-variante" data-variante-txt></span></div>
       <div class="pantalla-on" role="status" data-wake hidden>${icono('sol', { size: 16, sw: 1.8 })}<span>Pantalla encendida</span></div>
     </div>
     <div class="cocina-prog">
       <div class="cocina-prog-txt"><span data-num>Paso 1 de ${r.pasos.length}</span><span data-serv>Para ${r.raciones} raciones</span></div>
-      <div class="cocina-barra" aria-hidden="true">${r.pasos.map(() => html`<span></span>`)}</div>
+      <div class="cocina-barra" aria-hidden="true" data-barra></div>
     </div>
     <main class="cocina-main">
       <div class="cocina-otros" data-otros></div>

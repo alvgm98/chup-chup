@@ -2,13 +2,23 @@
 import { ingredienteEscalado, mmss } from './comun.js';
 import { Temporizador, prepararAudio } from './sonido.js';
 
-const datos = JSON.parse(document.getElementById('datos-cocina').textContent);
+const todo = JSON.parse(document.getElementById('datos-cocina').textContent);
 const $ = (s) => document.querySelector(s);
 const params = new URLSearchParams(location.search);
+// Variante: la del enlace, la última que abriste o la de por defecto
+let vid = params.get('v');
+if (!todo.variantes[vid]) { try { vid = localStorage.getItem('variante:' + todo.slug); } catch { vid = null; } }
+if (!todo.variantes[vid]) vid = todo.defecto;
+const multi = Object.keys(todo.variantes).length > 1;
+const datos = { ...todo, ...todo.variantes[vid] };
+const volver = '../' + (multi && vid !== todo.defecto ? '?v=' + vid : '');
 const raciones = Math.min(12, Math.max(1, Number(params.get('r')) || datos.raciones));
 const k = raciones / datos.raciones;
 const N = datos.pasos.length;
-const claveEstado = 'cocina:' + datos.slug;
+const claveEstado = 'cocina:' + datos.slug + ':' + vid;
+$('[data-barra]').replaceChildren(...datos.pasos.map(() => document.createElement('span')));
+$('[data-salir]').href = volver;
+if (multi) $('[data-variante-txt]').textContent = ' · ' + datos.nombre.charAt(0).toLowerCase() + datos.nombre.slice(1);
 
 let i = 0;
 try {
@@ -134,7 +144,7 @@ el.prev.addEventListener('click', () => ir(i - 1));
 el.next.addEventListener('click', () => {
   if (i === N - 1) {
     try { sessionStorage.removeItem(claveEstado); } catch {}
-    location.href = '../';
+    location.href = volver;
   } else ir(i + 1);
 });
 el.timerBtn.addEventListener('click', () => {
@@ -166,7 +176,7 @@ document.addEventListener('keydown', (e) => {
   }
   if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); ir(i + 1); }
   if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); ir(i - 1); }
-  if (e.key === 'Escape') location.href = '../';
+  if (e.key === 'Escape') location.href = volver;
 });
 let x0 = null, y0 = null;
 const main = $('.cocina-main');

@@ -1,6 +1,6 @@
 import { html, raw, icono, motivo } from '../html.mjs';
 import { CAT } from '../categorias.mjs';
-import { fmtMinutos, fmtFecha } from '../../../public/js/comun.js';
+import { fmtMinutos, fmtFecha, fmtRango, listaO } from '../../../public/js/comun.js';
 
 export function crearContexto({ base, sitio, version, hoy }) {
   const u = (p = '') => base + p.replace(/^\//, '');
@@ -15,7 +15,7 @@ export function marca(ctx, tag = 'span') {
 }
 
 export function metaReceta(r) {
-  return `${fmtMinutos(r.total)} · ${r.raciones} rac. · ${r.dificultadLabel}`;
+  return `${fmtRango(r.totalMin, r.totalMax)} · ${r.raciones} rac. · ${r.dificultadLabel}`;
 }
 
 /** Miniatura: foto recortada o tinte de categoría con su motivo */
@@ -35,7 +35,7 @@ export function filaReceta(ctx, r, { modo = 'ultimas', actual = null } = {}) {
   const cats = r.tipo.map((t) => CAT[t].nombre);
   const otras = r.tipo.filter((t) => t !== actual).map((t) => CAT[t].nombre);
   return html`<a class="fila fila-${modo}" href="${ctx.u('receta/' + r.slug + '/')}"
-      data-tiempo="${r.total}" data-dificultad="${r.dificultad}">
+      data-tiempo="${r.variantes.map((v) => v.total).join(',')}" data-dificultad="${[...new Set(r.variantes.map((v) => v.dificultad))].join(',')}">
     ${modo === 'ultimas' ? html`<span class="fila-fecha" data-fecha="${r.fecha}">${fmtFecha(r.fecha)}</span>` : ''}
     ${miniatura(ctx, r)}
     <span class="fila-txt">
@@ -44,9 +44,10 @@ export function filaReceta(ctx, r, { modo = 'ultimas', actual = null } = {}) {
         : ''}
       <span class="fila-titulo">${r.titulo}</span>
       <span class="fila-meta">${metaReceta(r)}</span>
+      ${r.multi ? html`<span class="fila-var">${listaO(r.variantes.map((v) => v.nombre))}</span>` : ''}
       ${modo === 'cat' && actual && otras.length ? html`<span class="fila-otras">También en <b>${otras.join(', ')}</b></span>` : ''}
     </span>
-    ${modo === 'ultimas' ? html`<span class="fila-meta-d">${fmtMinutos(r.total)}<br>${r.raciones} rac. · ${r.dificultadLabel}</span>` : ''}
+    ${modo === 'ultimas' ? html`<span class="fila-meta-d">${fmtRango(r.totalMin, r.totalMax)}<br>${r.raciones} rac. · ${r.dificultadLabel}</span>` : ''}
   </a>`;
 }
 

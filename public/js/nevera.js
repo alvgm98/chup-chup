@@ -13,7 +13,7 @@ const BASICOS = new Set(['sal', 'aceite de oliva', 'agua'].map(clave));
 
 // Todos los ingredientes conocidos (forma en que aparecen en las recetas)
 const pool = new Map();
-for (const r of recetas) for (const id of [...r.i, ...r.io]) if (!pool.has(clave(id))) pool.set(clave(id), id);
+for (const r of recetas) for (const v of r.v) for (const id of [...v.i, ...v.io]) if (!pool.has(clave(id))) pool.set(clave(id), id);
 const poolLista = [...pool.values()].sort((a, b) => a.localeCompare(b, 'es'));
 
 let estado = { tengo: [], basicos: true };
@@ -121,10 +121,17 @@ function pintarRes() {
   const tengo = new Set(estado.tengo.map(clave));
   const res = recetas
     .map((r) => {
-      const need = r.i.filter((x) => !(estado.basicos && BASICOS.has(clave(x))));
-      const got = need.filter((x) => tengo.has(clave(x)));
-      const miss = need.filter((x) => !tengo.has(clave(x)));
-      return { r, need, got, miss };
+      // De cada plato, la variante que mejor encaja con lo que tienes
+      let mejor = null;
+      for (const v of r.v) {
+        const need = v.i.filter((x) => !(estado.basicos && BASICOS.has(clave(x))));
+        const got = need.filter((x) => tengo.has(clave(x)));
+        const miss = need.filter((x) => !tengo.has(clave(x)));
+        const c = { r, v, need, got, miss };
+        const p = (x) => x.got.length / x.need.length;
+        if (!mejor || p(c) > p(mejor) || (p(c) === p(mejor) && c.got.length > mejor.got.length)) mejor = c;
+      }
+      return mejor;
     })
     .filter((x) => x.got.length > 0)
     .sort((a, b) => b.got.length / b.need.length - a.got.length / a.need.length || b.got.length - a.got.length || a.miss.length - b.miss.length);
@@ -137,18 +144,18 @@ function pintarRes() {
     : 'Añade un par de ingredientes y empezamos a buscar.';
 
   resEl.replaceChildren(
-    ...res.map(({ r, need, got, miss }) => {
+    ...res.map(({ r, v, need, got, miss }) => {
       const a = document.createElement('a');
       const completa = miss.length === 0;
       a.className = 'tarjeta-n' + (completa ? ' completa' : '');
-      a.href = r.u;
+      a.href = r.u + (r.v.length > 1 && v.id !== r.def ? '?v=' + v.id : '');
       const cab = document.createElement('div');
       cab.className = 'tarjeta-n-cab';
       const txt = document.createElement('div');
       txt.style.cssText = 'flex:1;min-width:0';
       txt.innerHTML = '<div class="tarjeta-n-t"></div><div class="tarjeta-n-m"></div>';
       txt.firstChild.textContent = r.t;
-      txt.lastChild.textContent = cats[r.c[0]].n + ' · ' + r.tl;
+      txt.lastChild.textContent = cats[r.c[0]].n + ' · ' + (r.v.length > 1 ? v.n.toLowerCase() + ' · ' + v.tl : r.tl);
       cab.append(miniatura(r), txt);
       const pie = document.createElement('div');
       pie.style.cssText = 'display:flex;flex-direction:column;gap:8px';

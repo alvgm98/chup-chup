@@ -22,7 +22,7 @@ ingredientes:
 ## Preparación
 
 1. Ralla el [pepino] con piel, sálalo con una pizca de [sal] y escúrrelo apretando con las manos. ⏲ 10 min
-2. Mézclalo con el [yogur griego], el [ajo] machacado, el [zumo de limón|limón] el [eneldo] y la [pimienta]. Rectifica de sal.
+2. Mézclalo con el [yogur griego], el [ajo] machacado, el [zumo de limón|limón], el [eneldo] y la [pimienta]. Rectifica de sal.
 3. Riégalo con el [aceite] al servir.
 
 ## Notas

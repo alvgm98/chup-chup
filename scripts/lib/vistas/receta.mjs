@@ -68,7 +68,7 @@ function cuerpoVariante(r, v) {
             <span class="paso-n" aria-hidden="true">${n + 1}</span>
             <div class="paso-c">
               <p>${raw(p.html)}</p>
-              ${p.tips.map((tp) => html`<div class="paso-tip"><span class="etiqueta" style="color:${tp.familia === 'ink' ? 'var(--ink2)' : `var(--${tp.familia}-ink)`}">${tp.etiqueta}</span><p>${raw(tp.html)}</p></div>`)}
+              ${p.tips.map((tp) => html`<p class="paso-tip"><span class="tip-e" style="color:${tp.familia === 'ink' ? 'var(--ink2)' : `var(--${tp.familia}-ink)`}">${tp.etiqueta}.</span> ${raw(tp.html)}</p>`)}
               ${p.timer ? html`<button type="button" class="chip chip-timer" data-timer="${p.timer}" data-paso="${n + 1}">
                 ${icono('temporizador', { size: 18, sw: 1.7 })}<span data-timer-txt>Temporizador · ${fmtSegundos(p.timer)}</span></button>` : ''}
             </div>

@@ -90,15 +90,13 @@ function pintarPaso(animar) {
   }
   $('[data-tips]').replaceChildren(
     ...(p.tips || []).map((tp) => {
-      const d = document.createElement('div');
+      const d = document.createElement('p');
       d.className = 'paso-tip';
       const e = document.createElement('span');
-      e.className = 'etiqueta';
+      e.className = 'tip-e';
       e.style.color = tp.f === 'ink' ? 'var(--ink2)' : `var(--${tp.f}-ink)`;
-      e.textContent = tp.e;
-      const t = document.createElement('p');
-      t.textContent = tp.t;
-      d.append(e, t);
+      e.textContent = tp.e + '.';
+      d.append(e, ' ' + tp.t);
       return d;
     })
   );

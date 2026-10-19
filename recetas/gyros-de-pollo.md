@@ -47,7 +47,7 @@ ingredientes:
 2. {horno} Lamina el [pollo] lo más fino posible, embadúrnalo con el marinado y déjalo en la nevera, mejor toda la noche. ⏲ 2 h
 3. {airfryer} Embadurna los [contramuslos|pollo] enteros con las especias del marinado.
 4. Ralla el [pepino|pepino (tzatziki)] con piel, sálalo y escúrrelo apretando con las manos. ⏲ 10 min
-   > **Atajo:** Para simplificar, sáltate el tzatziki casero: mete pepino en rodajas en la pita.
+   > **Atajo:** Para simplificar el tzatziki, sáltate rallar el pepino y mete pepino en rodajas en la pita.
 5. Mézclalo con el [yogur griego], el [ajo|ajo (tzatziki)] machacado, el [zumo de limón|limón (tzatziki)], el [eneldo], el [aceite|aceite de oliva (tzatziki)], [sal|sal (tzatziki)] y [pimienta|pimienta negra (tzatziki)]. Guárdalo en la nevera.
 6. Corta el [tomate] en dados, la [cebolla roja] en juliana fina, la [lechuga] en tiras y el [pepino] en bastones. Desmenuza el [feta|queso feta].
 7. {horno} Monta el trompo en los pinchos intercalando capas de pollo y [panceta], bien apretadas.

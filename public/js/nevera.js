@@ -198,6 +198,8 @@ function pintarRes() {
 
 function pintar() {
   pintarTags();
+  $('[data-vaciar]').hidden = !estado.tengo.length;
+  input.placeholder = estado.tengo.length ? 'Añade más…' : 'Añade un ingrediente…';
   pintarSug();
   pintarRes();
 }

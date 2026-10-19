@@ -347,14 +347,14 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .etiquetas { display: contents; }
 .etiqueta-ing { display: inline-flex; align-items: center; height: 44px; padding-left: 14px; border-radius: 10px; background: var(--oli-soft); color: var(--ink); font-size: 16px; font-weight: 600; animation: entra .18s ease-out; }
 .etiqueta-ing button { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 44px; border: 0; padding: 0; background: transparent; color: var(--ink2); border-radius: 10px; }
-.etiquetas-caja input { flex: 1 1 140px; min-width: 120px; height: 44px; border: 0; background: transparent; padding: 0 6px; font-size: 17px; outline: none; }
+.etiquetas-caja input { flex: 1 1 100px; min-width: 90px; height: 44px; border: 0; background: transparent; padding: 0 6px; font-size: 17px; outline: none; }
 .etiquetas-caja input::placeholder { color: var(--ink2); opacity: 1; }
 .sugerencias { position: absolute; z-index: 6; left: 0; right: 0; margin-top: 6px; padding: 6px; background: var(--raised); border: 1px solid var(--line-strong); border-radius: 12px; box-shadow: var(--sombra); }
 .sugerencias button { display: flex; align-items: center; gap: 12px; width: 100%; min-height: 48px; padding: 0 12px; border: 0; border-radius: 8px; background: transparent; font-size: 17px; text-align: left; color: var(--ink); }
 .sugerencias button .ico { color: var(--acc); }
 .sugerencias [aria-selected="true"] button, .sugerencias button:hover { background: var(--sunk); }
 .sugerencias strong { font-weight: 700; }
-.nevera-opciones { display: flex; align-items: center; justify-content: flex-end; gap: 12px; margin-top: 12px; }
+.etiquetas-caja .vaciar { flex: none; margin-left: auto; height: 44px; padding: 0 8px; border: 0; background: transparent; color: var(--ink2); font-size: 14px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
 .nevera-res { padding-top: 28px; display: flex; flex-direction: column; gap: 14px; }
 .nevera-vacio { margin-top: 8px; font-family: var(--serif); font-style: italic; font-size: 20px; color: var(--ink2); }
 .nevera-lista { display: flex; flex-direction: column; gap: 14px; }

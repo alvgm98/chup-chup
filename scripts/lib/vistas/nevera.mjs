@@ -52,11 +52,9 @@ export function vistaNevera(ctx, recetas) {
         <ul class="etiquetas" data-tags aria-label="Ingredientes que tienes"></ul>
         <input type="text" data-input aria-label="Añadir ingrediente" placeholder="Añade un ingrediente…" autocomplete="off" enterkeyhint="done"
           role="combobox" aria-expanded="false" aria-controls="sugerencias" aria-autocomplete="list">
+        <button type="button" class="vaciar" data-vaciar hidden>Vaciar</button>
       </div>
       <ul class="sugerencias" id="sugerencias" role="listbox" aria-label="Sugerencias" data-sug hidden></ul>
-      <div class="nevera-opciones">
-        <button type="button" class="btn-enlace" data-vaciar>Vaciar</button>
-      </div>
     </section>
     <section class="nevera-res" aria-live="polite">
       <div class="cab-seccion cab-seccion-s">

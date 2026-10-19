@@ -9,12 +9,12 @@ dificultad: facil
 fecha: 2026-10-19
 etiquetas: [cuchara, olla]
 ingredientes:
-  - { id: salchichas, nombre: salchicha blanca fresca, plural: salchichas blancas frescas, cantidad: 8 }
-  - { id: patatas, nombre: patatas, cantidad: 800, unidad: g }
-  - { id: cebolla, nombre: cebolla, plural: cebollas, cantidad: 2 }
+  - { id: salchichas, nombre: salchichas blancas frescas, cantidad: 650, unidad: g }
+  - { id: patatas, nombre: patatas, cantidad: 700, unidad: g }
+  - { id: cebolla, nombre: cebolla, cantidad: 300, unidad: g }
   - { id: ajo, nombre: diente de ajo, plural: dientes de ajo, cantidad: 2 }
-  - { id: vino blanco, nombre: vino blanco, cantidad: 100, unidad: ml }
-  - { id: caldo de pollo, nombre: caldo de pollo, cantidad: 600, unidad: ml, nota: o hasta cubrir }
+  - { id: vino blanco, nombre: vino blanco, cantidad: 200, unidad: ml }
+  - { id: caldo de pollo, nombre: caldo de pollo, cantidad: 500, unidad: ml, nota: o hasta cubrir }
   - { id: pimentón, nombre: pimentón dulce, cantidad: 1, unidad: cdta }
   - { id: laurel, nombre: hoja de laurel, plural: hojas de laurel, cantidad: 1 }
   - { id: aceite de oliva, nombre: aceite de oliva virgen extra, cantidad: 2, unidad: cda }
@@ -28,7 +28,7 @@ ingredientes:
 1. Dora las [salchichas] con el [aceite] en una olla a fuego medio y sácalas. ⏲ 5 min
 2. En la misma grasa, pocha la [cebolla] en juliana con una pizca de [sal] hasta que esté dorada. ⏲ 15 min
 3. Añade el [ajo] laminado, el [laurel] y el [pimentón], y remueve unos segundos sin que se queme.
-4. Sube el fuego, vierte el [vino blanco] y deja que reduzca a la mitad. ⏲ 3 min
+4. Sube el fuego, vierte el [vino blanco] y deja que reduzca a la mitad. ⏲ 5 min
 5. Vuelve a poner las salchichas, añade las [patatas] chascadas y cubre con el [caldo de pollo]. Salpimienta con [pimienta] y sal.
 6. Cuece tapado a fuego suave. ⏲ 20 min
 7. Destapa y deja a fuego suave hasta que la salsa espese. Rectifica de sal y termina con el [perejil]. ⏲ 10 min

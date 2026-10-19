@@ -44,7 +44,7 @@ ingredientes:
 
 1. Mezcla el [yogur|yogur griego (marinado)], el [zumo de limón|limón], el [aceite|aceite de oliva], el [ajo] picado, el [orégano], el [tomillo], el [pimentón], el [comino], la [canela], [sal] y pimienta.
 2. {horno} Lamina el [pollo] lo más fino posible, embadúrnalo con el marinado y déjalo en la nevera, mejor toda la noche. ⏲ 2 h
-3. {airfryer} Embadurna los [contramuslos|pollo] enteros y deja marinar en la nevera. ⏲ 30 min
+3. {airfryer} Embadurna los [contramuslos|pollo] enteros con las especias del marinado.
 4. Ralla el [pepino|pepino (tzatziki)] con piel, sálalo y escúrrelo apretando con las manos. ⏲ 10 min
 5. Mézclalo con el [yogur griego], el [ajo|ajo (tzatziki)] machacado, el [zumo de limón|limón (tzatziki)], el [eneldo], el [aceite|aceite de oliva (tzatziki)] y [sal|sal (tzatziki)]. Guárdalo en la nevera.
 6. Corta el [tomate] en dados, la [cebolla roja] en juliana fina, la [lechuga] en tiras y el [pepino] en bastones. Desmenuza el [feta|queso feta].
@@ -61,4 +61,5 @@ ingredientes:
 
 - {horno} **Consejo:** Aprieta bien las capas al montar el trompo: así se corta en láminas sin desmoronarse.
 - {airfryer} **Consejo:** No amontones los contramuslos en la cesta; si no caben, hazlos en dos tandas.
+- **Atajo:** Para simplificar el tzatziki, sáltate rallar el pepino y mete pepino en rodajas en la pita.
 - **Se conserva:** El tzatziki aguanta tres días en la nevera y mejora de un día para otro.

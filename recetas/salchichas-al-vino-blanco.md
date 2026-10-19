@@ -1,5 +1,5 @@
 ---
-titulo: Salchichas guisadas con patatas
+titulo: Salchichas al vino blanco
 descripcion: Guiso de cuchara de toda la vida: salchichas doradas, cebolla pochada y patata chascada en una salsa que liga sola.
 tipo: [guisos, carne]
 preparacion: 10

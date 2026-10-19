@@ -32,6 +32,7 @@ ingredientes:
   - { id: eneldo, nombre: eneldo fresco picado, cantidad: 2, unidad: cda, grupo: Para el tzatziki }
   - { id: aceite de oliva (tzatziki), nombre: aceite de oliva, cantidad: 1, unidad: cda, grupo: Para el tzatziki }
   - { id: sal (tzatziki), nombre: Sal, nota: al gusto, grupo: Para el tzatziki }
+  - { id: pimienta negra (tzatziki), nombre: pimienta negra recién molida, unidad: pizca, cantidad: 1, grupo: Para el tzatziki }
   - { id: pan de pita, nombre: pan de pita grande, plural: panes de pita grandes, cantidad: 4, grupo: Para montar }
   - { id: tomate, nombre: tomate maduro, plural: tomates maduros, cantidad: 2, grupo: Para montar }
   - { id: cebolla roja, nombre: cebolla roja, plural: cebollas rojas, cantidad: 1, grupo: Para montar }
@@ -46,7 +47,7 @@ ingredientes:
 2. {horno} Lamina el [pollo] lo más fino posible, embadúrnalo con el marinado y déjalo en la nevera, mejor toda la noche. ⏲ 2 h
 3. {airfryer} Embadurna los [contramuslos|pollo] enteros con las especias del marinado.
 4. Ralla el [pepino|pepino (tzatziki)] con piel, sálalo y escúrrelo apretando con las manos. ⏲ 10 min
-5. Mézclalo con el [yogur griego], el [ajo|ajo (tzatziki)] machacado, el [zumo de limón|limón (tzatziki)], el [eneldo], el [aceite|aceite de oliva (tzatziki)] y [sal|sal (tzatziki)]. Guárdalo en la nevera.
+5. Mézclalo con el [yogur griego], el [ajo|ajo (tzatziki)] machacado, el [zumo de limón|limón (tzatziki)], el [eneldo], el [aceite|aceite de oliva (tzatziki)], [sal|sal (tzatziki)] y [pimienta|pimienta negra (tzatziki)]. Guárdalo en la nevera.
 6. Corta el [tomate] en dados, la [cebolla roja] en juliana fina, la [lechuga] en tiras y el [pepino] en bastones. Desmenuza el [feta|queso feta].
 7. {horno} Monta el trompo en los pinchos intercalando capas de pollo y [panceta], bien apretadas.
 8. {horno} Hornea a 180 °C con calor arriba y abajo. ⏲ 35 min

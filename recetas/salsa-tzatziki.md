@@ -16,12 +16,13 @@ ingredientes:
   - { id: eneldo, nombre: eneldo fresco picado, cantidad: 2, unidad: cda }
   - { id: aceite de oliva, nombre: aceite de oliva virgen extra, cantidad: 1, unidad: cda }
   - { id: sal, nombre: Sal, nota: al gusto }
+  - { id: pimienta negra, nombre: pimienta negra recién molida, unidad: pizca, cantidad: 1 }
 ---
 
 ## Preparación
 
 1. Ralla el [pepino] con piel, sálalo con una pizca de [sal] y escúrrelo apretando con las manos. ⏲ 10 min
-2. Mézclalo con el [yogur griego], el [ajo] machacado, el [zumo de limón|limón] y el [eneldo]. Rectifica de sal.
+2. Mézclalo con el [yogur griego], el [ajo] machacado, el [zumo de limón|limón] el [eneldo] y la [pimienta]. Rectifica de sal.
 3. Riégalo con el [aceite] al servir.
 
 ## Notas

@@ -17,7 +17,7 @@ const UNIDADES_PLURAL = {
   cabeza: 'cabezas', manojo: 'manojos', bote: 'botes', tarro: 'tarros', pellizco: 'pellizcos'
 };
 
-const NOTAS = { consejo: 'acc', variante: 'oli', 'se conserva': 'saf', truco: 'acc', 'para servir': 'oli' };
+const NOTAS = { consejo: 'acc', variante: 'oli', 'se conserva': 'saf', truco: 'acc', 'para servir': 'oli', atajo: 'oli' };
 
 function parseCantidad(v, ctx) {
   if (v == null || v === '') return null;
@@ -150,6 +150,25 @@ function buscarVariante(texto, variantes) {
   const t = norm(texto);
   return variantes.find((v) => norm(v.id) === t || norm(v.nombre) === t)?.id || null;
 }
+
+/** Pasos numerados; las líneas "> **Atajo:** …" bajo un paso son consejos de ese paso */
+function listaPasos(lineas, file) {
+  const items = [];
+  for (const l of lineas) {
+    const m = l.match(/^\d+[.)]\s+(.*)$/);
+    const tip = l.match(/^\s*>\s*(.*)$/);
+    if (m) items.push({ t: m[1].trim(), tips: [] });
+    else if (tip && items.length) items[items.length - 1].tips.push(tip[1].trim());
+    else if (/^\s+\S/.test(l) && items.length) {
+      const it = items[items.length - 1];
+      if (it.tips.length) it.tips[it.tips.length - 1] += ' ' + l.trim();
+      else it.t += ' ' + l.trim();
+    } else throw new RecetaError(`${file}: en "Preparación" cada línea debe empezar por "1. ", "2. "… (o "> " para un consejo del paso): «${l.trim()}»`);
+  }
+  return items;
+}
+
+const quitarMarcas = (t) => t.replace(/\*\*(.+?)\*\*/g, '$1').replace(/\*([^*]+)\*/g, '$1');
 
 function lista(lineas, re, nombre, file) {
   const items = [];
@@ -286,12 +305,22 @@ export function cargarReceta(file, src, dirFotos) {
     // Pasos: los de su sección propia, o los comunes que le apliquen
     const propia = secciones.filter((s) => s.base === 'preparacion' && s.variante === d.id && d.id);
     const fuente = propia.length ? propia : secciones.filter((s) => s.base === 'preparacion' && !s.variante);
-    const textos = fuente.flatMap((s) => lista(s.lineas, /^\d+[.)]\s+(.*)$/, 'Preparación', file));
+    const textos = fuente.flatMap((s) => listaPasos(s.lineas, file));
     const pasos = [];
-    textos.forEach((t, n) => {
-      const { texto, solo } = leerTag(t, defs.length > 1 ? defs : [], `${file}, paso ${n + 1}`);
+    textos.forEach(({ t, tips }, n) => {
+      const vs = defs.length > 1 ? defs : [];
+      const { texto, solo } = leerTag(t, vs, `${file}, paso ${n + 1}`);
       if (solo && !solo.includes(d.id)) return;
-      pasos.push(parsePaso(texto, ingredientes, `${file}${etiqueta}, paso ${pasos.length + 1}`));
+      const paso = parsePaso(texto, ingredientes, `${file}${etiqueta}, paso ${pasos.length + 1}`);
+      paso.tips = tips
+        .map((tp) => leerTag(tp, vs, `${file}, consejo del paso ${n + 1}`))
+        .filter((x) => !x.solo || x.solo.includes(d.id))
+        .map(({ texto: tt }) => {
+          const nt = parseNota(tt);
+          const m = tt.match(/^\*\*(.+?):?\*\*:?\s*(.*)$/);
+          return { ...nt, texto: quitarMarcas(m ? m[2] : tt) };
+        });
+      pasos.push(paso);
     });
     req(pasos.length, `${file}${etiqueta}: falta "## Preparación" con al menos un paso`);
     // Notas: comunes que le apliquen + las de su sección

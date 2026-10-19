@@ -14,7 +14,7 @@ export function vistaCocina(ctx, r) {
           nombre: v.nombre,
           raciones: v.raciones,
           ings: ingsCliente(v),
-          pasos: v.pasos.map((p) => ({ parts: p.parts, uses: p.uses, timer: p.timer }))
+          pasos: v.pasos.map((p) => ({ parts: p.parts, uses: p.uses, timer: p.timer, tips: p.tips.map((t) => ({ e: t.etiqueta, f: t.familia, t: t.texto })) }))
         }
       ])
     )
@@ -32,6 +32,7 @@ export function vistaCocina(ctx, r) {
     <main class="cocina-main">
       <div class="cocina-otros" data-otros></div>
       <div class="cocina-texto" aria-live="polite" data-texto></div>
+      <div class="cocina-tips" data-tips></div>
       <div class="cocina-usos" data-usos hidden>
         <div class="etiqueta">En este paso</div>
         <div class="cocina-usos-l" data-usos-l></div>

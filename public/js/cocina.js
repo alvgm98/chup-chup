@@ -88,6 +88,20 @@ function pintarPaso(animar) {
     void el.texto.offsetWidth;
     el.texto.classList.add('entra');
   }
+  $('[data-tips]').replaceChildren(
+    ...(p.tips || []).map((tp) => {
+      const d = document.createElement('div');
+      d.className = 'paso-tip';
+      const e = document.createElement('span');
+      e.className = 'etiqueta';
+      e.style.color = tp.f === 'ink' ? 'var(--ink2)' : `var(--${tp.f}-ink)`;
+      e.textContent = tp.e;
+      const t = document.createElement('p');
+      t.textContent = tp.t;
+      d.append(e, t);
+      return d;
+    })
+  );
   el.usos.hidden = p.uses.length === 0;
   el.usosL.replaceChildren(
     ...p.uses.map((u) => {

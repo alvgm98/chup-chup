@@ -73,6 +73,8 @@ ingredientes:
 - `⏲ 10 min` al **final** de un paso añade un temporizador (`⏲ 1 h 30 min`, `⏲ 45 s`). Solo uno por paso,
   y solo cuando haya que esperar (cocer, reposar, hornear).
 - Admite `**negrita**` y `*cursiva*`.
+- **Consejo dentro de un paso:** una línea `> **Atajo:** …` (o **Consejo**, **Truco**…) justo debajo del paso, indentada.
+  Se ve dentro de ese paso en la receta y en el modo cocina. Úsalo para lo que solo importa en ese momento; lo general va en `## Notas`.
 
 ### Notas
 Lista bajo `## Notas` con etiqueta en negrita: **Consejo**, **Variante**, **Se conserva**, **Para servir**, **Truco** (otras etiquetas también valen).

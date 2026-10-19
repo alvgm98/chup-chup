@@ -316,6 +316,11 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .paso-n { flex: none; width: 30px; font-family: var(--serif); font-size: 32px; line-height: 1; color: var(--acc); font-variant-numeric: tabular-nums; }
 .paso-c { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; min-width: 0; }
 .paso p { font-size: 17px; line-height: 1.6; }
+.paso-tip { display: flex; flex-direction: column; gap: 4px; padding: 10px 14px; border-radius: 10px; background: var(--sunk); border-left: 3px solid var(--oli); max-width: 620px; }
+.paso-tip p { font-family: var(--serif); font-style: italic; font-size: 16px; line-height: 1.45; }
+.cocina-tips:empty { display: none; }
+.cocina-tips { display: flex; flex-direction: column; gap: 8px; }
+.cocina-tips .paso-tip p { font-size: 18px; }
 .mencion { font-weight: 700; text-decoration: underline; text-decoration-color: var(--acc); text-decoration-thickness: 2px; text-underline-offset: 4px; }
 .chip-timer { border-color: var(--line-strong); font-variant-numeric: tabular-nums; }
 .chip-timer[data-estado="marcha"] { background: var(--acc-soft); border-color: var(--acc); }

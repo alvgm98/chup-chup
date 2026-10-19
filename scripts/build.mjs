@@ -94,8 +94,8 @@ function main() {
         start_url: base,
         scope: base,
         display: 'standalone',
-        background_color: '#F5EFE4',
-        theme_color: '#F5EFE4',
+        background_color: '#1C1916',
+        theme_color: '#1C1916',
         icons: [
           { src: base + 'iconos/icon-192.png?v=2', sizes: '192x192', type: 'image/png' },
           { src: base + 'iconos/icon-512.png?v=2', sizes: '512x512', type: 'image/png' },

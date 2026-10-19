@@ -31,7 +31,7 @@ export function vistaInicio(ctx, recetas) {
       <section class="bloque ultimas" aria-labelledby="ultimas">
         <div class="cab-seccion">
           <h2 id="ultimas">Últimas recetas</h2>
-          <a class="enlace-fuerte" href="${ctx.u('recetas/')}">Ver las ${recetas.length}<span class="solo-escritorio">&nbsp;recetas →</span></a>
+          <a class="enlace-fuerte" href="${ctx.u('recetas/')}">Ver todas<span class="solo-escritorio">&nbsp;→</span></a>
         </div>
         ${recetas.length
           ? ultimas.map((r) => filaReceta(ctx, r, { modo: 'ultimas' }))

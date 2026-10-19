@@ -184,11 +184,14 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .cat-cab .motivo { position: relative; width: 72px; height: 72px; stroke-width: 1.4; }
 .filtros { padding-top: 16px; }
 .filtros-movil { display: flex; align-items: center; gap: 8px; }
-.filtros-orden { margin-left: auto; font-size: 14px; color: var(--ink2); }
+.filtros-movil { flex-wrap: wrap; }
+.dd-orden { margin-left: auto; }
+.chip-ico { width: 44px; padding: 0; justify-content: center; }
+.dd-orden .dd-panel { left: auto; right: 0; }
 .dd { position: relative; }
 .dd summary { list-style: none; cursor: pointer; }
 .dd summary::-webkit-details-marker { display: none; }
-.dd[data-activo] summary { background: var(--ink); color: var(--bg); border-color: var(--ink); font-weight: 600; }
+.dd-orden[data-activo] .chip-ico, .dd[data-activo]:not(.dd-orden) summary { background: var(--ink); color: var(--bg); border-color: var(--ink); font-weight: 600; }
 .dd-panel { position: absolute; z-index: 5; top: calc(100% + 6px); left: 0; min-width: 190px; padding: 6px; background: var(--raised); border: 1px solid var(--line-strong); border-radius: 12px; box-shadow: var(--sombra); display: flex; flex-direction: column; }
 .dd-panel button { display: flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 12px; border: 0; border-radius: 8px; background: transparent; text-align: left; font-size: 16px; }
 .dd-panel button:hover { background: var(--sunk); }

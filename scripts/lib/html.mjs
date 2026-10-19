@@ -46,6 +46,7 @@ const P = {
   menos: '<path d="M5 12h14"></path>',
   mas: '<path d="M12 5v14M5 12h14"></path>',
   flecha: '<path d="M5 12h14M13 6l6 6-6 6"></path>',
+  orden: '<path d="M7 4v16M3.5 16.5L7 20l3.5-3.5M14 6h7M14 12h5M14 18h3"></path>',
   compartir: '<path d="M12 3v12M7 8l5-5 5 5"></path><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"></path>'
 };
 

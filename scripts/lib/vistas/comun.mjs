@@ -35,7 +35,9 @@ export function filaReceta(ctx, r, { modo = 'ultimas', actual = null } = {}) {
   const cats = r.tipo.map((t) => CAT[t].nombre);
   const otras = r.tipo.filter((t) => t !== actual).map((t) => CAT[t].nombre);
   return html`<a class="fila fila-${modo}" href="${ctx.u('receta/' + r.slug + '/')}"
-      data-tiempo="${r.variantes.map((v) => v.total).join(',')}" data-dificultad="${[...new Set(r.variantes.map((v) => v.dificultad))].join(',')}">
+      data-tiempo="${r.variantes.map((v) => v.total).join(',')}" data-dificultad="${[...new Set(r.variantes.map((v) => v.dificultad))].join(',')}"
+      data-orden-fecha="${r.fecha}" data-orden-titulo="${r.titulo}" data-orden-tiempo="${r.totalMin}"
+      data-orden-dif="${Math.min(...r.variantes.map((v) => ({ facil: 1, media: 2, dificil: 3 })[v.dificultad]))}">
     ${modo === 'ultimas' ? html`<span class="fila-fecha" data-fecha="${r.fecha}">${fmtFecha(r.fecha)}</span>` : ''}
     ${miniatura(ctx, r)}
     <span class="fila-txt">

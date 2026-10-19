@@ -20,6 +20,22 @@ function segmentado(nombre, etiqueta, opciones) {
   </div>`;
 }
 
+const ORDENES = [
+  ['recientes', 'Más recientes', 'Recientes'], ['antiguas', 'Más antiguas', 'Antiguas'], ['az', 'Alfabético (A–Z)', 'A–Z'],
+  ['rapidas', 'Más rápidas', 'Rápidas'], ['faciles', 'Más fáciles', 'Fáciles']
+];
+
+function ordenar(corta = false) {
+  return html`<details class="dd dd-orden" data-dd-orden>
+    ${corta
+      ? html`<summary class="chip chip-borde chip-ico" aria-label="Ordenar">${icono('orden', { size: 20 })}</summary>`
+      : html`<summary class="chip chip-borde">${icono('orden', { size: 18 })}<span data-orden-label>Más recientes</span>${icono('abajo', { size: 16 })}</summary>`}
+    <div class="dd-panel" role="group" aria-label="Ordenar">
+      ${ORDENES.map(([v, l, c], i) => html`<button type="button" data-orden="${v}" data-etiqueta="${l}" data-corta="${c}" aria-pressed="${i === 0 ? 'true' : 'false'}">${icono('check', { size: 16, sw: 2, cls: 'dd-check' })}${l}</button>`)}
+    </div>
+  </details>`;
+}
+
 function desplegable(nombre, etiqueta, opciones, ico) {
   return html`<details class="dd" data-dd="${nombre}">
     <summary class="chip chip-borde">${ico ? icono(ico, { size: 18 }) : ''}<span data-dd-label>${etiqueta}</span>${icono('abajo', { size: 16 })}</summary>
@@ -62,12 +78,12 @@ export function vistaCategoria(ctx, recetas, slug) {
           <div class="filtros-movil solo-movil">
             ${desplegable('tiempo', 'Tiempo', TIEMPOS, 'reloj')}
             ${desplegable('dificultad', 'Dificultad', DIFICULTADES)}
-            <span class="filtros-orden">Más recientes</span>
+            ${ordenar(true)}
           </div>
           <div class="filtros-escritorio solo-escritorio">
             ${segmentado('tiempo', 'Tiempo', TIEMPOS)}
             ${segmentado('dificultad', 'Dificultad', DIFICULTADES)}
-            <span class="filtros-orden">Más recientes primero</span>
+            ${ordenar()}
           </div>
         </div>
         <section class="lista-cat" aria-label="Recetas">

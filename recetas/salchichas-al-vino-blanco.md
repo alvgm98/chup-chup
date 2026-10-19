@@ -11,7 +11,7 @@ etiquetas: [cuchara, olla]
 ingredientes:
   - { id: salchichas, nombre: salchichas blancas frescas, cantidad: 650, unidad: g }
   - { id: patatas, nombre: patatas, cantidad: 700, unidad: g }
-  - { id: cebolla, nombre: cebolla, cantidad: 300, unidad: g }
+  - { id: cebolla, nombre: cebolla mediana, plural: cebollas medianas, cantidad: 2 }
   - { id: ajo, nombre: diente de ajo, plural: dientes de ajo, cantidad: 2 }
   - { id: vino blanco, nombre: vino blanco, cantidad: 200, unidad: ml }
   - { id: caldo de pollo, nombre: caldo de pollo, cantidad: 500, unidad: ml, nota: o hasta cubrir }

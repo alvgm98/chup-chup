@@ -25,7 +25,7 @@ ingredientes:
   - { id: comino, nombre: comino molido, unidad: pizca, cantidad: 1, grupo: Para el marinado }
   - { id: canela, nombre: canela molida, unidad: pizca, cantidad: 1, grupo: Para el marinado }
   - { id: sal, nombre: Sal y pimienta negra, nota: al gusto, grupo: Para el marinado }
-  - { id: pepino (tzatziki), nombre: pepino grande, plural: pepinos grandes, cantidad: 1, grupo: Para el tzatziki }
+  - { id: pepino (tzatziki), nombre: pepino holandés, plural: pepinos holandeses, cantidad: 1, grupo: Para el tzatziki }
   - { id: yogur griego, nombre: yogur griego natural, cantidad: 250, unidad: g, grupo: Para el tzatziki }
   - { id: ajo (tzatziki), nombre: diente de ajo, plural: dientes de ajo, cantidad: 1, grupo: Para el tzatziki }
   - { id: limón (tzatziki), nombre: zumo de limón, cantidad: 1, unidad: cda, grupo: Para el tzatziki }

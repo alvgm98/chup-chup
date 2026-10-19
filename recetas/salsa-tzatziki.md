@@ -9,7 +9,7 @@ dificultad: facil
 fecha: 2026-10-19
 etiquetas: [griego, sin fuego, vegetariano]
 ingredientes:
-  - { id: pepino, nombre: pepino grande, plural: pepinos grandes, cantidad: 1 }
+  - { id: pepino, nombre: pepino holandés, plural: pepinos holandeses, cantidad: 1 }
   - { id: yogur griego, nombre: yogur griego natural, cantidad: 250, unidad: g }
   - { id: ajo, nombre: diente de ajo, plural: dientes de ajo, cantidad: 1 }
   - { id: limón, nombre: zumo de limón, cantidad: 1, unidad: cda }

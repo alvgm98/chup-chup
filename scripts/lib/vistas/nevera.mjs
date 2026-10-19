@@ -55,10 +55,6 @@ export function vistaNevera(ctx, recetas) {
       </div>
       <ul class="sugerencias" id="sugerencias" role="listbox" aria-label="Sugerencias" data-sug hidden></ul>
       <div class="nevera-opciones">
-        <button type="button" class="interruptor" aria-pressed="true" data-basicos>
-          <span class="interruptor-pista" aria-hidden="true"><span></span></span>
-          Doy por hecho sal, aceite y agua
-        </button>
         <button type="button" class="btn-enlace" data-vaciar>Vaciar</button>
       </div>
     </section>

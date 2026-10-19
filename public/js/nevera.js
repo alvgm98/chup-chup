@@ -8,7 +8,7 @@ const input = $('[data-input]');
 const tagsEl = $('[data-tags]');
 const sugEl = $('[data-sug]');
 const resEl = $('[data-res]');
-const btnBasicos = $('[data-basicos]');
+// Sal, aceite y agua se dan por hechos: no cuentan ni se sugieren
 const BASICOS = new Set(['sal', 'aceite de oliva', 'agua'].map(clave));
 
 // Todos los ingredientes conocidos (forma en que aparecen en las recetas)
@@ -16,8 +16,8 @@ const pool = new Map();
 for (const r of recetas) for (const v of r.v) for (const id of [...v.i, ...v.io].flatMap((x) => x.split('|'))) if (!pool.has(clave(id))) pool.set(clave(id), id);
 const poolLista = [...pool.values()].sort((a, b) => a.localeCompare(b, 'es'));
 
-let estado = { tengo: [], basicos: true };
-try { estado = { ...estado, ...JSON.parse(localStorage.getItem('nevera')) }; } catch {}
+let estado = { tengo: [] };
+try { estado = { tengo: JSON.parse(localStorage.getItem('nevera'))?.tengo || [] }; } catch {}
 const desdeURL = new URLSearchParams(location.search).get('i');
 if (desdeURL) {
   for (const x of desdeURL.split(',').map((s) => s.trim()).filter(Boolean)) añadir(x, false);
@@ -66,7 +66,7 @@ function pintarSug() {
   const tengo = new Set(estado.tengo.map(clave));
   sugActual = q
     ? poolLista
-        .filter((p) => !tengo.has(clave(p)) && !(estado.basicos && BASICOS.has(clave(p))) && norm(p).includes(q))
+        .filter((p) => !tengo.has(clave(p)) && !BASICOS.has(clave(p)) && norm(p).includes(q))
         .sort((a, b) => norm(a).indexOf(q) - norm(b).indexOf(q) || a.length - b.length)
         .slice(0, 5)
     : [];
@@ -126,7 +126,7 @@ function pintarRes() {
       for (const v of r.v) {
         const alts = (x) => x.split('|');
         const tiene = (x) => alts(x).some((a) => tengo.has(clave(a)));
-        const need = v.i.filter((x) => !(estado.basicos && alts(x).some((a) => BASICOS.has(clave(a)))));
+        const need = v.i.filter((x) => !alts(x).some((a) => BASICOS.has(clave(a))));
         const got = need.filter(tiene);
         const miss = need.filter((x) => !tiene(x)).map((x) => alts(x).join(' o '));
         const c = { r, v, need, got, miss };
@@ -200,7 +200,6 @@ function pintar() {
   pintarTags();
   pintarSug();
   pintarRes();
-  btnBasicos.setAttribute('aria-pressed', estado.basicos ? 'true' : 'false');
 }
 
 caja.addEventListener('click', (e) => { if (e.target === caja || e.target === tagsEl) input.focus(); });
@@ -228,7 +227,6 @@ input.addEventListener('keydown', (e) => {
 });
 input.addEventListener('blur', () => setTimeout(() => { sugEl.hidden = true; input.setAttribute('aria-expanded', 'false'); }, 120));
 input.addEventListener('focus', pintarSug);
-btnBasicos.addEventListener('click', () => { estado.basicos = !estado.basicos; pintar(); guardar(); });
 $('[data-vaciar]').addEventListener('click', () => { estado.tengo = []; input.value = ''; pintar(); guardar(); input.focus(); });
 
 pintar();

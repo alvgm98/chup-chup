@@ -62,7 +62,7 @@ ingredientes:
 - `cantidad`: número, `1.5`, `1/2` o `½`. Sin cantidad para «al gusto» (usa `nota: al gusto`; «al gusto», «la necesaria», «un puñado»… se muestran en la columna de cantidad).
 - `unidad`: `g`, `kg`, `ml`, `l`, `cda`, `cdta`, `pizca`, `vaso`, `taza`, `lata`… (el plural de las comunes es automático).
 - `nota` (texto tras una coma: «al gusto», «para servir»), `grupo` («Para la salsa»), `opcional: true`.
-- Sal, aceite de oliva y agua usan siempre los ids `sal`, `aceite de oliva` y `agua` (la Nevera puede darlos por hechos).
+- Sal, aceite de oliva y agua usan siempre los ids `sal`, `aceite de oliva` y `agua` (la Nevera los da por hechos y no los cuenta).
 - Si un valor lleva comas, ponlo entre comillas: `nota: "pelado, en dados"`.
 - **Varias opciones para un ingrediente** (vale cualquiera): `opciones: [queso brie, queso reblochon]` junto a `nombre: queso camembert`.
   La receta muestra pastillas para elegir (se recuerda la elección) y la Nevera da por buena cualquiera. No es una variante: los pasos no cambian.

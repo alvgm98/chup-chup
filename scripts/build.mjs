@@ -97,9 +97,9 @@ function main() {
         background_color: '#F5EFE4',
         theme_color: '#F5EFE4',
         icons: [
-          { src: base + 'iconos/icon-192.png', sizes: '192x192', type: 'image/png' },
-          { src: base + 'iconos/icon-512.png', sizes: '512x512', type: 'image/png' },
-          { src: base + 'iconos/icon-maskable-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' }
+          { src: base + 'iconos/icon-192.png?v=2', sizes: '192x192', type: 'image/png' },
+          { src: base + 'iconos/icon-512.png?v=2', sizes: '512x512', type: 'image/png' },
+          { src: base + 'iconos/icon-maskable-512.png?v=2', sizes: '512x512', type: 'image/png', purpose: 'maskable' }
         ],
         shortcuts: [
           { name: '¿Qué tengo en la nevera?', short_name: 'Nevera', url: base + 'nevera/' },

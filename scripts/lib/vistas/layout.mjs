@@ -48,7 +48,7 @@ export function layout(ctx, { titulo, descripcion, seccion, cuerpo, clase = '', 
 <link rel="manifest" href="${ctx.u('manifest.webmanifest')}">
 <link rel="icon" href="${ctx.u('iconos/favicon.svg')}" type="image/svg+xml">
 <link rel="icon" href="${ctx.u('iconos/favicon-32.png')}" type="image/png" sizes="32x32">
-<link rel="apple-touch-icon" href="${ctx.u('iconos/apple-touch-icon.png')}">
+<link rel="apple-touch-icon" href="${ctx.u('iconos/apple-touch-icon.png?v=2')}">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="${ctx.sitio.nombre}">

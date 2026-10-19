@@ -89,6 +89,37 @@ function cuerpoVariante(r, v) {
   </div>`;
 }
 
+function selectorVariantes(r) {
+  const def = r.variantes.find((v) => v.id === r.defecto);
+  const minimo = Math.min(...r.variantes.map((v) => v.total));
+  const rapidas = r.variantes.filter((v) => v.total === minimo);
+  return html`<div class="variantes">
+    <button type="button" class="var-boton" data-var-abrir aria-haspopup="dialog" aria-expanded="false" aria-controls="var-panel">
+      <span class="var-boton-txt"><span class="etiqueta">Variante</span><span class="var-actual" data-var-actual>${def.nombre}</span></span>
+      <span class="var-cuenta">${r.variantes.length} variantes</span>${icono('abajo', { size: 18, sw: 1.8 })}
+    </button>
+    <div class="var-panel" id="var-panel" data-var-panel hidden>
+      <button type="button" class="var-fondo" aria-label="Cerrar" data-var-cerrar></button>
+      <section class="var-hoja" role="dialog" aria-modal="true" aria-labelledby="var-t">
+        <span class="hoja-asa" aria-hidden="true"></span>
+        <div class="var-cab">
+          <h2 id="var-t">Elige variante</h2>
+          <button type="button" class="btn-ico btn-ico-borde" aria-label="Cerrar" data-var-cerrar>${icono('cerrar', { size: 22, sw: 2 })}</button>
+        </div>
+        <ul class="var-lista">
+          ${r.variantes.map((v) => html`<li><button type="button" class="var-op" data-elegir="${v.id}" aria-pressed="${v.id === r.defecto ? 'true' : 'false'}">
+            <span class="var-radio" aria-hidden="true">${icono('check', { size: 14, sw: 2.6 })}</span>
+            <span class="var-op-txt">
+              <span class="var-op-nombre">${v.nombre}${rapidas.length < r.variantes.length && v.total === minimo ? html`<span class="var-rapida">La más rápida</span>` : ''}</span>
+              <span class="var-op-meta">${icono('reloj', { size: 15, sw: 1.7 })}${fmtMinutos(v.total)}<span class="var-sep">·</span>${v.dificultadLabel}${barrasDificultad(v.dificultad)}<span class="var-sep">·</span>${v.raciones} rac.</span>
+            </span>
+          </button></li>`)}
+        </ul>
+      </section>
+    </div>
+  </div>`;
+}
+
 export function vistaReceta(ctx, r) {
   const c = CAT[r.tipo[0]];
   const cats = r.tipo.map((t) => CAT[t].nombre).join(' · ');
@@ -120,11 +151,7 @@ export function vistaReceta(ctx, r) {
         ${conFoto ? '' : html`<span class="hero-motivo-m">${motivo(c.d, { size: 76, sw: 1.4 })}</span>`}
         <h1>${r.titulo}</h1>
       </div>
-      ${r.multi
-        ? html`<div class="variantes" role="group" aria-label="Variantes de la receta">
-            ${r.variantes.map((v) => html`<button type="button" class="variante" data-elegir="${v.id}" aria-pressed="${v.id === r.defecto ? 'true' : 'false'}">${icono('check', { size: 16, sw: 2.2, cls: 'variante-check' })}${v.nombre}</button>`)}
-          </div>`
-        : ''}
+      ${r.multi ? selectorVariantes(r) : ''}
       <p class="hero-desc">${r.descripcion}</p>
       ${r.variantes.map((v) => datosVariante(r, v))}
       <div class="hero-cta">

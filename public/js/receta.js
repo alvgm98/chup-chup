@@ -92,6 +92,8 @@ function elegir(id, { guardar = true } = {}) {
   activa = id;
   $$('[data-v]').forEach((el) => (el.hidden = el.dataset.v !== id));
   $$('[data-elegir]').forEach((b) => b.setAttribute('aria-pressed', b.dataset.elegir === id ? 'true' : 'false'));
+  const actual = $('[data-var-actual]');
+  if (actual) actual.textContent = datos.variantes[id].nombre;
   pintarComun();
   if (multi) {
     if (guardar) { try { localStorage.setItem(claveVariante, id); } catch {} }
@@ -114,4 +116,26 @@ activa = inicial;
 for (const id of ids) variantes[id].pintar();
 elegir(inicial, { guardar: false });
 
-$$('[data-elegir]').forEach((b) => b.addEventListener('click', () => elegir(b.dataset.elegir)));
+// Selector de variantes (hoja en el móvil, desplegable en el ordenador)
+const abrir = $('[data-var-abrir]');
+const panel = $('[data-var-panel]');
+function cerrarPanel(volverFoco = true) {
+  if (!panel || panel.hidden) return;
+  panel.hidden = true;
+  abrir.setAttribute('aria-expanded', 'false');
+  if (volverFoco) abrir.focus();
+}
+if (abrir) {
+  abrir.addEventListener('click', () => {
+    if (!panel.hidden) return cerrarPanel();
+    panel.hidden = false;
+    abrir.setAttribute('aria-expanded', 'true');
+    ($('[data-elegir][aria-pressed="true"]', panel) || $('[data-elegir]', panel)).focus();
+  });
+  $$('[data-var-cerrar]').forEach((b) => b.addEventListener('click', () => cerrarPanel()));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') cerrarPanel(); });
+  document.addEventListener('click', (e) => {
+    if (!panel.hidden && !e.target.closest('.variantes')) cerrarPanel(false);
+  });
+}
+$$('[data-elegir]').forEach((b) => b.addEventListener('click', () => { elegir(b.dataset.elegir); cerrarPanel(); }));

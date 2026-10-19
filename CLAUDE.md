@@ -83,8 +83,8 @@ Opcionales. Guárdalas en `recetas/fotos/` en WebP, máximo 1600 px de ancho y ~
 Sin foto, la receta usa el tinte y el dibujo de su tipo: nunca queda un hueco.
 
 ## Estilo de las recetas
-Español de España, tuteo, frases cortas e imperativas. Descripción evocadora pero breve.
-Tiempos realistas. Cantidades para el número de `raciones` indicado.
+Español de España, tuteo, frases cortas e imperativas. Tiempos realistas. Cantidades para el número de `raciones` indicado.
+**Antes de escribir o editar una receta, lee y sigue [`REDACCION.md`](REDACCION.md)**: «lo bueno, si breve, dos veces bueno», nada obvio.
 
 ## Estructura del proyecto
 - `recetas/` contenido · `public/` CSS, JS del navegador e iconos · `scripts/` generador · `design/` diseño original (Claude Design)

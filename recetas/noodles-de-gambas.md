@@ -1,6 +1,6 @@
 ---
 titulo: Noodles de gambas
-descripcion: Noodles de arroz salteados al wok con gambas, verduras crujientes y una salsa de cacahuete picantita que termina de ligar la yema curada.
+descripcion: Noodles de arroz al wok con gambas, verduras crujientes y salsa de cacahuete picante. La yema curada lo liga todo.
 tipo: [pasta, pescado]
 preparacion: 25
 coccion: 10
@@ -39,19 +39,18 @@ ingredientes:
 
 ## Preparación
 
-1. Cura las yemas con antelación: mezcla la [salsa de soja|salsa de soja (curado)], la [miel|miel (curado)] y el [agua|agua (curado)], sumerge las [yemas] enteras con cuidado y guárdalas tapadas en la nevera. ⏲ 4 h
-2. Descongela las [gambas] en un colador dentro de la nevera, tira el agua del glaseado y sécalas muy bien con papel de cocina.
-3. Cubre los [noodles] con agua muy caliente del grifo hasta que estén flexibles pero firmes. Escúrrelos, pásalos por agua fría y riégalos con un hilo de aceite para que no se peguen. ⏲ 8 min
-4. Corta la [cebolla] en pluma, el [pimiento rojo] en tiras, la [zanahoria] en bastones finos y pica el [ajo]. Ten todo listo antes de encender el fuego.
-5. Calienta el wok a fuego máximo hasta que humee, añade 1 cda de [aceite|aceite de girasol] y dora las gambas salpimentadas con [sal] y [pimienta], sin amontonarlas, un minuto por cada lado. Sácalas a un plato. ⏲ 2 min
-6. Prepara la salsa: junta el jugo que hayan soltado las gambas en el plato con el [agua] hasta tener 100 ml, disuelve la [maicena] y después la [crema de cacahuete]. Añade la [salsa de soja], la [miel], el [zumo de lima], el [jengibre en polvo], la [cayena] desmenuzada y el [aceite de sésamo].
-7. Con otra cucharada de aceite, saltea la zanahoria y la cebolla, y después el pimiento, que quede crujiente. Haz un hueco en el centro y saltea el ajo hasta que huela, sin dorarlo. ⏲ 3 min
-8. Incorpora los noodles y la salsa removida justo antes. Saltea levantando con pinzas hasta que espese y brille, y añade las gambas en el último momento. Prueba y rectifica con soja o lima. ⏲ 2 min
-9. Reparte en cuencos, coloca una yema escurrida en el centro de cada uno y termina con los [cacahuetes] picados, la [cebolleta], el [cilantro] y un cuarto de [lima|lima (servir)].
+1. Mezcla la [salsa de soja|salsa de soja (curado)], la [miel|miel (curado)] y el [agua|agua (curado)]. Sumerge las [yemas] y guárdalas tapadas en la nevera. ⏲ 4 h
+2. Descongela las [gambas] en la nevera y sécalas bien.
+3. Hidrata los [noodles] en agua muy caliente, sin hervir, hasta que estén flexibles pero firmes. Pásalos por agua fría y riégalos con un hilo de aceite. ⏲ 8 min
+4. Corta la [cebolla] en pluma, el [pimiento rojo] en tiras y la [zanahoria] en bastones finos. Pica el [ajo].
+5. Con el wok humeando y 1 cda de [aceite|aceite de girasol], dora las gambas con [sal] y [pimienta], sin amontonarlas, un minuto por lado. Sácalas. ⏲ 2 min
+6. Junta el jugo que suelten las gambas con [agua] hasta 100 ml. Disuelve la [maicena] y la [crema de cacahuete], y añade la [salsa de soja], la [miel], el [zumo de lima], el [jengibre en polvo], la [cayena] y el [aceite de sésamo].
+7. Con otra cucharada de aceite, saltea la zanahoria y la cebolla, y luego el pimiento, hasta que estén tiernos pero crujientes. Añade el ajo hasta que huela, sin dorarlo. ⏲ 3 min
+8. Añade los noodles y la salsa removida, y saltea hasta que espese y brille. Incorpora las gambas al final y rectifica con soja o lima. ⏲ 2 min
+9. Sirve con una yema escurrida encima y termina con los [cacahuetes] picados, la [cebolleta], el [cilantro] y la [lima|lima (servir)].
 
 ## Notas
 
-- **Consejo:** El wok tiene que estar muy caliente y sin amontonar: si las gambas sueltan mucha agua se cuecen en vez de dorarse y quedan gomosas.
-- **Truco:** La maicena disuelta junto a la crema de cacahuete liga la salsa y la hace brillar sin que se apelmace. Remuévela antes de echarla, porque la maicena se va al fondo.
-- **Variante:** Con gambas enteras, dora las cabezas y cáscaras 4 minutos, añade 150 ml de agua, hierve 5 minutos y usa ese caldo colado en lugar del agua de la salsa: sabrá mucho más a marisco.
-- **Se conserva:** Mejor recién hechos. Sin la yema aguantan un día en la nevera; recalienta en el wok con un chorrito de agua. Si comen embarazadas, niños o personas mayores, usa huevos pasteurizados para las yemas.
+- **Consejo:** Wok muy caliente y sin amontonar: si las gambas sueltan agua, se cuecen y quedan gomosas.
+- **Variante:** Con gambas enteras, dora cabezas y cáscaras, cúbrelas con 150 ml de agua, hierve 5 minutos y usa ese caldo colado en la salsa.
+- **Se conserva:** Un día en la nevera, sin la yema. Si comen embarazadas, niños o mayores, usa huevos pasteurizados.

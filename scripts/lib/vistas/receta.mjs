@@ -1,6 +1,6 @@
 import { html, raw, icono, motivo, jsonScript } from '../html.mjs';
 import { CAT } from '../categorias.mjs';
-import { ingsCliente } from '../recetas.mjs';
+import { ingsCliente, etiquetasOpciones } from '../recetas.mjs';
 import { layout } from './layout.mjs';
 import { avisoRed, famInk, famSoft } from './comun.mjs';
 import { fmtMinutos, fmtSegundos, ingredienteEscalado } from '../../../public/js/comun.js';
@@ -25,7 +25,11 @@ function listaIngredientes(v) {
       <span class="caja" aria-hidden="true">${icono('check', { size: 16, sw: 2.6 })}</span>
       <span class="ing-q${suave ? ' ing-q-suave' : ''}">${qty}</span>
       <span class="ing-n"><span class="ing-nombre">${nombre}</span>${nota ? html`<span class="ing-nota">, ${nota}</span>` : ''}</span>
-    </button></li>`);
+    </button>${g.opciones
+      ? html`<div class="ing-opciones" role="group" aria-label="Opciones para ${g.nombre}">
+          ${etiquetasOpciones(g.opciones).map((et, k) => html`<button type="button" class="ing-opc" data-opc="${k}" data-i="${i}" aria-pressed="${k === 0 ? 'true' : 'false'}">${et}</button>`)}
+        </div>`
+      : ''}</li>`);
   });
   return out;
 }

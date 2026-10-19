@@ -33,7 +33,7 @@ const idx = recetas.map((r) => ({
     { peso: 4, nombre: 'titulo', w: palabras(r.t) },
     { peso: 3, nombre: 'tipo', w: r.c.flatMap((c) => palabras(cats[c].n)) },
     { peso: 3, nombre: 'variante', w: r.vn.flatMap(palabras) },
-    { peso: 2, nombre: 'ingrediente', w: [...new Set([...r.v.flatMap((v) => [...v.i, ...v.io]), ...r.n].flatMap(palabras))] },
+    { peso: 2, nombre: 'ingrediente', w: [...new Set([...r.v.flatMap((v) => [...v.i, ...v.io].flatMap((x) => x.split('|'))), ...r.n].flatMap(palabras))] },
     { peso: 2, nombre: 'etiqueta', w: r.e.flatMap(palabras) },
     { peso: 1, nombre: 'descripcion', w: palabras(r.x) }
   ]

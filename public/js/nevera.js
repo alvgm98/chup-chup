@@ -13,7 +13,7 @@ const BASICOS = new Set(['sal', 'aceite de oliva', 'agua'].map(clave));
 
 // Todos los ingredientes conocidos (forma en que aparecen en las recetas)
 const pool = new Map();
-for (const r of recetas) for (const v of r.v) for (const id of [...v.i, ...v.io]) if (!pool.has(clave(id))) pool.set(clave(id), id);
+for (const r of recetas) for (const v of r.v) for (const id of [...v.i, ...v.io].flatMap((x) => x.split('|'))) if (!pool.has(clave(id))) pool.set(clave(id), id);
 const poolLista = [...pool.values()].sort((a, b) => a.localeCompare(b, 'es'));
 
 let estado = { tengo: [], basicos: true };
@@ -124,9 +124,11 @@ function pintarRes() {
       // De cada plato, la variante que mejor encaja con lo que tienes
       let mejor = null;
       for (const v of r.v) {
-        const need = v.i.filter((x) => !(estado.basicos && BASICOS.has(clave(x))));
-        const got = need.filter((x) => tengo.has(clave(x)));
-        const miss = need.filter((x) => !tengo.has(clave(x)));
+        const alts = (x) => x.split('|');
+        const tiene = (x) => alts(x).some((a) => tengo.has(clave(a)));
+        const need = v.i.filter((x) => !(estado.basicos && alts(x).some((a) => BASICOS.has(clave(a)))));
+        const got = need.filter(tiene);
+        const miss = need.filter((x) => !tiene(x)).map((x) => alts(x).join(' o '));
         const c = { r, v, need, got, miss };
         const p = (x) => x.got.length / x.need.length;
         if (!mejor || p(c) > p(mejor) || (p(c) === p(mejor) && c.got.length > mejor.got.length)) mejor = c;

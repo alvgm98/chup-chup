@@ -64,6 +64,8 @@ ingredientes:
 - `nota` (texto tras una coma: «al gusto», «para servir»), `grupo` («Para la salsa»), `opcional: true`.
 - Sal, aceite de oliva y agua usan siempre los ids `sal`, `aceite de oliva` y `agua` (la Nevera puede darlos por hechos).
 - Si un valor lleva comas, ponlo entre comillas: `nota: "pelado, en dados"`.
+- **Varias opciones para un ingrediente** (vale cualquiera): `opciones: [queso brie, queso reblochon]` junto a `nombre: queso camembert`.
+  La receta muestra pastillas para elegir (se recuerda la elección) y la Nevera da por buena cualquiera. No es una variante: los pasos no cambian.
 
 ### Pasos
 - Lista numerada bajo `## Preparación`. Un paso = una acción clara (es lo que se ve en grande en el modo cocina).

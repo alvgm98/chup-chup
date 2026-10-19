@@ -27,10 +27,11 @@ export function indiceCliente(ctx, recetas) {
         id: v.id,
         n: v.nombre,
         tl: fmtMinutos(v.total),
-        i: unicos(v.ingredientes.filter((g) => !g.opcional).map((g) => nombreNevera(g.id))),
+        // Un ingrediente con opciones se guarda como "a|b|c": vale cualquiera
+        i: unicos(v.ingredientes.filter((g) => !g.opcional).map((g) => [nombreNevera(g.id), ...(g.opciones || []).slice(1)].join('|'))),
         io: unicos(v.ingredientes.filter((g) => g.opcional).map((g) => nombreNevera(g.id)))
       })),
-      n: [...new Set(r.variantes.flatMap((v) => v.ingredientes.map((g) => g.nombre)))],
+      n: [...new Set(r.variantes.flatMap((v) => v.ingredientes.flatMap((g) => g.opciones || [g.nombre])))],
       vn: r.multi ? r.variantes.map((v) => v.nombre) : [],
       e: r.etiquetas,
       x: r.descripcion

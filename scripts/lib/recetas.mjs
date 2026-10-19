@@ -205,12 +205,30 @@ function req(cond, msg) {
   if (!cond) throw new RecetaError(msg);
 }
 
+/** «opciones: [queso brie, queso reblochon]»: otros ingredientes que valen igual que `nombre` */
+function leerOpciones(g, ctx) {
+  if (g.opciones == null) return null;
+  req(Array.isArray(g.opciones) && g.opciones.length, `${ctx}: "opciones" debe ser una lista: [queso brie, queso reblochon]`);
+  return [String(g.nombre), ...g.opciones.map(String)];
+}
+
+/** Etiquetas cortas: quita las palabras iniciales comunes («queso camembert/brie» → «Camembert», «Brie») */
+export function etiquetasOpciones(nombres) {
+  const pal = nombres.map((n) => n.split(/\s+/));
+  let k = 0;
+  while (pal.every((p) => p.length > k + 1 && p[k].toLowerCase() === pal[0][k].toLowerCase())) k++;
+  return pal.map((p) => {
+    const t = p.slice(k).join(' ');
+    return t.charAt(0).toUpperCase() + t.slice(1);
+  });
+}
+
 const ENTERO = (v) => Number.isInteger(v) && v >= 0;
 
 function leerIngrediente(g, n, file, variantes) {
   const ctx = `${file}, ingrediente ${n + 1}`;
   req(g && typeof g === 'object', `${ctx}: debe ser { id: …, nombre: … }`);
-  const okKeys = ['id', 'nombre', 'plural', 'cantidad', 'unidad', 'unidadPlural', 'nota', 'grupo', 'opcional', 'variante'];
+  const okKeys = ['id', 'nombre', 'plural', 'cantidad', 'unidad', 'unidadPlural', 'nota', 'grupo', 'opcional', 'variante', 'opciones'];
   for (const k of Object.keys(g)) req(okKeys.includes(k), `${ctx}: campo "${k}" desconocido`);
   req(g.nombre, `${ctx}: falta "nombre"`);
   let solo = null;
@@ -233,6 +251,7 @@ function leerIngrediente(g, n, file, variantes) {
     nota: g.nota ? String(g.nota) : null,
     grupo: g.grupo ? String(g.grupo) : null,
     opcional: g.opcional === true,
+    opciones: leerOpciones(g, ctx),
     solo
   };
 }
@@ -382,7 +401,8 @@ export function cargarReceta(file, src, dirFotos) {
 /** Datos compactos de ingredientes para el navegador */
 export function ingsCliente(v) {
   return v.ingredientes.map((g) => ({
-    q: g.cantidad, u: g.unidad, up: g.unidadPlural, n: g.nombre, np: g.plural, nota: g.nota
+    q: g.cantidad, u: g.unidad, up: g.unidadPlural, n: g.nombre, np: g.plural, nota: g.nota,
+    ...(g.opciones ? { o: g.opciones } : {})
   }));
 }
 

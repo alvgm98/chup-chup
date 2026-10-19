@@ -1,5 +1,5 @@
 // Ficha de receta: variantes, raciones, ingredientes marcables y temporizadores.
-import { ingredienteEscalado, fmtSegundos, mmss } from './comun.js';
+import { ingredienteEscalado, fmtSegundos, mmss, leerOpciones, guardarOpcion } from './comun.js';
 import { Temporizador } from './sonido.js';
 
 const datos = JSON.parse(document.getElementById('datos-receta').textContent);
@@ -29,7 +29,9 @@ function crearVariante(id) {
     const k = st.raciones / v.raciones;
     botones.forEach((b) => {
       const i = Number(b.dataset.i);
-      const { qty, nombre } = ingredienteEscalado(v.ings[i], k);
+      const opc = leerOpciones(datos.slug)[id + ':' + i] || 0;
+      const { qty, nombre } = ingredienteEscalado(v.ings[i], k, opc);
+      $$(`.ing-opc[data-i="${i}"]`, cuerpo).forEach((o) => o.setAttribute('aria-pressed', Number(o.dataset.opc) === opc ? 'true' : 'false'));
       $('.ing-q', b).textContent = qty;
       $('.ing-nombre', b).textContent = nombre;
       b.setAttribute('aria-pressed', st.hechos.has(i) ? 'true' : 'false');
@@ -44,6 +46,9 @@ function crearVariante(id) {
     escribir(clave, { raciones: st.raciones, hechos: [...st.hechos] });
   }
 
+  $$('.ing-opc', cuerpo).forEach((o) =>
+    o.addEventListener('click', () => { guardarOpcion(datos.slug, id + ':' + o.dataset.i, Number(o.dataset.opc)); pintar(); })
+  );
   menos.addEventListener('click', () => { st.raciones = Math.max(1, st.raciones - 1); pintar(); });
   mas.addEventListener('click', () => { st.raciones = Math.min(12, st.raciones + 1); pintar(); });
   $('[data-reset]', cuerpo).addEventListener('click', () => { st.raciones = v.raciones; pintar(); });

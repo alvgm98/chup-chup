@@ -39,16 +39,17 @@ const NOTA_CANTIDAD = /^(al gusto|la necesaria|lo necesario|el necesario|los nec
  * Texto de cantidad + unidad y nombre, ya escalados.
  * `nota` es lo que queda para mostrar tras el nombre; `suave` indica una cantidad no numérica.
  */
-export function ingredienteEscalado(ing, factor) {
+export function ingredienteEscalado(ing, factor, opcion = 0) {
   let qty = '';
-  let nombre = ing.n;
+  const alt = ing.o && opcion > 0 && ing.o[opcion];
+  let nombre = alt || ing.n;
   let nota = ing.nota || '';
   let suave = false;
   if (ing.q != null) {
     const v = ing.q * factor;
     const muchos = v > 1;
     qty = fmtCantidad(v) + (ing.u ? ' ' + (muchos && ing.up ? ing.up : ing.u) : '');
-    if (muchos && ing.np) nombre = ing.np;
+    if (muchos && ing.np && !alt) nombre = ing.np;
   } else if (NOTA_CANTIDAD.test(nota.trim())) {
     qty = nota.trim();
     nota = '';
@@ -119,4 +120,14 @@ export function fmtRango(a, b) {
 export function listaO(nombres) {
   const l = nombres.map((n, i) => (i === 0 ? n : n.charAt(0).toLowerCase() + n.slice(1)));
   return l.length < 2 ? l.join('') : l.slice(0, -1).join(', ') + ' o ' + l[l.length - 1];
+}
+
+/** Opciones elegidas en una receta: { "variante:índice": opción } (se comparte entre la ficha y el modo cocina) */
+export function leerOpciones(slug) {
+  try { return JSON.parse(localStorage.getItem('opciones:' + slug)) || {}; } catch { return {}; }
+}
+export function guardarOpcion(slug, clave, opcion) {
+  const o = leerOpciones(slug);
+  o[clave] = opcion;
+  try { localStorage.setItem('opciones:' + slug, JSON.stringify(o)); } catch {}
 }

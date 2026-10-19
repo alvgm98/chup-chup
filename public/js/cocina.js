@@ -1,5 +1,5 @@
 // Modo cocina: un paso a la vez, temporizadores y pantalla encendida.
-import { ingredienteEscalado, mmss } from './comun.js';
+import { ingredienteEscalado, mmss, leerOpciones } from './comun.js';
 import { Temporizador, prepararAudio } from './sonido.js';
 
 const todo = JSON.parse(document.getElementById('datos-cocina').textContent);
@@ -26,7 +26,8 @@ try {
   if (g && g.raciones === raciones && g.i < N) i = g.i;
 } catch {}
 
-const ings = datos.ings.map((g) => ingredienteEscalado(g, k));
+const opciones = leerOpciones(todo.slug);
+const ings = datos.ings.map((g, n) => ingredienteEscalado(g, k, opciones[vid + ':' + n] || 0));
 const el = {
   num: $('[data-num]'), serv: $('[data-serv]'), barra: [...document.querySelectorAll('.cocina-barra span')],
   texto: $('[data-texto]'), usos: $('[data-usos]'), usosL: $('[data-usos-l]'),

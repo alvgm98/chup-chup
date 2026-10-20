@@ -36,7 +36,10 @@ function listaIngredientes(v) {
 
 const fmtG = (n) => (n < 10 && n % 1 ? String(Math.round(n * 10) / 10).replace('.', ',') : String(Math.round(n)));
 
-function seccionMacros(m) {
+const idMacros = (v) => 'nutricion' + (v.id ? '-' + v.id : '');
+
+function seccionMacros(v) {
+  const m = v.macros;
   if (!m) return '';
   // Reparto de la energía: proteínas e hidratos 4 kcal/g, grasas 9 kcal/g
   const partes = [
@@ -48,7 +51,7 @@ function seccionMacros(m) {
   const pct = partes.map((p) => Math.round((p.kcal / total) * 100));
   pct[pct.indexOf(Math.max(...pct))] += 100 - pct.reduce((a, b) => a + b, 0);
   const extras = [['azucares', 'Azúcares'], ['saturadas', 'Grasas saturadas'], ['fibra', 'Fibra'], ['sal', 'Sal']].filter(([k]) => m[k] != null);
-  return html`<section class="macros" aria-label="Valor nutricional">
+  return html`<section class="macros" id="${idMacros(v)}" aria-label="Valor nutricional">
     <h2>Valor nutricional</h2>
     <div class="macros-caja">
       <div class="macros-kcal"><span class="macros-num">${Math.round(m.kcal)}</span><span class="macros-ud">kcal<br>por ración</span></div>
@@ -72,6 +75,11 @@ function datosVariante(r, v) {
     <div class="solo-escritorio"><dt>${v.coccion ? 'Preparación' : 'Al fuego'}</dt><dd class="dato">${fmtMinutos(v.coccion ? v.preparacion : 0)}</dd></div>
     <div><dt>Raciones</dt><dd class="dato" data-raciones-txt>${v.raciones}</dd><dd class="dato-sub solo-movil">personas</dd></div>
     <div><dt>Dificultad</dt><dd class="dato dato-dif">${v.dificultadLabel}${barrasDificultad(v.dificultad)}</dd></div>
+    ${v.macros
+      ? html`<div class="dato-kcal"><dt>Calorías</dt><dd><a class="dato-enlace" href="#${idMacros(v)}">
+          <span class="dato">${Math.round(v.macros.kcal)} kcal</span><span class="dato-sub">por ración</span><span class="dato-ver">Ver valor nutricional${icono('abajo', { size: 16, sw: 2 })}</span>
+        </a></dd></div>`
+      : ''}
   </dl>`;
 }
 
@@ -118,7 +126,7 @@ function cuerpoVariante(r, v) {
             </div>
           </section>`
         : ''}
-      ${seccionMacros(v.macros)}
+      ${seccionMacros(v)}
     </div>
   </div>`;
 }

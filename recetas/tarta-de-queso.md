@@ -24,7 +24,7 @@ ingredientes:
 
 ## Preparación
 
-1. Precalienta el horno a 190 °C y forra con papel un molde desmontable de 24 cm.
+1. Precalienta el horno a 190 °C y forra con papel un molde desmontable.
 2. Tritura las [galletas], mézclalas con la [mantequilla] y aprieta la masa en el fondo del molde. Resérvalo en la nevera.
 3. Bate el [queso crema], la [nata], los [huevos], el [parmesano|queso parmesano], el [queso fresco], la [harina], el [azúcar] y la [sal] hasta que no queden grumos.
 4. Vierte la mezcla sobre la base y hornea hasta que los bordes cuajen y el centro aún tiemble. ⏲ 30 min
@@ -32,5 +32,5 @@ ingredientes:
 
 ## Notas
 
-- **Para otro molde:** Con 6 raciones salen las cantidades al 60 %, para un molde de unos 18 cm. Hornéala unos 5 minutos menos.
+- **Más pequeña:** Si bajas las raciones, hornéala unos 5 minutos menos.
 - **Se conserva:** Hasta cuatro días en la nevera, tapada.

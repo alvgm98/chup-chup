@@ -8,6 +8,7 @@ raciones: 6
 dificultad: facil
 fecha: 2026-10-19
 etiquetas: [horno, picoteo]
+macros: { kcal: 475, proteinas: 22, hidratos: 43, grasas: 24, fibra: 2 }
 ingredientes:
   - { id: masa de empanada, nombre: lámina de masa de empanada, plural: láminas de masa de empanada, cantidad: 2 }
   - { id: mermelada de pimientos del piquillo, nombre: mermelada de pimientos del piquillo, opciones: [mermelada de tomate], cantidad: 4, unidad: cda }

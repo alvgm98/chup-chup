@@ -34,6 +34,34 @@ function listaIngredientes(v) {
   return out;
 }
 
+const fmtG = (n) => (n < 10 && n % 1 ? String(Math.round(n * 10) / 10).replace('.', ',') : String(Math.round(n)));
+
+function seccionMacros(m) {
+  if (!m) return '';
+  // Reparto de la energía: proteínas e hidratos 4 kcal/g, grasas 9 kcal/g
+  const partes = [
+    { k: 'proteinas', n: 'Proteínas', f: 'acc', kcal: m.proteinas * 4 },
+    { k: 'hidratos', n: 'Hidratos', f: 'saf', kcal: m.hidratos * 4 },
+    { k: 'grasas', n: 'Grasas', f: 'oli', kcal: m.grasas * 9 }
+  ];
+  const total = partes.reduce((a, p) => a + p.kcal, 0) || 1;
+  const pct = partes.map((p) => Math.round((p.kcal / total) * 100));
+  pct[pct.indexOf(Math.max(...pct))] += 100 - pct.reduce((a, b) => a + b, 0);
+  const extras = [['azucares', 'Azúcares'], ['saturadas', 'Grasas saturadas'], ['fibra', 'Fibra'], ['sal', 'Sal']].filter(([k]) => m[k] != null);
+  return html`<section class="macros" aria-label="Valor nutricional">
+    <h2>Valor nutricional</h2>
+    <div class="macros-caja">
+      <div class="macros-kcal"><span class="macros-num">${Math.round(m.kcal)}</span><span class="macros-ud">kcal<br>por ración</span></div>
+      <div class="macros-barra" aria-hidden="true">${partes.map((p, i) => html`<span style="flex-grow:${pct[i]};background:var(--${p.f})"></span>`)}</div>
+      <dl class="macros-lista">
+        ${partes.map((p, i) => html`<div class="macro"><dt><span class="macro-punto" style="background:var(--${p.f})" aria-hidden="true"></span>${p.n}</dt><dd><span class="macro-g">${fmtG(m[p.k])} g</span><span class="macro-pct">${pct[i]} % de kcal</span></dd></div>`)}
+      </dl>
+      ${extras.length ? html`<p class="macros-extra">${extras.map(([k, n], i) => html`${i ? ' · ' : ''}${n} <b>${fmtG(m[k])} g</b>`)}</p>` : ''}
+    </div>
+    <p class="macros-pie">Aproximado, calculado a partir de los ingredientes.</p>
+  </section>`;
+}
+
 /** Atributos para un bloque que solo se ve con una variante */
 const bloque = (r, v) => raw(`data-v="${v.id}"${v.id !== r.defecto ? ' hidden' : ''}`);
 
@@ -90,6 +118,7 @@ function cuerpoVariante(r, v) {
             </div>
           </section>`
         : ''}
+      ${seccionMacros(v.macros)}
     </div>
   </div>`;
 }

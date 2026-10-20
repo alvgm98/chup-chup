@@ -111,6 +111,19 @@ function parsePaso(texto, ings, ctx) {
   return { html, parts: plain, uses, timer };
 }
 
+// ---------- Valor nutricional (por ración) ----------
+
+const MACROS = ['kcal', 'proteinas', 'hidratos', 'grasas'];
+const MACROS_OPC = ['azucares', 'fibra', 'saturadas', 'sal'];
+
+function leerMacros(m, ctx) {
+  req(m && typeof m === 'object' && !Array.isArray(m), `${ctx}: "macros" debe ser { kcal: …, proteinas: …, hidratos: …, grasas: … }`);
+  for (const k of Object.keys(m)) req([...MACROS, ...MACROS_OPC].includes(k), `${ctx}: en "macros", campo "${k}" desconocido (vale ${[...MACROS, ...MACROS_OPC].join(', ')})`);
+  for (const k of MACROS) req(typeof m[k] === 'number' && m[k] >= 0, `${ctx}: en "macros" falta "${k}" (número, por ración)`);
+  for (const k of MACROS_OPC) if (m[k] != null) req(typeof m[k] === 'number' && m[k] >= 0, `${ctx}: en "macros", "${k}" debe ser un número`);
+  return { ...m };
+}
+
 // ---------- Cuerpo: secciones, pasos y notas (con variantes) ----------
 
 const RE_TAG = /^\{([^}]+)\}\s*/;
@@ -266,7 +279,7 @@ export function cargarReceta(file, src, dirFotos) {
   }
   const slug = path.basename(file, '.md');
   req(/^[a-z0-9]+(-[a-z0-9]+)*$/.test(slug), `${file}: el nombre del archivo debe ir en minúsculas, sin tildes y con guiones (ej.: arroz-con-costillas.md)`);
-  const known = ['titulo', 'descripcion', 'tipo', 'preparacion', 'coccion', 'raciones', 'dificultad', 'fecha', 'foto', 'etiquetas', 'ingredientes', 'variantes'];
+  const known = ['titulo', 'descripcion', 'tipo', 'preparacion', 'coccion', 'raciones', 'dificultad', 'fecha', 'foto', 'etiquetas', 'ingredientes', 'variantes', 'macros'];
   for (const k of Object.keys(data)) req(known.includes(k), `${file}: campo "${k}" desconocido`);
   req(typeof data.titulo === 'string' && data.titulo, `${file}: falta "titulo"`);
   req(typeof data.descripcion === 'string' && data.descripcion, `${file}: falta "descripcion"`);
@@ -293,7 +306,7 @@ export function cargarReceta(file, src, dirFotos) {
       const ctx = `${file}, variante ${n + 1}`;
       req(v && typeof v === 'object' && v.id && v.nombre, `${ctx}: debe ser { id: …, nombre: … }`);
       for (const k of Object.keys(v)) {
-        req(['id', 'nombre', 'defecto', 'preparacion', 'coccion', 'raciones', 'dificultad'].includes(k), `${ctx}: campo "${k}" desconocido`);
+        req(['id', 'nombre', 'defecto', 'preparacion', 'coccion', 'raciones', 'dificultad', 'macros'].includes(k), `${ctx}: campo "${k}" desconocido`);
       }
       const id = String(v.id);
       req(/^[a-z0-9]+(-[a-z0-9]+)*$/.test(id), `${ctx}: el id "${id}" debe ir en minúsculas, sin tildes y con guiones`);
@@ -301,11 +314,13 @@ export function cargarReceta(file, src, dirFotos) {
       vistos.add(id);
       for (const k of ['preparacion', 'coccion']) if (v[k] != null) req(ENTERO(v[k]), `${ctx}: "${k}" debe ser un número de minutos`);
       if (v.raciones != null) req(Number.isInteger(v.raciones) && v.raciones >= 1, `${ctx}: "raciones" debe ser un número entero`);
+      if (v.macros != null) leerMacros(v.macros, ctx);
       if (v.dificultad != null) req(DIFICULTADES[v.dificultad], `${ctx}: "dificultad" debe ser facil, media o dificil`);
       return { ...v, id, nombre: String(v.nombre) };
     });
     req(defs.filter((v) => v.defecto === true).length <= 1, `${file}: solo una variante puede llevar "defecto: true"`);
   }
+  const macros = data.macros != null ? leerMacros(data.macros, file) : null;
   const defecto = (defs.find((v) => v.defecto === true) || defs[0]).id;
 
   req(Array.isArray(data.ingredientes) && data.ingredientes.length, `${file}: falta la lista "ingredientes"`);
@@ -361,6 +376,7 @@ export function cargarReceta(file, src, dirFotos) {
       raciones: d.raciones ?? data.raciones,
       dificultad,
       dificultadLabel: DIFICULTADES[dificultad],
+      macros: d.macros ? leerMacros(d.macros, file) : macros,
       ingredientes,
       pasos,
       notas

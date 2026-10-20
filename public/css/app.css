@@ -337,6 +337,23 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .notas-caja { border-radius: 12px; background: var(--sunk); padding: 4px 20px; }
 .nota { padding: 16px 0; border-bottom: 1px solid var(--line); }
 .nota:last-child { border-bottom: 0; }
+.macros { padding-top: 28px; }
+.macros h2 { font-family: var(--serif); font-weight: 500; font-size: 28px; line-height: 1.1; margin-bottom: 14px; }
+.macros-caja { border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; display: flex; flex-direction: column; gap: 14px; }
+.macros-kcal { display: flex; align-items: center; gap: 10px; }
+.macros-num { font-family: var(--serif); font-weight: 500; font-size: 44px; line-height: 1; font-variant-numeric: lining-nums; }
+.macros-ud { font-size: 13px; line-height: 1.25; font-weight: 600; color: var(--ink2); }
+.macros-barra { display: flex; gap: 3px; height: 10px; }
+.macros-barra span { flex-basis: 0; border-radius: 3px; }
+.macros-lista { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.macro dt { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: var(--ink2); }
+.macro-punto { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+.macro dd { display: flex; flex-direction: column; margin: 4px 0 0; }
+.macro-g { font-family: var(--serif); font-size: 22px; line-height: 1.15; font-weight: 500; }
+.macro-pct { font-size: 13px; color: var(--ink2); font-variant-numeric: tabular-nums; }
+.macros-extra { padding-top: 12px; border-top: 1px solid var(--line); font-size: 14px; color: var(--ink2); }
+.macros-extra b { color: var(--ink); font-weight: 700; }
+.macros-pie { margin-top: 8px; font-family: var(--serif); font-style: italic; font-size: 14px; color: var(--ink2); }
 .nota p { margin-top: 6px; font-family: var(--serif); font-style: italic; font-size: 18px; line-height: 1.5; }
 
 /* ---------- Nevera ---------- */
@@ -568,7 +585,9 @@ body.modo-cocina { padding-bottom: 0; overflow: hidden; }
   .caja { width: 22px; height: 22px; }
   .ing-q { width: 72px; }
   .receta-main { flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 56px; }
-  .pasos, .notas { padding-top: 0; }
+  .pasos, .notas, .macros { padding-top: 0; }
+  .macros h2 { font-size: 30px; }
+  .macros-caja { max-width: 620px; padding: 22px 24px; }
   .paso { gap: 24px; padding: 22px 0; }
   .paso-n { width: 40px; font-size: 42px; }
   .paso p { font-size: 19px; max-width: 620px; }

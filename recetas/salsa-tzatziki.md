@@ -8,6 +8,7 @@ raciones: 4
 dificultad: facil
 fecha: 2026-10-19
 etiquetas: [griego, sin fuego, vegetariano]
+macros: { kcal: 125, proteinas: 3, hidratos: 7, grasas: 10, fibra: 0.5 }
 ingredientes:
   - { id: pepino, nombre: pepino holandés, plural: pepinos holandeses, cantidad: 1 }
   - { id: yogur griego, nombre: yogur griego natural, cantidad: 250, unidad: g }

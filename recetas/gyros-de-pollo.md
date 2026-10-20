@@ -9,8 +9,8 @@ dificultad: media
 fecha: 2026-10-19
 etiquetas: [griego, horno, airfryer]
 variantes:
-  - { id: horno, nombre: Trompo al horno, defecto: true }
-  - { id: airfryer, nombre: En airfryer, preparacion: 15, coccion: 25, dificultad: facil }
+  - { id: horno, nombre: Trompo al horno, defecto: true, macros: { kcal: 1010, proteinas: 62, hidratos: 70, grasas: 54, fibra: 5 } }
+  - { id: airfryer, nombre: En airfryer, preparacion: 15, coccion: 25, dificultad: facil, macros: { kcal: 850, proteinas: 55, hidratos: 69, grasas: 39, fibra: 5 } }
 ingredientes:
   - { id: pollo, nombre: contramuslos de pollo deshuesados, cantidad: 800, unidad: g, nota: en láminas muy finas, variante: horno }
   - { id: pollo, nombre: contramuslos de pollo deshuesados, cantidad: 800, unidad: g, nota: enteros, variante: airfryer }

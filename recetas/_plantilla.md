@@ -8,6 +8,7 @@ raciones: 4
 dificultad: facil
 fecha: 2026-01-01
 etiquetas: []
+macros: { kcal: 0, proteinas: 0, hidratos: 0, grasas: 0, fibra: 0 }
 ingredientes:
   - { id: cebolla, nombre: cebolla, plural: cebollas, cantidad: 1 }
   - { id: aceite de oliva, nombre: aceite de oliva virgen extra, cantidad: 2, unidad: cda }

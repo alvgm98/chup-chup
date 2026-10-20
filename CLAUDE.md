@@ -28,6 +28,7 @@ dificultad: facil                  # facil | media | dificil
 fecha: 2026-10-18                  # día en que se añade (AAAA-MM-DD)
 etiquetas: [cuchara, invierno]     # opcional
 foto: lentejas.webp                # opcional, archivo en recetas/fotos/
+macros: { kcal: 380, proteinas: 21, hidratos: 52, grasas: 9, fibra: 14 }   # por ración (ver «Valor nutricional»)
 ingredientes:
   - { id: lentejas, nombre: lentejas pardinas, cantidad: 400, unidad: g }
   - { id: cebolla, nombre: cebolla, plural: cebollas, cantidad: 1 }
@@ -103,6 +104,19 @@ ingredientes:
 - **Métodos muy distintos:** cada variante con su propia sección, `## Preparación · En airfryer` (por id o nombre).
   Una variante con sección propia no usa la `## Preparación` común. `## Notas · En airfryer` añade notas solo a esa variante.
 - Las menciones `[ingrediente]` de cada paso se comprueban contra los ingredientes de **su** variante.
+
+### Valor nutricional (`macros`)
+**Inclúyelo siempre** al crear o editar una receta. Valores **por ración**, redondeados:
+`macros: { kcal: 710, proteinas: 35, hidratos: 84, grasas: 26, fibra: 6 }` (obligatorios `kcal`, `proteinas`, `hidratos`, `grasas`;
+opcionales `fibra`, `azucares`, `saturadas`, `sal`, en gramos).
+- Calcúlalo a partir de los ingredientes con tablas de referencia (BEDCA, USDA), pesando las unidades de forma realista
+  (cebolla mediana ≈ 150 g, diente de ajo ≈ 4 g, cda de aceite ≈ 13 g) y dividiendo entre `raciones`.
+  Comprueba que `kcal` ≈ 4·proteínas + 4·hidratos + 9·grasas.
+- No cuentes lo opcional ni «al gusto», ni lo que se desecha (líquido de curado, aceite de freír que no se absorbe).
+  El alcohol cocinado apenas suma.
+- Si hay variantes que cambian los ingredientes, cada una lleva el suyo: `{ id: noquis, nombre: Con ñoquis, macros: { … } }`.
+  Las que no lo llevan usan el de nivel superior.
+- La web lo muestra al final de la receta como aproximado, con el reparto de energía entre proteínas, hidratos y grasas.
 
 ### Fotos
 Opcionales. Guárdalas en `recetas/fotos/` en WebP, máximo 1600 px de ancho y ~200 KB

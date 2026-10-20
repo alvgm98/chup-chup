@@ -9,8 +9,8 @@ dificultad: facil
 fecha: 2026-10-19
 etiquetas: [cuchara, olla]
 variantes:
-  - { id: patatas, nombre: Con patatas, defecto: true }
-  - { id: noquis, nombre: Con ñoquis, coccion: 40 }
+  - { id: patatas, nombre: Con patatas, defecto: true, macros: { kcal: 680, proteinas: 28, hidratos: 41, grasas: 45, fibra: 5 } }
+  - { id: noquis, nombre: Con ñoquis, coccion: 40, macros: { kcal: 740, proteinas: 29, hidratos: 54, grasas: 45, fibra: 4 } }
 ingredientes:
   - { id: salchichas, nombre: salchichas blancas frescas, cantidad: 650, unidad: g }
   - { id: patatas, nombre: patatas, cantidad: 700, unidad: g, variante: patatas }

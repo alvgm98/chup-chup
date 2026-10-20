@@ -8,6 +8,7 @@ raciones: 4
 dificultad: facil
 fecha: 2026-10-19
 etiquetas: [wok, asiático, picante]
+macros: { kcal: 710, proteinas: 35, hidratos: 84, grasas: 26, fibra: 6 }
 ingredientes:
   - { id: huevos, nombre: yema de huevo, plural: yemas de huevo, cantidad: 4, grupo: Para las yemas curadas }
   - { id: salsa de soja (curado), nombre: salsa de soja, cantidad: 100, unidad: ml, grupo: Para las yemas curadas }

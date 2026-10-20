@@ -1,5 +1,6 @@
 import { html, raw, icono, motivo } from '../html.mjs';
 import { CAT } from '../categorias.mjs';
+import * as LOGO from '../logo.mjs';
 import { fmtMinutos, fmtFecha, fmtRango, listaO } from '../../../public/js/comun.js';
 
 export function crearContexto({ base, sitio, version, hoy }) {
@@ -11,7 +12,7 @@ export const famInk = (f) => `var(--${f}-ink)`;
 export const famSoft = (f) => `var(--${f}-soft)`;
 
 export function marca(ctx, tag = 'span') {
-  return html`<${raw(tag)} class="marca">${ctx.sitio.nombre}<span class="punto">.</span></${raw(tag)}>`;
+  return html`<${raw(tag)} class="marca"><svg class="logo" viewBox="${LOGO.VIEWBOX}" role="img" aria-label="${ctx.sitio.nombre}"><path fill="currentColor" d="${LOGO.TEXTO}"></path><g class="logo-burbujas">${raw(LOGO.BURBUJAS)}</g></svg></${raw(tag)}>`;
 }
 
 export function metaReceta(r) {

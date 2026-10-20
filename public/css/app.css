@@ -64,7 +64,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 /* ---------- Tipografía y piezas ---------- */
 .marca { font-family: var(--serif); font-weight: 600; font-size: 30px; line-height: 1; letter-spacing: -0.01em; margin: 0; }
-.marca .punto { color: var(--acc); }
+.marca .logo { display: block; height: 1.08em; width: auto; overflow: visible; }
+.logo-burbujas { fill: var(--acc); }
 .kicker { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; font-weight: 700; color: var(--acc-ink); }
 .etiqueta { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: var(--ink2); }
 .kicker-ico { display: flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; color: var(--acc-ink); }
@@ -469,7 +470,7 @@ body.modo-cocina { padding-bottom: 0; overflow: hidden; }
   .topbar { display: block; border-bottom: 1px solid var(--line); }
   .topbar-in { max-width: 1200px; margin: 0 auto; padding: 0 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 32px; min-height: 76px; }
   .topbar-marca { text-decoration: none; }
-  .topbar .marca { font-size: 28px; }
+  .topbar .marca { font-size: 32px; }
   .topbar nav { display: flex; gap: 4px; }
   .topbar nav a { display: inline-flex; align-items: center; height: 44px; padding: 0 14px; color: var(--ink2); text-decoration: none; font-size: 16px; font-weight: 600; }
   .topbar nav a[aria-current="page"] { color: var(--ink); font-weight: 700; box-shadow: inset 0 -2px 0 var(--acc); }

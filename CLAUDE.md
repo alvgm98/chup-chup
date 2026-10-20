@@ -1,4 +1,4 @@
-# Chup-chup · instrucciones para Claude
+# Chup Chup · instrucciones para Claude
 
 Recetario personal publicado en GitHub Pages. Cada receta es un archivo Markdown en `recetas/`.
 La web se genera con `node scripts/build.mjs` (Node 20+, **sin dependencias**: no hace falta `npm install`).

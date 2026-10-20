@@ -1,4 +1,4 @@
-# Chup-chup
+# Chup Chup
 
 Mi recetario: recetas de casa, apuntadas con calma. Se puede buscar por tipo de plato, por nombre
 o por lo que haya en la nevera, y cocinar paso a paso con temporizadores y la pantalla siempre encendida.

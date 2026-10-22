@@ -131,3 +131,43 @@ export function guardarOpcion(slug, clave, opcion) {
   o[clave] = opcion;
   try { localStorage.setItem('opciones:' + slug, JSON.stringify(o)); } catch {}
 }
+
+// ---------- Lista de la compra ----------
+
+// Unidades que se pueden sumar entre sí (aprox.: 1 cda ≈ 15 g/ml, 1 cdta ≈ 5)
+const A_BASE = { g: 1, kg: 1000, ml: 1, l: 1000, cda: 15, cdta: 5 };
+
+/**
+ * Junta los ingredientes de una receta para la compra: los que comparten id
+ * (sin el calificativo entre paréntesis) se suman, pasando a gramos si las unidades difieren.
+ * Devuelve [{ clave, qty, nombre, opcional }].
+ */
+export function listaCompra(ings, factor, opcionDe = () => 0) {
+  const grupos = new Map();
+  ings.forEach((ing, i) => {
+    const clave = claveIngrediente(ing.k || ing.n);
+    if (!grupos.has(clave)) grupos.set(clave, []);
+    grupos.get(clave).push({ ...ing, opc: opcionDe(i) });
+  });
+  return [...grupos.entries()].flatMap(([clave, gs]) => {
+    const p = gs[0];
+    const conQ = gs.filter((g) => g.q != null);
+    const nombreDe = (g) => (g.o && g.opc > 0 ? { n: g.o[g.opc], np: null } : { n: g.n, np: g.np });
+    let syn;
+    if (!conQ.length) syn = { ...nombreDe(p), nota: p.nota };
+    else if (conQ.every((g) => g.u === conQ[0].u)) {
+      syn = { ...nombreDe(conQ[0]), q: conQ.reduce((a, g) => a + g.q, 0), u: conQ[0].u, up: conQ[0].up };
+    } else if (conQ.every((g) => A_BASE[g.u])) {
+      const u = conQ.some((g) => g.u === 'g' || g.u === 'kg') ? 'g' : 'ml';
+      syn = { ...nombreDe(conQ[0]), q: conQ.reduce((a, g) => a + g.q * A_BASE[g.u], 0), u };
+    } else {
+      // Unidades que no se pueden sumar (zumo de lima y lima en cuartos): cada una por su lado
+      return gs.map((g, n) => {
+        const { qty, nombre } = ingredienteEscalado({ ...g, ...nombreDe(g) }, factor);
+        return { clave: clave + '#' + n, qty, nombre, opcional: !!g.op };
+      });
+    }
+    const { qty, nombre } = ingredienteEscalado(syn, factor);
+    return { clave, qty: /^al gusto$/i.test(qty) ? '' : qty, nombre, opcional: gs.every((g) => g.op) };
+  });
+}

@@ -47,6 +47,8 @@ const P = {
   mas: '<path d="M12 5v14M5 12h14"></path>',
   flecha: '<path d="M5 12h14M13 6l6 6-6 6"></path>',
   orden: '<path d="M7 4v16M3.5 16.5L7 20l3.5-3.5M14 6h7M14 12h5M14 18h3"></path>',
+  cesta: '<path d="M3 9h18l-2 10.5a1.8 1.8 0 0 1-1.8 1.5H6.8A1.8 1.8 0 0 1 5 19.5z"></path><path d="M8 9l4-6 4 6M9.5 13v4M14.5 13v4"></path>',
+  copiar: '<rect x="8" y="8" width="12" height="12" rx="2"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"></path>',
   compartir: '<path d="M12 3v12M7 8l5-5 5 5"></path><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"></path>'
 };
 

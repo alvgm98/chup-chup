@@ -312,6 +312,21 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .ing-grupo { padding: 18px 0 6px; font-family: var(--serif); font-style: italic; font-size: 19px; color: var(--ink); }
 .lista-ing li.ing-grupo { border-bottom: 1px solid var(--line); }
 .ing { display: flex; align-items: center; gap: 14px; width: 100%; min-height: 54px; padding: 8px 0; border: 0; background: transparent; color: var(--ink); font-size: 17px; text-align: left; transition: color .15s; }
+.ing-cab { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; column-gap: 12px; margin-bottom: 14px; }
+.ing-cab h2 { margin-bottom: 0 !important; }
+.btn-compra { white-space: nowrap; min-height: 40px; gap: 6px; border: 0; background: transparent; padding: 0; font-size: 15px; }
+.btn-compra .ico { align-self: center; }
+.compra-sub { margin-top: 4px; font-size: 14px; color: var(--ink2); }
+.compra-hoja .var-cab { align-items: flex-start; }
+.compra-lista { overflow: auto; margin: 0 -4px; padding: 0 4px; }
+.compra-lista li { border-bottom: 1px solid var(--line); }
+.compra-lista li:last-child { border-bottom: 0; }
+.compra-it .ing-q { width: 76px; }
+.compra-it[aria-pressed="false"] .ing-n, .compra-it[aria-pressed="false"] .ing-q { color: var(--ink2); text-decoration: line-through; text-decoration-color: var(--line-strong); }
+.compra-pie { display: flex; gap: 10px; padding-top: 14px; }
+.compra-pie .btn-acc { flex: 1; }
+.compra-pie .btn:disabled { opacity: .5; cursor: default; }
+.btn-compra-compartir { flex: none; width: 52px; padding: 0; }
 .caja { flex: none; display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 6px; border: 1.5px solid var(--ink2); color: var(--acc-on); transition: background .15s, border-color .15s; }
 .caja .ico { opacity: 0; transform: scale(.6); transition: opacity .15s, transform .15s; }
 .ing-q { flex: none; width: 76px; font-weight: 700; font-variant-numeric: tabular-nums; }
@@ -327,6 +342,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .ing[aria-pressed="true"] .caja { background: var(--acc); border-color: var(--acc); }
 .ing[aria-pressed="true"] .caja .ico { opacity: 1; transform: none; }
 .ing[aria-pressed="true"] .ing-q, .ing[aria-pressed="true"] .ing-n { text-decoration: line-through; text-decoration-color: var(--ink2); }
+.compra-it[aria-pressed="true"] { color: var(--ink); }
+.compra-it[aria-pressed="true"] .ing-q, .compra-it[aria-pressed="true"] .ing-n { text-decoration: none; }
 .ing-pie { display: flex; align-items: center; justify-content: space-between; padding-top: 10px; font-size: 14px; color: var(--ink2); font-variant-numeric: tabular-nums; }
 .ing-pie .btn-enlace { font-size: 14px; }
 .pasos { padding-top: 36px; }
@@ -569,6 +586,10 @@ body.modo-cocina { padding-bottom: 0; overflow: hidden; }
   .var-fondo, .var-hoja .hoja-asa { display: none; }
   .var-hoja { width: 420px; max-height: none; border-radius: 14px; border: 1px solid var(--line-strong); box-shadow: var(--sombra); padding: 8px; animation: entra .15s ease-out; }
   .var-cab { display: none; }
+  .compra-panel { position: fixed; inset: 0; z-index: 30; display: flex; align-items: center; justify-content: center; padding: 24px; }
+  .compra-panel .var-fondo { display: block; position: absolute; inset: 0; }
+  .compra-hoja { position: relative; width: 480px; max-height: min(720px, 86vh); padding: 12px 24px 24px; }
+  .compra-hoja .var-cab { display: flex; }
   .hero-arte { grid-area: arte; min-height: 420px; border-radius: 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; }
   .hero-arte .lamina { inset: 14px; }
   .hero-arte .lamina-2 { inset: 20px; }

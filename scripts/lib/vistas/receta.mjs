@@ -86,7 +86,10 @@ function datosVariante(r, v) {
 function cuerpoVariante(r, v) {
   return html`<div class="receta-variante" ${bloque(r, v)}>
     <aside class="ingredientes" aria-label="Ingredientes">
-      <h2>Ingredientes</h2>
+      <div class="ing-cab">
+        <h2>Ingredientes</h2>
+        <button type="button" class="enlace-fuerte btn-compra" data-compra aria-haspopup="dialog">${icono('cesta', { size: 20, sw: 1.8 })}Lista de la compra</button>
+      </div>
       <div class="raciones">
         <button type="button" class="raciones-btn" data-menos aria-label="Quitar una ración">${icono('menos', { size: 22, sw: 2 })}</button>
         <div class="raciones-val" aria-live="polite"><span class="raciones-n" data-raciones-txt>${v.raciones}</span> <span data-raciones-label>${v.raciones === 1 ? 'ración' : 'raciones'}</span></div>
@@ -169,6 +172,7 @@ export function vistaReceta(ctx, r) {
   const datosCliente = {
     slug: r.slug,
     defecto: r.defecto,
+    titulo: r.titulo,
     variantes: Object.fromEntries(r.variantes.map((v) => [v.id, { nombre: v.nombre, raciones: v.raciones, ings: ingsCliente(v) }]))
   };
 
@@ -205,6 +209,24 @@ export function vistaReceta(ctx, r) {
 
     <div class="receta-cuerpo">
       ${r.variantes.map((v) => cuerpoVariante(r, v))}
+    </div>
+    <div class="var-panel compra-panel" data-compra-panel hidden>
+      <button type="button" class="var-fondo" aria-label="Cerrar" data-compra-cerrar></button>
+      <section class="var-hoja compra-hoja" role="dialog" aria-modal="true" aria-labelledby="compra-t">
+        <span class="hoja-asa" aria-hidden="true"></span>
+        <div class="var-cab">
+          <div>
+            <h2 id="compra-t">Lista de la compra</h2>
+            <p class="compra-sub" data-compra-sub></p>
+          </div>
+          <button type="button" class="btn-ico btn-ico-borde" aria-label="Cerrar" data-compra-cerrar>${icono('cerrar', { size: 22, sw: 2 })}</button>
+        </div>
+        <ul class="compra-lista" data-compra-lista></ul>
+        <div class="compra-pie">
+          <button type="button" class="btn btn-acc" data-compra-copiar>${icono('copiar', { size: 20, sw: 1.8 })}<span data-compra-copiar-txt>Copiar lista</span></button>
+          <button type="button" class="btn btn-sec btn-compra-compartir" data-compra-compartir aria-label="Compartir lista" hidden>${icono('compartir', { size: 20, sw: 1.8 })}</button>
+        </div>
+      </section>
     </div>
     ${jsonScript('datos-receta', datosCliente)}
   </main>`;

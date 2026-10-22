@@ -1,5 +1,5 @@
 // Ficha de receta: variantes, raciones, ingredientes marcables y temporizadores.
-import { ingredienteEscalado, fmtSegundos, mmss, leerOpciones, guardarOpcion } from './comun.js';
+import { ingredienteEscalado, fmtSegundos, mmss, leerOpciones, guardarOpcion, listaCompra, claveIngrediente } from './comun.js';
 import { Temporizador } from './sonido.js';
 
 const datos = JSON.parse(document.getElementById('datos-receta').textContent);
@@ -166,4 +166,74 @@ compartir.addEventListener('click', async () => {
   copiado.classList.add('visible');
   clearTimeout(avisoT);
   avisoT = setTimeout(() => copiado.classList.remove('visible'), 2200);
+});
+
+// Lista de la compra: ingredientes de la variante activa, sumados y escalados; desmarca lo que ya tengas
+const compraPanel = $('[data-compra-panel]');
+const compraLista = $('[data-compra-lista]');
+const compraCopiar = $('[data-compra-copiar]');
+const compraCopiarTxt = $('[data-compra-copiar-txt]');
+const compraCompartir = $('[data-compra-compartir]');
+const YA_EN_CASA = new Set(['sal', 'agua', 'aceite de oliva'].map(claveIngrediente));
+let compra = [];
+let compraOrigen = null;
+
+function textoCompra() {
+  const { st, v } = variantes[activa];
+  const cab = datos.titulo + (multi ? ' · ' + v.nombre.toLowerCase() : '') + ` (${st.raciones} ${st.raciones === 1 ? 'ración' : 'raciones'})`;
+  return cab + '\n' + compra.filter((x) => x.on).map((x) => '- ' + (x.qty ? x.qty + ' ' : '') + x.nombre).join('\n');
+}
+
+function pintarCompra() {
+  const n = compra.filter((x) => x.on).length;
+  compraCopiarTxt.textContent = n ? `Copiar lista (${n})` : 'Nada que copiar';
+  compraCopiar.disabled = compraCompartir.disabled = !n;
+  compraLista.replaceChildren(...compra.map((x, i) => {
+    const li = document.createElement('li');
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'ing compra-it';
+    b.setAttribute('aria-pressed', x.on ? 'true' : 'false');
+    b.innerHTML = '<span class="caja" aria-hidden="true"><svg class="ico" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span><span class="ing-q"></span><span class="ing-n"></span>';
+    b.children[1].textContent = x.qty;
+    b.children[2].textContent = x.nombre + (x.opcional ? ', opcional' : '');
+    b.addEventListener('click', () => { x.on = !x.on; pintarCompra(); compraLista.children[i].firstChild.focus(); });
+    li.append(b);
+    return li;
+  }));
+}
+
+function abrirCompra(origen) {
+  const { st, v } = variantes[activa];
+  const opciones = leerOpciones(datos.slug);
+  compra = listaCompra(v.ings, st.raciones / v.raciones, (i) => opciones[activa + ':' + i] || 0)
+    .map((x) => ({ ...x, on: !x.opcional && !YA_EN_CASA.has(x.clave) }));
+  $('[data-compra-sub]').textContent = `${multi ? v.nombre + ' · ' : ''}para ${st.raciones} ${st.raciones === 1 ? 'ración' : 'raciones'} · desmarca lo que ya tengas`;
+  compraCompartir.hidden = !navigator.share;
+  pintarCompra();
+  compraOrigen = origen;
+  compraPanel.hidden = false;
+  document.documentElement.style.overflow = 'hidden';
+  compraCopiar.focus();
+}
+function cerrarCompra() {
+  if (compraPanel.hidden) return;
+  compraPanel.hidden = true;
+  document.documentElement.style.overflow = '';
+  compraOrigen?.focus();
+}
+$$('[data-compra]').forEach((b) => b.addEventListener('click', () => abrirCompra(b)));
+$$('[data-compra-cerrar]').forEach((b) => b.addEventListener('click', cerrarCompra));
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') cerrarCompra(); });
+compraCopiar.addEventListener('click', async () => {
+  try {
+    await navigator.clipboard.writeText(textoCompra());
+    compraCopiarTxt.textContent = '¡Copiada!';
+    setTimeout(cerrarCompra, 900);
+  } catch {
+    compraCopiarTxt.textContent = 'No se pudo copiar';
+  }
+});
+compraCompartir.addEventListener('click', async () => {
+  try { await navigator.share({ title: 'Lista de la compra', text: textoCompra() }); cerrarCompra(); } catch {}
 });

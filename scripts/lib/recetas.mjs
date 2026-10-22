@@ -418,7 +418,9 @@ export function cargarReceta(file, src, dirFotos) {
 export function ingsCliente(v) {
   return v.ingredientes.map((g) => ({
     q: g.cantidad, u: g.unidad, up: g.unidadPlural, n: g.nombre, np: g.plural, nota: g.nota,
-    ...(g.opciones ? { o: g.opciones } : {})
+    k: g.id.replace(/\s*\(.*\)\s*$/, ''),
+    ...(g.opciones ? { o: g.opciones } : {}),
+    ...(g.opcional ? { op: 1 } : {})
   }));
 }
 

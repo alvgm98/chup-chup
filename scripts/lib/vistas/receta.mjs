@@ -198,6 +198,8 @@ export function vistaReceta(ctx, r) {
       ${r.variantes.map((v) => datosVariante(r, v))}
       <div class="hero-cta">
         <a class="btn btn-acc btn-grande" href="cocina/" data-enlace-cocina>${icono('olla', { size: 22, sw: 1.8 })}Empezar a cocinar</a>
+        <button type="button" class="btn btn-sec btn-grande btn-compartir" data-compartir aria-label="Compartir receta">${icono('compartir', { size: 22, sw: 1.8 })}<span class="solo-escritorio" data-compartir-txt>Compartir</span></button>
+        <span class="aviso-copiado" role="status" data-copiado></span>
       </div>
     </section>
 

@@ -252,7 +252,10 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .barras span:nth-child(2) { height: 12px; }
 .barras span:nth-child(3) { height: 16px; }
 .barras span.llena { background: var(--acc); border-color: var(--acc); }
-.hero-cta { grid-area: cta; }
+.hero-cta { grid-area: cta; position: relative; display: flex; gap: 10px; }
+.btn-compartir { flex: none; width: 56px; padding: 0; }
+.aviso-copiado { position: absolute; right: 0; top: calc(100% + 8px); padding: 8px 12px; border-radius: 10px; background: var(--ink); color: var(--bg); font-size: 14px; font-weight: 700; white-space: nowrap; opacity: 0; transform: translateY(-4px); transition: opacity .15s, transform .15s; pointer-events: none; }
+.aviso-copiado.visible { opacity: 1; transform: none; }
 .hero-multi { grid-template-areas: "stack" "var" "desc" "datos" "cta"; }
 .hero-multi.hero-foto { grid-template-areas: "arte" "txt" "var" "desc" "datos" "cta"; }
 .variantes { grid-area: var; position: relative; }
@@ -287,7 +290,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .var-op-meta .barras span:nth-child(2) { height: 10px; }
 .var-op-meta .barras span:nth-child(3) { height: 14px; }
 .var-sep { color: var(--line-strong); }
-.hero-cta .btn { width: 100%; }
+.hero-cta .btn-acc { flex: 1; }
 /* con foto */
 .hero-foto { grid-template-areas: "arte" "txt" "desc" "datos" "cta"; }
 .hero-foto .hero-arte { grid-area: arte; background: var(--photo); }
@@ -583,6 +586,9 @@ body.modo-cocina { padding-bottom: 0; overflow: hidden; }
   .dato-dif { flex-direction: row; align-items: center; gap: 10px; }
   .hero-datos > .dato-kcal { flex: 1 1 100%; padding: 0; }
   .hero-cta .btn { width: auto; height: 52px; font-size: 17px; padding: 0 24px; }
+  .hero-cta .btn-acc { flex: none; }
+  .btn-compartir { padding: 0 20px; }
+  .aviso-copiado { left: 0; right: auto; }
   .hero-foto .hero-arte img { min-height: 420px; max-height: 560px; }
 
   .receta-cuerpo { padding-top: 64px; }

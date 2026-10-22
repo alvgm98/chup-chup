@@ -144,3 +144,26 @@ if (abrir) {
   });
 }
 $$('[data-elegir]').forEach((b) => b.addEventListener('click', () => { elegir(b.dataset.elegir); cerrarPanel(); }));
+
+// Compartir: menú del sistema si lo hay; si no, copia el enlace
+const compartir = $('[data-compartir]');
+const copiado = $('[data-copiado]');
+let avisoT;
+compartir.addEventListener('click', async () => {
+  const url = new URL(location.pathname, location.origin);
+  if (multi && activa !== datos.defecto) url.searchParams.set('v', activa);
+  const titulo = document.querySelector('h1').textContent.trim();
+  if (navigator.share) {
+    try { await navigator.share({ title: titulo, url: url.href }); } catch {}
+    return;
+  }
+  try {
+    await navigator.clipboard.writeText(url.href);
+    copiado.textContent = 'Enlace copiado';
+  } catch {
+    copiado.textContent = 'No se pudo copiar el enlace';
+  }
+  copiado.classList.add('visible');
+  clearTimeout(avisoT);
+  avisoT = setTimeout(() => copiado.classList.remove('visible'), 2200);
+});

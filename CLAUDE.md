@@ -133,11 +133,11 @@ Español de España, tuteo, frases cortas e imperativas. Tiempos realistas. Cant
 - `node scripts/serve.mjs` sirve `dist/` en http://localhost:4321/chup-chup/ para probar.
 - Colores, tipografías y componentes siguen `design/Estilo.dc.html`. Mantén ese lenguaje visual en cualquier cambio.
 
-## Cómo trabajar con Álvaro
-Esta sección es memoria entre sesiones: **cuando Álvaro diga una preferencia nueva o corrija algo de forma general, añádela aquí** (en el mismo commit que el cambio o en uno aparte, `Preferencias: …`).
+## Preferencias del usuario
+Esta sección es memoria entre sesiones: **cuando el usuario diga una preferencia nueva o corrija algo de forma general, añádela aquí** (en el mismo commit que el cambio o en uno aparte, `Preferencias: …`).
 
 ### Recetas
-- Si pasa una receta suya, respeta sus cantidades, ingredientes y pasos. Mejora la redacción según `REDACCION.md`,
+- Si el usuario pasa una receta suya, respeta sus cantidades, ingredientes y pasos. Mejora la redacción según `REDACCION.md`,
   pero dile qué has añadido tú (pasos, notas, cantidades que faltaban) para que lo valide.
 - Si pide una receta nueva, propónla en el chat y súbela cuando lo diga.
 - No uses jengibre fresco: siempre jengibre en polvo.
@@ -150,8 +150,4 @@ Esta sección es memoria entre sesiones: **cuando Álvaro diga una preferencia n
   Mejor el aire de libro de cocina impreso (p. ej. los consejos de paso van como nota impresa, etiqueta en versalitas y peso 900).
 - Antes de un cambio grande, explica en pocas líneas cómo lo harías; lo pequeño, hazlo directamente.
 - Prueba en móvil (400 px) y escritorio, claro y oscuro, y manda una captura del resultado.
-- No cambies textos que él haya escrito si no lo pide.
-
-### Comunicación
-- Español de España, tuteo, directo y breve.
-- Si algo de lo que pide es incorrecto (p. ej. atribuir la web a una tecnología que no usa), díselo antes de hacerlo.
+- No cambies textos que haya escrito el usuario si no lo pide.

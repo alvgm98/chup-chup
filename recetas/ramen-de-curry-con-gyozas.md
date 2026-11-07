@@ -28,14 +28,16 @@ ingredientes:
 
 ## Preparación
 
-1. Pon en una olla el [caldo|caldo de pollo], la [leche de coco], el [golden curry], la [crema de cacahuete], la [salsa de ostras] y el [gochujang]. Remueve hasta deshacer la pastilla y que hierva. ⏲ 5 min
-2. Cuece el [huevo|huevos] en agua hirviendo, enfríalo en agua fría y pélalo. ⏲ 7 min
-3. Sofríe la [carne|carne picada] en una sartén hasta que dore.
-4. {udon} Cuece las [gyozas] en el caldo. ⏲ 3 min
-5. {udon} Añade los [udon] y las [espinacas]. ⏲ 2 min
-6. {arroz} Cuece las [gyozas] y los [noodles|noodles de arroz] en el caldo. ⏲ 4 min
-7. {arroz} Añade las [espinacas] y apaga el fuego.
-8. Sirve con el huevo partido por la mitad y la carne por encima.
+1. Remueve a fuego medio en una olla el [gochujang], la [crema de cacahuete] y la [salsa de ostras]. ⏲ 1 min
+   > **Truco:** Retíralo del fuego si huele a quemado: el gochujang tiene azúcar.
+2. Añade el [caldo|caldo de pollo], la [leche de coco] y el [golden curry]. Remueve hasta deshacer la pastilla y que hierva. ⏲ 5 min
+3. Cuece el [huevo|huevos] en agua hirviendo, enfríalo en agua fría y pélalo. ⏲ 7 min
+4. Sofríe la [carne|carne picada] en una sartén hasta que dore.
+5. {udon} Cuece las [gyozas] en el caldo. ⏲ 3 min
+6. {udon} Añade los [udon] y las [espinacas]. ⏲ 2 min
+7. {arroz} Cuece las [gyozas] y los [noodles|noodles de arroz] en el caldo. ⏲ 4 min
+8. {arroz} Añade las [espinacas] y apaga el fuego.
+9. Sirve con el huevo partido por la mitad y la carne por encima.
 
 ## Notas
 

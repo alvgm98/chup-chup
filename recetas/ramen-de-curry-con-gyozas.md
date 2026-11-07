@@ -1,5 +1,5 @@
 ---
-titulo: Ramen de carne con gyozas
+titulo: Ramen de curry con gyozas
 descripcion: Caldo cremoso de coco, curry y cacahuete con gyozas, fideos y huevo de yema blanda. Cena rápida de un solo cazo.
 tipo: [sopas-y-cremas]
 preparacion: 10

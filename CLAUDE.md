@@ -52,7 +52,7 @@ ingredientes:
 
 ### Tipos (`tipo`)
 `carne`, `pescado`, `arroz`, `pasta`, `guisos`, `legumbres`, `verduras`, `sopas-y-cremas`, `ensaladas`,
-`masas-y-panes`, `salsas`, `aperitivos`, `postres`. Para añadir uno nuevo hay que tocar `scripts/lib/categorias.mjs`.
+`masas-y-panes`, `pizzas`, `salsas`, `aperitivos`, `postres`. Para añadir uno nuevo hay que tocar `scripts/lib/categorias.mjs`.
 
 ### Ingredientes
 - `id`: nombre genérico tal como alguien diría que lo tiene en la nevera (`patatas`, `huevos`, `pimiento verde`,

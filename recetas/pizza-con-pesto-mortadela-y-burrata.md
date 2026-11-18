@@ -1,7 +1,7 @@
 ---
 titulo: Pizza con pesto, mortadela y burrata
 descripcion: Base de pesto y mozzarella recién horneada, coronada en frío con mortadela, burrata cremosa y pistachos.
-tipo: [masas-y-panes]
+tipo: [pizzas]
 preparacion: 10
 coccion: 12
 raciones: 1

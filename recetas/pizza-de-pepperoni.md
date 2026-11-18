@@ -1,7 +1,7 @@
 ---
 titulo: Pizza de pepperoni
 descripcion: La de siempre: tomate con orégano, mucha mozzarella y pepperoni que se curva y cruje en el horno.
-tipo: [masas-y-panes]
+tipo: [pizzas]
 preparacion: 10
 coccion: 12
 raciones: 1

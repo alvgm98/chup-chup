@@ -10,6 +10,7 @@ export const MOTIVOS = {
   sopa: 'M10 32h44c0 12-10 20-22 20S10 44 10 32zM24 26c-2-3 2-5 0-8M32 26c-2-3 2-5 0-8M40 26c-2-3 2-5 0-8',
   guiso: 'M12 26h40v16a8 8 0 0 1-8 8H20a8 8 0 0 1-8-8zM6 28h6M52 28h6M22 26v-4h20v4M32 22v-5',
   ensalada: 'M10 34h44c0 10-10 18-22 18S10 44 10 34zM22 34c-2-8 4-14 10-14c-1 6-4 11-10 14zM34 34c2-7 9-11 15-9c-3 5-8 8-15 9z',
+  pizza: 'M11 16c12-7 30-7 42 0M13 20c11-6 27-6 38 0L32 54zM22.5 27a3.5 3.5 0 1 0 7 0a3.5 3.5 0 1 0 -7 0M34.5 28a3.5 3.5 0 1 0 7 0a3.5 3.5 0 1 0 -7 0M28.5 39a3.5 3.5 0 1 0 7 0a3.5 3.5 0 1 0 -7 0',
   pan: 'M10 44c0-14 10-22 22-22s22 8 22 22v4H10zM22 32l4 6M32 30v8M42 32l-4 6',
   salsa: 'M12 30h32c0 10-7 16-16 16S12 40 12 30zM44 30l10-6M22 46l-3 6h18l-3-6M27 24c0-3 3-3 3-6',
   postre: 'M18 46l5-22h18l5 22zM23 28c3 3 5-1 7 2s5-1 7 1s3 0 4-3M10 50h44',
@@ -28,6 +29,7 @@ export const CATEGORIAS = [
   { slug: 'sopas-y-cremas', nombre: 'Sopas y cremas', familia: 'saf', motivo: 'sopa' },
   { slug: 'ensaladas', nombre: 'Ensaladas', familia: 'oli', motivo: 'ensalada' },
   { slug: 'masas-y-panes', nombre: 'Masas y panes', familia: 'saf', motivo: 'pan' },
+  { slug: 'pizzas', nombre: 'Pizzas', familia: 'acc', motivo: 'pizza' },
   { slug: 'salsas', nombre: 'Salsas', familia: 'acc', motivo: 'salsa' },
   { slug: 'aperitivos', nombre: 'Aperitivos', familia: 'oli', motivo: 'aperitivo' },
   { slug: 'postres', nombre: 'Postres', familia: 'acc', motivo: 'postre' }

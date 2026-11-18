@@ -1,7 +1,7 @@
 ---
 titulo: Pizza de jamón serrano y tomate
 descripcion: Tomate en salsa y en rodajas, mozzarella fundida y jamón serrano puesto al final, para que no se reseque.
-tipo: [masas-y-panes]
+tipo: [pizzas]
 preparacion: 10
 coccion: 12
 raciones: 1

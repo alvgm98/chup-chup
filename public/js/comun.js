@@ -105,6 +105,19 @@ export function fmtFecha(iso, hoy) {
   return d + ' ' + MESES[mo - 1];
 }
 
+/** Unidad en que rinde una receta. Por defecto, raciones ("2 rac." en los listados). */
+export const UD_RACION = { s: 'ración', p: 'raciones', c: 'rac.' };
+
+/** 1, pizza → "pizza"; 2 → "pizzas" */
+export function udTxt(n, ud = UD_RACION) {
+  return n === 1 ? ud.s : ud.p;
+}
+
+/** 2 → "2 raciones" (corto: "2 rac."); con rinde pizza: "1 pizza", "2 pizzas" */
+export function fmtRinde(n, ud = UD_RACION, corto = false) {
+  return n + ' ' + (corto && ud.c ? ud.c : udTxt(n, ud));
+}
+
 export function plural(n, uno, varios) {
   return n === 1 ? '1 ' + uno : n + ' ' + varios;
 }

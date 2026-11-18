@@ -372,6 +372,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .macros-kcal { display: flex; align-items: center; gap: 10px; }
 .macros-num { font-family: var(--serif); font-weight: 500; font-size: 44px; line-height: 1; font-variant-numeric: lining-nums; }
 .macros-ud { font-size: 13px; line-height: 1.25; font-weight: 600; color: var(--ink2); }
+.macros-porcion { margin-left: auto; text-align: right; font-size: 13px; line-height: 1.25; font-weight: 600; color: var(--ink2); }
+.macros-porcion b { color: var(--ink); font-weight: 800; font-size: 15px; }
 .macros-barra { display: flex; gap: 3px; height: 10px; }
 .macros-barra span { flex-basis: 0; border-radius: 3px; }
 .macros-lista { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }

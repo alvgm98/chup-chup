@@ -2,7 +2,7 @@ import { html, icono, jsonScript } from '../html.mjs';
 import { CAT } from '../categorias.mjs';
 import { layout } from './layout.mjs';
 import { avisoRed } from './comun.mjs';
-import { fmtMinutos, fmtRango, claveIngrediente } from '../../../public/js/comun.js';
+import { fmtMinutos, fmtRango, claveIngrediente, fmtRinde } from '../../../public/js/comun.js';
 
 // "azúcar (caramelo)" cuenta como "azúcar" en la Nevera
 const nombreNevera = (id) => id.replace(/\s*\(.*\)\s*$/, '');
@@ -18,7 +18,7 @@ export function indiceCliente(ctx, recetas) {
       t: r.titulo,
       c: r.tipo,
       tl: fmtRango(r.totalMin, r.totalMax),
-      r: r.raciones,
+      r: fmtRinde(r.raciones, r.ud, true),
       d: r.dificultadLabel,
       foto: r.foto ? ctx.u('fotos/' + r.foto) : null,
       def: r.defecto,

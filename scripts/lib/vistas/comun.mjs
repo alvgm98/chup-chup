@@ -1,7 +1,7 @@
 import { html, raw, icono, motivo } from '../html.mjs';
 import { CAT } from '../categorias.mjs';
 import * as LOGO from '../logo.mjs';
-import { fmtMinutos, fmtFecha, fmtRango, listaO } from '../../../public/js/comun.js';
+import { fmtMinutos, fmtFecha, fmtRango, listaO, fmtRinde } from '../../../public/js/comun.js';
 
 export function crearContexto({ base, sitio, version, hoy }) {
   const u = (p = '') => base + p.replace(/^\//, '');
@@ -16,7 +16,7 @@ export function marca(ctx, tag = 'span') {
 }
 
 export function metaReceta(r) {
-  return `${fmtRango(r.totalMin, r.totalMax)} · ${r.raciones} rac. · ${r.dificultadLabel}`;
+  return `${fmtRango(r.totalMin, r.totalMax)} · ${fmtRinde(r.raciones, r.ud, true)} · ${r.dificultadLabel}`;
 }
 
 /** Miniatura: foto recortada o tinte de categoría con su motivo */
@@ -50,7 +50,7 @@ export function filaReceta(ctx, r, { modo = 'ultimas', actual = null } = {}) {
       ${r.multi ? html`<span class="fila-var">${listaO(r.variantes.map((v) => v.nombre))}</span>` : ''}
       ${modo === 'cat' && actual && otras.length ? html`<span class="fila-otras">También en <b>${otras.join(', ')}</b></span>` : ''}
     </span>
-    ${modo === 'ultimas' ? html`<span class="fila-meta-d">${fmtRango(r.totalMin, r.totalMax)}<br>${r.raciones} rac. · ${r.dificultadLabel}</span>` : ''}
+    ${modo === 'ultimas' ? html`<span class="fila-meta-d">${fmtRango(r.totalMin, r.totalMax)}<br>${fmtRinde(r.raciones, r.ud, true)} · ${r.dificultadLabel}</span>` : ''}
   </a>`;
 }
 

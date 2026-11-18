@@ -3,7 +3,7 @@ import { CAT } from '../categorias.mjs';
 import { ingsCliente, etiquetasOpciones } from '../recetas.mjs';
 import { layout } from './layout.mjs';
 import { avisoRed, famInk, famSoft } from './comun.mjs';
-import { fmtMinutos, fmtSegundos, ingredienteEscalado } from '../../../public/js/comun.js';
+import { fmtMinutos, fmtSegundos, ingredienteEscalado, udTxt, fmtRinde, UD_RACION } from '../../../public/js/comun.js';
 
 function barrasDificultad(d) {
   const n = { facil: 1, media: 2, dificil: 3 }[d];
@@ -36,9 +36,12 @@ function listaIngredientes(v) {
 
 const fmtG = (n) => (n < 10 && n % 1 ? String(Math.round(n * 10) / 10).replace('.', ',') : String(Math.round(n)));
 
+/** kcal de una porción, redondeadas a 5 */
+const porcion = (kcal, n) => Math.round(kcal / n / 5) * 5;
+
 const idMacros = (v) => 'nutricion' + (v.id ? '-' + v.id : '');
 
-function seccionMacros(v) {
+function seccionMacros(r, v) {
   const m = v.macros;
   if (!m) return '';
   // Reparto de la energía: proteínas e hidratos 4 kcal/g, grasas 9 kcal/g
@@ -54,7 +57,7 @@ function seccionMacros(v) {
   return html`<section class="macros" id="${idMacros(v)}" aria-label="Valor nutricional">
     <h2>Valor nutricional</h2>
     <div class="macros-caja">
-      <div class="macros-kcal"><span class="macros-num">${Math.round(m.kcal)}</span><span class="macros-ud">kcal<br>por ración</span></div>
+      <div class="macros-kcal"><span class="macros-num">${Math.round(m.kcal)}</span><span class="macros-ud">kcal<br>por ${r.ud.s}</span>${r.porciones ? html`<span class="macros-porcion"><b>≈ ${porcion(m.kcal, r.porciones)}</b> kcal por porción<br>cortada en ${r.porciones}</span>` : ''}</div>
       <div class="macros-barra" aria-hidden="true">${partes.map((p, i) => html`<span style="flex-grow:${pct[i]};background:var(--${p.f})"></span>`)}</div>
       <dl class="macros-lista">
         ${partes.map((p, i) => html`<div class="macro"><dt><span class="macro-punto" style="background:var(--${p.f})" aria-hidden="true"></span>${p.n}</dt><dd><span class="macro-g">${fmtG(m[p.k])} g</span><span class="macro-pct">${pct[i]} % de kcal</span></dd></div>`)}
@@ -73,11 +76,13 @@ function datosVariante(r, v) {
     <div><dt><span class="solo-movil">Tiempo</span><span class="solo-escritorio">Tiempo total</span></dt><dd class="dato">${fmtMinutos(v.total)}</dd>
       <dd class="dato-sub solo-movil">${v.coccion ? `${v.preparacion} prep. · ${v.coccion} fuego` : 'sin fuego'}</dd></div>
     <div class="solo-escritorio"><dt>${v.coccion ? 'Preparación' : 'Al fuego'}</dt><dd class="dato">${fmtMinutos(v.coccion ? v.preparacion : 0)}</dd></div>
-    <div><dt>Raciones</dt><dd class="dato" data-raciones-txt>${v.raciones}</dd><dd class="dato-sub solo-movil">personas</dd></div>
+    ${r.ud === UD_RACION
+      ? html`<div><dt>Raciones</dt><dd class="dato" data-raciones-txt>${v.raciones}</dd><dd class="dato-sub solo-movil">personas</dd></div>`
+      : html`<div><dt>Rinde</dt><dd class="dato" data-raciones-txt>${v.raciones}</dd><dd class="dato-sub" data-ud>${udTxt(v.raciones, r.ud)}</dd></div>`}
     <div><dt>Dificultad</dt><dd class="dato dato-dif">${v.dificultadLabel}${barrasDificultad(v.dificultad)}</dd></div>
     ${v.macros
       ? html`<div class="dato-kcal"><dt>Calorías</dt><dd><a class="dato-enlace" href="#${idMacros(v)}">
-          <span class="dato">${Math.round(v.macros.kcal)} kcal</span><span class="dato-sub">por ración</span><span class="dato-ver">Ver valor nutricional${icono('abajo', { size: 16, sw: 2 })}</span>
+          <span class="dato">${Math.round(v.macros.kcal)} kcal</span><span class="dato-sub">por ${r.ud.s}</span><span class="dato-ver">Ver valor nutricional${icono('abajo', { size: 16, sw: 2 })}</span>
         </a></dd></div>`
       : ''}
   </dl>`;
@@ -91,9 +96,9 @@ function cuerpoVariante(r, v) {
         <button type="button" class="enlace-fuerte btn-compra" data-compra aria-haspopup="dialog">${icono('cesta', { size: 20, sw: 1.8 })}Lista de la compra</button>
       </div>
       <div class="raciones">
-        <button type="button" class="raciones-btn" data-menos aria-label="Quitar una ración">${icono('menos', { size: 22, sw: 2 })}</button>
-        <div class="raciones-val" aria-live="polite"><span class="raciones-n" data-raciones-txt>${v.raciones}</span> <span data-raciones-label>${v.raciones === 1 ? 'ración' : 'raciones'}</span></div>
-        <button type="button" class="raciones-btn" data-mas aria-label="Añadir una ración">${icono('mas', { size: 22, sw: 2 })}</button>
+        <button type="button" class="raciones-btn" data-menos aria-label="${r.ud === UD_RACION ? 'Quitar una ración' : 'Menos ' + r.ud.p}">${icono('menos', { size: 22, sw: 2 })}</button>
+        <div class="raciones-val" aria-live="polite"><span class="raciones-n" data-raciones-txt>${v.raciones}</span> <span data-ud>${udTxt(v.raciones, r.ud)}</span></div>
+        <button type="button" class="raciones-btn" data-mas aria-label="${r.ud === UD_RACION ? 'Añadir una ración' : 'Más ' + r.ud.p}">${icono('mas', { size: 22, sw: 2 })}</button>
       </div>
       <p class="recalculado" hidden>Cantidades recalculadas para <span data-raciones-txt>${v.raciones}</span>. <button type="button" class="btn-enlace" data-reset>Volver a ${v.raciones}</button></p>
       <ul class="lista-ing">${listaIngredientes(v)}</ul>
@@ -129,7 +134,7 @@ function cuerpoVariante(r, v) {
             </div>
           </section>`
         : ''}
-      ${seccionMacros(v)}
+      ${seccionMacros(r, v)}
     </div>
   </div>`;
 }
@@ -156,7 +161,7 @@ function selectorVariantes(r) {
             <span class="var-radio" aria-hidden="true">${icono('check', { size: 14, sw: 2.6 })}</span>
             <span class="var-op-txt">
               <span class="var-op-nombre">${v.nombre}${rapidas.length < r.variantes.length && v.total === minimo ? html`<span class="var-rapida">La más rápida</span>` : ''}</span>
-              <span class="var-op-meta">${icono('reloj', { size: 15, sw: 1.7 })}${fmtMinutos(v.total)}<span class="var-sep">·</span>${v.dificultadLabel}${barrasDificultad(v.dificultad)}<span class="var-sep">·</span>${v.raciones} rac.</span>
+              <span class="var-op-meta">${icono('reloj', { size: 15, sw: 1.7 })}${fmtMinutos(v.total)}<span class="var-sep">·</span>${v.dificultadLabel}${barrasDificultad(v.dificultad)}<span class="var-sep">·</span>${fmtRinde(v.raciones, r.ud, true)}</span>
             </span>
           </button></li>`)}
         </ul>
@@ -173,6 +178,7 @@ export function vistaReceta(ctx, r) {
     slug: r.slug,
     defecto: r.defecto,
     titulo: r.titulo,
+    ud: r.ud,
     variantes: Object.fromEntries(r.variantes.map((v) => [v.id, { nombre: v.nombre, raciones: v.raciones, ings: ingsCliente(v) }]))
   };
 
@@ -190,7 +196,7 @@ export function vistaReceta(ctx, r) {
           ? html`<img src="${ctx.u('fotos/' + r.foto)}" alt="${r.titulo}" decoding="async" fetchpriority="high">`
           : html`<span class="lamina" aria-hidden="true"></span><span class="lamina lamina-2" aria-hidden="true"></span>
             <span class="hero-motivo-d">${motivo(c.d, { size: 150, sw: 1 })}</span>
-            <span class="hero-pie">${c.nombre} · para <span data-raciones-pie>${r.raciones}</span></span>`}
+            <span class="hero-pie">${c.nombre} · ${r.ud === UD_RACION ? 'para ' : ''}<span data-raciones-pie>${r.ud === UD_RACION ? r.raciones : fmtRinde(r.raciones, r.ud)}</span></span>`}
       </div>
       <div class="hero-txt">
         <span class="kicker kicker-hero">${cats}</span>

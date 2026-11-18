@@ -27,6 +27,7 @@ raciones: 4
 dificultad: facil                  # facil | media | dificil
 fecha: 2026-10-18                  # día en que se añade (AAAA-MM-DD)
 etiquetas: [cuchara, invierno]     # opcional
+rinde: { nombre: pizza, porciones: 8 }   # opcional, ver «Recetas que no van por raciones»
 foto: lentejas.webp                # opcional, archivo en recetas/fotos/
 macros: { kcal: 380, proteinas: 21, hidratos: 52, grasas: 9, fibra: 14 }   # por ración (ver «Valor nutricional»)
 ingredientes:
@@ -118,6 +119,13 @@ opcionales `fibra`, `azucares`, `saturadas`, `sal`, en gramos).
   Las que no lo llevan usan el de nivel superior.
 - La web lo muestra al final de la receta como aproximado, con el reparto de energía entre proteínas, hidratos y grasas.
 
+### Recetas que no van por raciones (`rinde`)
+Lo que se hace entero y luego se reparte (una pizza, una tarta, un bizcocho) no se cuenta en raciones:
+`raciones: 1` + `rinde: { nombre: pizza, porciones: 8 }`. La web dice «1 pizza», el +/− cuenta pizzas y
+`macros` va **por unidad entera** («2320 kcal por pizza»). `porciones` (opcional, en cuántas se corta) añade
+«≈ 290 kcal por porción». `plural` se deduce (pizza → pizzas); si no, `rinde: { nombre: flan, plural: flanes }`.
+También vale `rinde: pizza` sin porciones.
+
 ### Fotos
 Opcionales. Guárdalas en `recetas/fotos/` en WebP, máximo 1600 px de ancho y ~200 KB
 (con sharp: `sharp(in).rotate().resize({ width: 1600, withoutEnlargement: true }).webp({ quality: 78 })`).
@@ -144,6 +152,7 @@ Esta sección es memoria entre sesiones: **cuando el usuario diga una preferenci
 - Gambas congeladas. Pepino holandés.
 - Carne y salchichas en gramos; cebollas y verduras contables en unidades.
 - Cuando el tamaño del molde no importa, no lo menciones.
+- Pizzas, tartas y similares, con `rinde` (por unidad entera), no por raciones.
 
 ### Web
 - Nada que parezca hecho con IA: sin cajas con borde y fondo para todo, degradados, emojis decorativos ni textos de relleno.

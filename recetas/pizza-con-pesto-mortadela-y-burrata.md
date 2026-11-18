@@ -4,11 +4,12 @@ descripcion: Base de pesto y mozzarella recién horneada, coronada en frío con 
 tipo: [masas-y-panes]
 preparacion: 10
 coccion: 12
-raciones: 2
+raciones: 1
+rinde: { nombre: pizza, porciones: 8 }
 dificultad: facil
 fecha: 2026-11-18
 etiquetas: [horno]
-macros: { kcal: 1160, proteinas: 46, hidratos: 102, grasas: 64, fibra: 6 }
+macros: { kcal: 2320, proteinas: 91, hidratos: 204, grasas: 127, fibra: 12 }
 ingredientes:
   - { id: masa de pizza, nombre: masa de pizza fresca, cantidad: 400, unidad: g }
   - { id: pesto, nombre: pesto, cantidad: 4, unidad: cda }

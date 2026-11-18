@@ -1,11 +1,13 @@
 import { html, icono, jsonScript } from '../html.mjs';
 import { ingsCliente } from '../recetas.mjs';
 import { layout } from './layout.mjs';
+import { fmtRinde } from '../../../public/js/comun.js';
 
 export function vistaCocina(ctx, r) {
   const datos = {
     slug: r.slug,
     titulo: r.titulo,
+    ud: r.ud,
     defecto: r.defecto,
     variantes: Object.fromEntries(
       r.variantes.map((v) => [
@@ -26,7 +28,7 @@ export function vistaCocina(ctx, r) {
       <div class="pantalla-on" role="status" data-wake hidden>${icono('sol', { size: 16, sw: 1.8 })}<span>Pantalla encendida</span></div>
     </div>
     <div class="cocina-prog">
-      <div class="cocina-prog-txt"><span data-num>Paso 1 de ${r.pasos.length}</span><span data-serv>Para ${r.raciones} raciones</span></div>
+      <div class="cocina-prog-txt"><span data-num>Paso 1 de ${r.pasos.length}</span><span data-serv>Para ${fmtRinde(r.raciones, r.ud)}</span></div>
       <div class="cocina-barra" aria-hidden="true" data-barra></div>
     </div>
     <main class="cocina-main">

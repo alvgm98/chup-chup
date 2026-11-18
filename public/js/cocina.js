@@ -1,5 +1,5 @@
 // Modo cocina: un paso a la vez, temporizadores y pantalla encendida.
-import { ingredienteEscalado, mmss, leerOpciones } from './comun.js';
+import { ingredienteEscalado, mmss, leerOpciones, fmtRinde } from './comun.js';
 import { Temporizador, prepararAudio } from './sonido.js';
 
 const todo = JSON.parse(document.getElementById('datos-cocina').textContent);
@@ -36,7 +36,7 @@ const el = {
   hoja: $('[data-hoja]'), hojaLista: $('[data-hoja-lista]'), abrirHoja: $('[data-abrir-hoja]'), wake: $('[data-wake]')
 };
 
-el.serv.textContent = `Para ${raciones} ${raciones === 1 ? 'ración' : 'raciones'}`;
+el.serv.textContent = 'Para ' + fmtRinde(raciones, todo.ud);
 
 // Temporizadores: uno por paso, siguen corriendo aunque cambies de paso
 const timers = new Map();

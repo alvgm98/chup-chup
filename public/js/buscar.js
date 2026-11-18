@@ -116,7 +116,7 @@ function fila(x, mini = false) {
   t.append(marcarTitulo(r.t, x.marcas || new Set()));
   const m = document.createElement('span');
   m.className = 'fila-meta';
-  m.textContent = mini ? `${c.n} · ${r.tl}` : `${r.tl} · ${r.r} rac. · ${r.d}`;
+  m.textContent = mini ? `${c.n} · ${r.tl}` : `${r.tl} · ${r.r} · ${r.d}`;
   txt.append(t, m);
   if (!mini && x.por && !x.por.has('titulo') && x.por.has('ingrediente')) {
     const p = document.createElement('span');

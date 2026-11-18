@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { splitFrontmatter, YamlError } from './yaml.mjs';
 import { CAT } from './categorias.mjs';
-import { norm, claveIngrediente } from '../../public/js/comun.js';
+import { norm, claveIngrediente, UD_RACION } from '../../public/js/comun.js';
 
 export class RecetaError extends Error {}
 
@@ -115,6 +115,22 @@ function parsePaso(texto, ings, ctx) {
 
 const MACROS = ['kcal', 'proteinas', 'hidratos', 'grasas'];
 const MACROS_OPC = ['azucares', 'fibra', 'saturadas', 'sal'];
+
+/**
+ * "rinde": en qué se cuentan las raciones cuando no son personas.
+ * rinde: pizza  ·  rinde: { nombre: pizza, plural: pizzas, porciones: 8 }
+ */
+function leerRinde(x, file) {
+  if (x == null) return { ud: UD_RACION, porciones: null };
+  const o = typeof x === 'string' ? { nombre: x } : x;
+  req(o && typeof o === 'object' && !Array.isArray(o) && typeof o.nombre === 'string' && o.nombre,
+    `${file}: "rinde" debe ser un nombre (rinde: pizza) o { nombre: pizza, plural: pizzas, porciones: 8 }`);
+  for (const k of Object.keys(o)) req(['nombre', 'plural', 'porciones'].includes(k), `${file}: en "rinde", campo "${k}" desconocido (vale nombre, plural, porciones)`);
+  if (o.porciones != null) req(Number.isInteger(o.porciones) && o.porciones >= 2, `${file}: en "rinde", "porciones" debe ser un número entero (en cuántas se corta)`);
+  const s = o.nombre.trim();
+  const pl = o.plural ? String(o.plural).trim() : /[aeiouáéó]$/i.test(s) ? s + 's' : s + 'es';
+  return { ud: { s, p: pl }, porciones: o.porciones ?? null };
+}
 
 function leerMacros(m, ctx) {
   req(m && typeof m === 'object' && !Array.isArray(m), `${ctx}: "macros" debe ser { kcal: …, proteinas: …, hidratos: …, grasas: … }`);
@@ -279,7 +295,7 @@ export function cargarReceta(file, src, dirFotos) {
   }
   const slug = path.basename(file, '.md');
   req(/^[a-z0-9]+(-[a-z0-9]+)*$/.test(slug), `${file}: el nombre del archivo debe ir en minúsculas, sin tildes y con guiones (ej.: arroz-con-costillas.md)`);
-  const known = ['titulo', 'descripcion', 'tipo', 'preparacion', 'coccion', 'raciones', 'dificultad', 'fecha', 'foto', 'etiquetas', 'ingredientes', 'variantes', 'macros'];
+  const known = ['titulo', 'descripcion', 'tipo', 'preparacion', 'coccion', 'raciones', 'rinde', 'dificultad', 'fecha', 'foto', 'etiquetas', 'ingredientes', 'variantes', 'macros'];
   for (const k of Object.keys(data)) req(known.includes(k), `${file}: campo "${k}" desconocido`);
   req(typeof data.titulo === 'string' && data.titulo, `${file}: falta "titulo"`);
   req(typeof data.descripcion === 'string' && data.descripcion, `${file}: falta "descripcion"`);
@@ -296,6 +312,7 @@ export function cargarReceta(file, src, dirFotos) {
     req(fs.existsSync(path.join(dirFotos, foto)), `${file}: no existe la foto recetas/fotos/${foto}`);
   }
   const etiquetas = Array.isArray(data.etiquetas) ? data.etiquetas.map(String) : [];
+  const { ud, porciones } = leerRinde(data.rinde, file);
 
   // Variantes (si no hay, una sola implícita)
   let defs = [{ id: '', nombre: '' }];
@@ -396,6 +413,8 @@ export function cargarReceta(file, src, dirFotos) {
     fecha: String(data.fecha),
     foto,
     etiquetas,
+    ud,
+    porciones,
     variantes,
     defecto,
     multi: variantes.length > 1,

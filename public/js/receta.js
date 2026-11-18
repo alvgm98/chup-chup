@@ -1,10 +1,12 @@
 // Ficha de receta: variantes, raciones, ingredientes marcables y temporizadores.
-import { ingredienteEscalado, fmtSegundos, mmss, leerOpciones, guardarOpcion, listaCompra, claveIngrediente } from './comun.js';
+import { ingredienteEscalado, fmtSegundos, mmss, leerOpciones, guardarOpcion, listaCompra, claveIngrediente, udTxt, fmtRinde, UD_RACION } from './comun.js';
 import { Temporizador } from './sonido.js';
 
 const datos = JSON.parse(document.getElementById('datos-receta').textContent);
 const ids = Object.keys(datos.variantes);
 const multi = ids.length > 1;
+const ud = datos.ud || UD_RACION;
+const conUd = ud.s !== UD_RACION.s;
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 const enlaceCocina = $('[data-enlace-cocina]');
@@ -37,7 +39,7 @@ function crearVariante(id) {
       b.setAttribute('aria-pressed', st.hechos.has(i) ? 'true' : 'false');
     });
     $$(`[data-v="${id}"] [data-raciones-txt]`).forEach((el) => (el.textContent = st.raciones));
-    $('[data-raciones-label]', cuerpo).textContent = st.raciones === 1 ? 'ración' : 'raciones';
+    $$(`[data-v="${id}"] [data-ud]`).forEach((el) => (el.textContent = udTxt(st.raciones, ud)));
     $('.recalculado', cuerpo).hidden = st.raciones === v.raciones;
     menos.disabled = st.raciones <= 1;
     mas.disabled = st.raciones >= 12;
@@ -86,7 +88,7 @@ const variantes = {};
 /** Lo que depende de la variante activa y está fuera de su bloque */
 function pintarComun() {
   const { st, v } = variantes[activa];
-  if (pie) pie.textContent = st.raciones;
+  if (pie) pie.textContent = conUd ? fmtRinde(st.raciones, ud) : st.raciones;
   const q = new URLSearchParams();
   if (multi) q.set('v', activa);
   if (st.raciones !== v.raciones) q.set('r', st.raciones);
@@ -180,7 +182,7 @@ let compraOrigen = null;
 
 function textoCompra() {
   const { st, v } = variantes[activa];
-  const cab = datos.titulo + (multi ? ' · ' + v.nombre.toLowerCase() : '') + ` (${st.raciones} ${st.raciones === 1 ? 'ración' : 'raciones'})`;
+  const cab = datos.titulo + (multi ? ' · ' + v.nombre.toLowerCase() : '') + ` (${fmtRinde(st.raciones, ud)})`;
   return cab + '\n' + compra.filter((x) => x.on).map((x) => '- ' + (x.qty ? x.qty + ' ' : '') + x.nombre).join('\n');
 }
 
@@ -208,7 +210,7 @@ function abrirCompra(origen) {
   const opciones = leerOpciones(datos.slug);
   compra = listaCompra(v.ings, st.raciones / v.raciones, (i) => opciones[activa + ':' + i] || 0)
     .map((x) => ({ ...x, on: !x.opcional && !YA_EN_CASA.has(x.clave) }));
-  $('[data-compra-sub]').textContent = `${multi ? v.nombre + ' · ' : ''}para ${st.raciones} ${st.raciones === 1 ? 'ración' : 'raciones'} · desmarca lo que ya tengas`;
+  $('[data-compra-sub]').textContent = `${multi ? v.nombre + ' · ' : ''}para ${fmtRinde(st.raciones, ud)} · desmarca lo que ya tengas`;
   compraCompartir.hidden = !navigator.share;
   pintarCompra();
   compraOrigen = origen;

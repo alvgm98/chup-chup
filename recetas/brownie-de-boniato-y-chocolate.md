@@ -9,7 +9,7 @@ rinde: { nombre: brownie, porciones: 12 }
 dificultad: facil
 fecha: 2026-11-21
 etiquetas: [horno]
-macros: { kcal: 1470, proteinas: 48, hidratos: 220, grasas: 44, fibra: 38 }
+macros: { kcal: 1490, proteinas: 50, hidratos: 212, grasas: 49, fibra: 39 }
 ingredientes:
   - { id: boniato, nombre: boniato, cantidad: 550, unidad: g }
   - { id: huevos, nombre: huevo, plural: huevos, cantidad: 3 }
@@ -19,7 +19,7 @@ ingredientes:
   - { id: harina de avena, nombre: harina de avena, cantidad: 45, unidad: g }
   - { id: sal, nombre: Sal, cantidad: 1, unidad: pizca }
   - { id: levadura química, nombre: impulsor de repostería, cantidad: 6, unidad: g }
-  - { id: chocolate negro, nombre: chocolate negro de tableta, cantidad: 50, unidad: g }
+  - { id: chocolate negro, nombre: chocolate negro 72 % Hacendado, cantidad: 50, unidad: g }
 ---
 
 ## Preparación

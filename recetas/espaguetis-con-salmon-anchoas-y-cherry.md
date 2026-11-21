@@ -8,10 +8,10 @@ raciones: 4
 dificultad: facil
 fecha: 2026-11-21
 etiquetas: [airfryer]
-macros: { kcal: 775, proteinas: 36, hidratos: 79, grasas: 35, fibra: 4.5 }
+macros: { kcal: 735, proteinas: 35, hidratos: 78, grasas: 32, fibra: 4.5 }
 variantes:
   - { id: fresco, nombre: Salmón fresco, defecto: true }
-  - { id: ahumado, nombre: Salmón ahumado, preparacion: 5, coccion: 15, macros: { kcal: 615, proteinas: 25, hidratos: 79, grasas: 22, fibra: 4.5 } }
+  - { id: ahumado, nombre: Salmón ahumado, preparacion: 5, coccion: 15, macros: { kcal: 625, proteinas: 27, hidratos: 78, grasas: 23, fibra: 4.5 } }
 ingredientes:
   - { id: espaguetis, nombre: espaguetis, cantidad: 400, unidad: g }
   - { id: salmón, nombre: lomo de salmón sin piel, cantidad: 400, unidad: g, nota: en una pieza, variante: fresco }
@@ -22,7 +22,7 @@ ingredientes:
   - { id: ajo, nombre: diente de ajo, plural: dientes de ajo, cantidad: 2 }
   - { id: anchoas, nombre: filete de anchoa en aceite, plural: filetes de anchoa en aceite, cantidad: 6 }
   - { id: tomates cherry, nombre: tomates cherry, cantidad: 250, unidad: g }
-  - { id: nata, nombre: nata para cocinar, cantidad: 200, unidad: ml }
+  - { id: nata, nombre: nata ligera para cocinar, cantidad: 200, unidad: ml }
   - { id: aceitunas negras, nombre: aceitunas negras deshuesadas, cantidad: 60, unidad: g }
   - { id: perejil, nombre: perejil fresco, nota: un puñado }
   - { id: pimienta negra, nombre: pimienta negra, nota: al gusto }

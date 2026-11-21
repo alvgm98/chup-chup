@@ -9,7 +9,7 @@ rinde: { nombre: brownie, porciones: 12 }
 dificultad: facil
 fecha: 2026-11-21
 etiquetas: [horno]
-macros: { kcal: 1550, proteinas: 48, hidratos: 237, grasas: 46, fibra: 38 }
+macros: { kcal: 1470, proteinas: 48, hidratos: 220, grasas: 44, fibra: 38 }
 ingredientes:
   - { id: boniato, nombre: boniato, cantidad: 550, unidad: g }
   - { id: huevos, nombre: huevo, plural: huevos, cantidad: 3 }

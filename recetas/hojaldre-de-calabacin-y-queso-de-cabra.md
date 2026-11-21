@@ -9,7 +9,7 @@ rinde: { nombre: hojaldre, porciones: 4 }
 dificultad: facil
 fecha: 2026-11-21
 etiquetas: [horno]
-macros: { kcal: 2250, proteinas: 66, hidratos: 130, grasas: 163, fibra: 11 }
+macros: { kcal: 2300, proteinas: 70, hidratos: 155, grasas: 154, fibra: 15 }
 ingredientes:
   - { id: masa de hojaldre, nombre: lámina de hojaldre refrigerado, cantidad: 1 }
   - { id: mostaza, nombre: mostaza de Dijon, opciones: [mostaza, mostaza antigua], cantidad: 1, unidad: cda }

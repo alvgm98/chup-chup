@@ -153,6 +153,12 @@ Esta sección es memoria entre sesiones: **cuando el usuario diga una preferenci
 - Carne y salchichas en gramos; cebollas y verduras contables en unidades.
 - Cuando el tamaño del molde no importa, no lo menciones.
 - Pizzas, tartas y similares, con `rinde` (por unidad entera), no por raciones.
+- **Macros con los productos que compra (Mercadona):**
+  - Envasados (masas, nata, quesos, embutidos, chocolate, salsas, pasta…): valores por 100 g de la etiqueta Hacendado, consultados en
+    mercaapi (API no oficial de Mercadona, gratuita): `https://mercaapi.sgn.space/api/products/closest?name=<producto>&limit=3`
+    (campo `nutritional_information`). Desde el sandbox, la shell no llega: usa WebFetch. Elige el producto que mejor encaje con el ingrediente.
+  - Frescos o genéricos (verdura, fruta, carne, pescado, huevos, especias) o si no aparece en Mercadona: BEDCA primero, USDA si no está.
+  - Si un producto concreto es de otra marca (p. ej. de Carrefour) y el usuario pasa la etiqueta, usa la etiqueta.
 
 ### Web
 - Nada que parezca hecho con IA: sin cajas con borde y fondo para todo, degradados, emojis decorativos ni textos de relleno.

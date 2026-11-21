@@ -9,11 +9,10 @@ rinde: { nombre: tarta, porciones: 4 }
 dificultad: facil
 fecha: 2026-11-21
 etiquetas: [horno]
-macros: { kcal: 2280, proteinas: 68, hidratos: 130, grasas: 165, fibra: 11 }
+macros: { kcal: 2250, proteinas: 66, hidratos: 130, grasas: 163, fibra: 11 }
 ingredientes:
   - { id: masa de hojaldre, nombre: lámina de hojaldre refrigerado, cantidad: 1 }
   - { id: mostaza, nombre: mostaza de Dijon, opciones: [mostaza, mostaza antigua], cantidad: 1, unidad: cda }
-  - { id: huevos, nombre: huevo, plural: huevos, cantidad: 1, nota: para pintar }
   - { id: calabacín, nombre: calabacín mediano, plural: calabacines medianos, cantidad: 2 }
   - { id: mozzarella, nombre: mozzarella fresca, cantidad: 125, unidad: g, nota: escurrida }
   - { id: queso de cabra, nombre: rulo de queso de cabra, cantidad: 100, unidad: g }
@@ -32,7 +31,7 @@ ingredientes:
 2. Corta el [calabacín] en rodajas de 3 mm, mézclalo con ½ cdta de [sal] y déjalo en un colador. ⏲ 15 min
 3. Seca bien el calabacín con papel de cocina. Trocea la [mozzarella] y déjala también sobre papel.
 4. Extiende el [hojaldre|masa de hojaldre] con su papel en la bandeja. Marca un borde de 1,5 cm sin llegar a cortar y pincha el interior con un tenedor.
-5. Unta el centro con la [mostaza] y pinta solo el borde con [huevo] batido.
+5. Unta el centro con la [mostaza], sin llegar al borde.
 6. Hornea hasta que empiece a hinchar y tomar color. Aplasta el centro con el dorso de una cuchara. ⏲ 9 min
 7. Reparte la mozzarella y coloca encima el calabacín en filas solapadas. Añade el [queso de cabra] en rodajas.
 8. Riega con el [aceite] y termina con [pimienta negra] y hojas de [tomillo]. Sin más sal: ya la ponen los quesos.

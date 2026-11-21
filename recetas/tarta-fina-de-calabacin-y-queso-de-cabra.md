@@ -37,8 +37,8 @@ ingredientes:
 7. Reparte la mozzarella y coloca encima el calabacín en filas solapadas. Añade el [queso de cabra] en rodajas.
 8. Riega con el [aceite] y termina con [pimienta negra] y hojas de [tomillo]. Sin más sal: ya la ponen los quesos.
 9. Hornea hasta que el borde esté dorado oscuro y la base dorada también por debajo. ⏲ 17 min
-10. Mientras, tuesta las [nueces] en una sartén sin aceite hasta que huelan y trocéalas. Templa la [miel] con la ralladura y unas gotas de [limón].
-11. Reparte las nueces sobre la tarta y riégala con la miel en hilo. Deja reposar antes de cortar. ⏲ 5 min
+10. Mientras, templa la [miel] con la ralladura y unas gotas de [limón].
+11. Reparte las [nueces] troceadas sobre la tarta y riégala con la miel en hilo. Deja reposar antes de cortar. ⏲ 5 min
 
 ## Notas
 

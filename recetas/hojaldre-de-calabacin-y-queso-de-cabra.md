@@ -1,11 +1,11 @@
 ---
-titulo: Tarta fina de calabacín y queso de cabra
+titulo: Hojaldre de calabacín y queso de cabra
 descripcion: Hojaldre crujiente con calabacín, mozzarella y queso de cabra gratinado, terminada con nueces y miel al limón.
 tipo: [masas-y-panes, verduras]
 preparacion: 20
 coccion: 28
 raciones: 1
-rinde: { nombre: tarta, porciones: 4 }
+rinde: { nombre: hojaldre, porciones: 4 }
 dificultad: facil
 fecha: 2026-11-21
 etiquetas: [horno]
@@ -37,7 +37,7 @@ ingredientes:
 8. Riega con el [aceite] y termina con [pimienta negra] y hojas de [tomillo]. Sin más sal: ya la ponen los quesos.
 9. Hornea hasta que el borde esté dorado oscuro y la base dorada también por debajo. ⏲ 17 min
 10. Mientras, templa la [miel] con la ralladura y unas gotas de [limón].
-11. Reparte las [nueces] troceadas sobre la tarta y riégala con la miel en hilo. Deja reposar antes de cortar. ⏲ 5 min
+11. Reparte las [nueces] troceadas sobre el hojaldre y riégala con la miel en hilo. Deja reposar antes de cortar. ⏲ 5 min
 
 ## Notas
 

@@ -28,7 +28,7 @@ ingredientes:
 
 1. Pon a hervir agua para la pasta con poca [sal]: las anchoas y las aceitunas ya salan.
 2. Corta el [salmón] en dados de 3 cm, sécalo y sálalo ligeramente.
-3. Séllalo con el [aceite] a fuego fuerte, por fuera y crudo por dentro, y retíralo. ⏲ 2 min
+3. Séllalo con el [aceite|aceite de oliva] a fuego fuerte, por fuera y crudo por dentro, y retíralo. ⏲ 2 min
 4. En la misma sartén, a fuego medio, funde la [mantequilla] con el [ajo] laminado y las [anchoas]. Aplástalas hasta que se deshagan. ⏲ 2 min
 5. Añade los [tomates cherry] partidos por la mitad y sube el fuego hasta que se arruguen y suelten su jugo. ⏲ 5 min
 6. Cuece los [espaguetis] 2 minutos menos de lo que indique el paquete y reserva una taza del agua de cocción.
